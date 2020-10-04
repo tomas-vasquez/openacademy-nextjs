@@ -3,7 +3,6 @@ import { getSiteMetaData } from "utils/helpers";
 
 export default function SEO({ title, description = "" }) {
   const siteMetadata = getSiteMetaData();
-
   const metaDescription = description || siteMetadata.description;
 
   return (

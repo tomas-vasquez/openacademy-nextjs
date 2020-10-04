@@ -1,4 +1,4 @@
-import "../styles/global.css";
+import "../assets/css/globals.css";
 
 import "typeface-open-sans";
 import "typeface-merriweather";

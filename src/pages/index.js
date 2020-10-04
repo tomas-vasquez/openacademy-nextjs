@@ -1,15 +1,18 @@
 import Link from "next/link";
 
-import Layout from "components/Layout";
-import Bio from "components/Bio";
-import SEO from "components/Seo";
-import { getSortedPosts } from "utils/posts";
+import Axios from "axios";
 
-export default function Home({ posts }) {
+import Layout from "components/Layout";
+import SEO from "components/common/Seo";
+import { apiUrl } from "data/config";
+import Courses from "components/allCourses/Courses";
+// import { getSortedPosts } from "utils/posts";
+
+export default function Home(props) {
   return (
     <Layout>
       <SEO title="All posts" />
-      <Bio className="my-14" />
+      {/* <Bio className="my-14" />
       {posts.map(({ frontmatter: { title, description, date }, slug }) => (
         <article key={slug}>
           <header className="mb-2">
@@ -26,17 +29,22 @@ export default function Home({ posts }) {
             <p className="mb-8 text-lg">{description}</p>
           </section>
         </article>
-      ))}
+      ))} */}
+      <Courses
+        courses={props.courses.courses}
+        authors={props.courses.authors}
+      />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const posts = getSortedPosts();
-
+  const response = await Axios({
+    method: "get",
+    url: apiUrl + "/academy/courses",
+  });
+  const courses = response.data;
   return {
-    props: {
-      posts,
-    },
+    props: { courses },
   };
 }

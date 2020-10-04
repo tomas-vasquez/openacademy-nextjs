@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "compile-sass": "node-sass src/assets/scss/style.scss src/assets/css/globals.css --output-style compressed"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "clsx": "^1.1.1",
+    "fs": "0.0.1-security",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "lazysizes": "^5.2.2",
@@ -17,10 +20,12 @@
     "next": "9.5.2",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
+    "node-sass": "^4.14.1",
     "postcss-preset-env": "^6.7.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-markdown": "^4.3.1",
+    "react-particles-js": "^3.3.0",
     "react-syntax-highlighter": "^13.5.1",
     "typeface-merriweather": "^0.0.72",
     "typeface-open-sans": "^0.0.75"
