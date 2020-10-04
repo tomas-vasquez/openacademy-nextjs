@@ -1,4 +1,3 @@
-// import { getPostBySlug, getPostsSlugs } from "utils/posts";
 import Course from "components/course";
 import { getCourseData, getCoursesSlugs2 } from "utils/courses";
 
@@ -15,6 +14,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { course } }) {
   const courseData = await getCourseData(course);
-  const firstItem = courseData.items[0].item_title.replace(/ /g, "_");
-  return { props: { item: firstItem, ...courseData } };
+  const firstItem = courseData.items[0];
+  return { props: { currentItem: firstItem, ...courseData } };
 }
