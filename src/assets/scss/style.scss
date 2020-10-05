@@ -468,6 +468,24 @@ img {
   }
 }
 
+.svg-inline--fa {
+  width: 1em !important;
+  max-width: 1em;
+  max-height: 1em;
+}
+
+.fa-2x {
+  width: 2em !important;
+  max-width: 2em;
+  max-height: 2em;
+}
+
+.fa-3x {
+  width: 3em !important;
+  max-width: 3em;
+  max-height: 3em;
+}
+
 /** Cursos **/
 
 .cursos {
@@ -638,4 +656,36 @@ img {
   100% {
     background-position: 0% 7%;
   }
+}
+
+.divider-custom {
+  margin: 1rem 0 1.25rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.divider-custom .divider-custom-line {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.2rem;
+  background-color: #2c3e50;
+  border-radius: 1rem;
+  border-color: #2c3e50 !important;
+}
+.divider-custom .divider-custom-line:first-child {
+  margin-right: 1rem;
+}
+.divider-custom .divider-custom-line:last-child {
+  margin-left: 1rem;
+}
+.divider-custom .divider-custom-icon {
+  color: #2c3e50 !important;
+  font-size: 1.5rem;
+}
+.divider-custom.divider-light .divider-custom-line {
+  background-color: #fff;
+}
+.divider-custom.divider-light .divider-custom-icon {
+  color: #fff !important;
 }

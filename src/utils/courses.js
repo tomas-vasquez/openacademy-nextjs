@@ -1,12 +1,39 @@
 import Axios from "axios";
-import { apiUrl } from "data/config";
+import { apiLinks } from "../../site.config";
+
+const sortItems = (array) => {
+  var aux = array;
+
+  for (let y = 0; y <= array.length - 2; y++) {
+    for (let i = 0; i <= array.length - 2; i++) {
+      if (array[i].item_sort > array[i + 1].item_sort) {
+        aux = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = aux;
+      }
+    }
+  }
+  return array;
+};
+
+export async function getItemDescription(item) {
+  try {
+    const response = await Axios({
+      method: "get",
+      url: apiLinks.courseItemsDescriptionsUrl + item.item_content_url,
+    });
+    return response.data;
+  } catch (error) {
+    return "sin description";
+  }
+}
 
 export async function getCoursesSlugs() {
   let paths = [];
 
   const response = await Axios({
     method: "get",
-    url: apiUrl + "/academy/courses",
+    url: apiLinks.getAllCourses,
   });
   const courses = response.data.courses;
 
@@ -15,9 +42,9 @@ export async function getCoursesSlugs() {
 
     const response = await Axios({
       method: "get",
-      url: apiUrl + "/academy/items/" + course.course_short_link,
+      url: apiLinks.getItems + course.course_short_link,
     });
-    const items = response.data.items;
+    const items = sortItems(response.data.items);
 
     for (let index = 0; index < items.length; index++) {
       const item = items[index];
@@ -26,7 +53,6 @@ export async function getCoursesSlugs() {
       );
     }
   }
-
   return paths;
 }
 
@@ -34,7 +60,7 @@ export async function getCoursesSlugs2() {
   let paths = [];
   const response = await Axios({
     method: "get",
-    url: apiUrl + "/academy/courses",
+    url: apiLinks.getAllCourses,
   });
   const courses = response.data.courses;
   for (let index = 0; index < courses.length; index++) {
@@ -44,10 +70,10 @@ export async function getCoursesSlugs2() {
   return paths;
 }
 
-export async function getCourseData(course) {
+export async function getCourseData(course, item) {
   const response = await Axios({
     method: "get",
-    url: apiUrl + "/academy/courses",
+    url: apiLinks.getAllCourses,
   });
   const courses = response.data.courses;
   const authors = response.data.authors;
@@ -62,9 +88,13 @@ export async function getCourseData(course) {
 
   const response2 = await Axios({
     method: "get",
-    url: apiUrl + "/academy/items/" + currentCourse.course_short_link,
+    url: apiLinks.getItems + currentCourse.course_short_link,
   });
-  const items = response2.data.items;
+  const items = sortItems(response2.data.items);
 
-  return { course: currentCourse, author: currentAuthor, items };
+  return {
+    course: currentCourse,
+    author: currentAuthor,
+    items,
+  };
 }

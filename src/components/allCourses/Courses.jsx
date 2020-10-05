@@ -4,7 +4,7 @@ import CardCourse from "./CardCourse";
 
 export default function Courses({ courses, authors }) {
   return (
-    <Container className="mt-4">
+    <Container className="my-4">
       <Card>
         <CardBody>
           <h4 className="mb-4">

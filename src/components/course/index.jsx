@@ -1,39 +1,34 @@
 import React from "react";
-import Layout from "./Layout";
-import { Container, Col, Row } from "reactstrap";
-import NavbarCourse from "components/theme/NavbarCourse";
-import CourseMap from "./CourseMap";
+import CourseVideo from "./CourseVideo";
+import Layout from "../Layout";
 
-export default function index({ items, currentItem, course }) {
+export default function index({
+  author,
+  description,
+  children,
+  items,
+  currentItem,
+  course,
+}) {
   return (
-    <Layout>
-      <div className="site-wrap">
-        <Container fluid>
-          <Row>
-            <Col lg="9" className="p-0 border-right">
-              <NavbarCourse />
-            </Col>
-            <Col
-              lg="3"
-              className="p-0 d-none d-lg-block h-100 bg-white"
-              style={{
-                overflowY: "scroll",
-                top: 0,
-                right: 0,
-                position: "fixed",
-                marginLeft: "auto",
-              }}
-            >
-              <CourseMap
-                course={course}
-                items={items}
-                currentItem={currentItem}
-              />
-            </Col>
-          </Row>
-        </Container>
+    <Layout
+      children={children}
+      items={items}
+      currentItem={currentItem}
+      course={course}
+    >
+      <div className="site-wrap bg-white">
+        {currentItem.item_type === "video" ? (
+          <CourseVideo
+            course={course}
+            description={description}
+            author={author}
+            items={items}
+            currentItem={currentItem}
+            // itemIndex={itemIndex}
+          />
+        ) : null}
       </div>
-      {JSON.stringify(course)}
     </Layout>
   );
 }

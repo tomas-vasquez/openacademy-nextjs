@@ -1,5 +1,9 @@
 import Course from "components/course";
-import { getCourseData, getCoursesSlugs2 } from "utils/courses";
+import {
+  getCourseData,
+  getCoursesSlugs2,
+  getItemDescription,
+} from "utils/courses";
 
 export default function Post(props) {
   return <Course {...props} />;
@@ -14,6 +18,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { course } }) {
   const courseData = await getCourseData(course);
-  const firstItem = courseData.items[0];
-  return { props: { currentItem: firstItem, ...courseData } };
+  const currentItem = courseData.items[0];
+  const description = await getItemDescription(currentItem);
+
+  return { props: { currentItem, ...courseData, description } };
 }

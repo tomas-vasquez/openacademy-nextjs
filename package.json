@@ -10,15 +10,19 @@
     "compile-sass": "node-sass src/assets/scss/style.scss src/assets/css/globals.css --output-style compressed"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.31",
+    "@fortawesome/free-brands-svg-icons": "^5.15.0",
+    "@fortawesome/free-solid-svg-icons": "^5.15.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.20.0",
     "clsx": "^1.1.1",
-    "fs": "0.0.1-security",
+    "html-react-parser": "^0.14.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "lazysizes": "^5.2.2",
     "lodash": "^4.17.20",
     "lqip-loader": "^2.2.0",
-    "next": "9.5.2",
+    "next": "^9.5.2",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
     "node-sass": "^4.14.1",
@@ -32,9 +36,7 @@
     "typeface-open-sans": "^0.0.75"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.2.0",
-    "gray-matter": "^4.0.2",
-    "tailwindcss": "^1.7.6"
+    "gray-matter": "^4.0.2"
   },
   "license": "MIT",
   "repository": {
