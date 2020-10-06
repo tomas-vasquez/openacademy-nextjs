@@ -1,5 +1,4 @@
-//http://localhost:3001";
-const apiUrl = "http://localhost:3001";
+const apiUrl = process.env.API_URL || "http://localhost:3001";
 
 const siteMetadata = {
   title: "Open Academy",
