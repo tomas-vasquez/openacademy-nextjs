@@ -9,8 +9,8 @@ export default function Footer() {
       <footer className="mt-0 py-4 text-center bg-transparent text-white">
         <div className="container">
           <div className="row d-flex">
-            <div className="col-11 col-md-5 ml-auto">
-              <h5 className="text-uppercase mb-3">Links</h5>
+            <div className="col-12 col-md-5 ml-auto">
+              <h5 className="text-uppercase mb-3 d-none d-lg-block">Links</h5>
               <p className=" mb-0">
                 <Link href="/">
                   <span>Empleo</span>
@@ -29,8 +29,10 @@ export default function Footer() {
                 </Link>
               </p>
             </div>
-            <div className="col-12 col-md-6  mt-5 mt-md-0 mr-auto">
-              <h5 className="text-uppercase mb-4">Around the Web</h5>
+            <div className="col-12 col-md-6 mt-4 mt-md-0 mr-auto">
+              <h5 className="text-uppercase mb-4 d-none d-lg-block">
+                Around the Web
+              </h5>
               {socialIcons.map((icon) => (
                 <a
                   key={icon.id}
@@ -49,16 +51,16 @@ export default function Footer() {
       </footer>
       <div className="copyright py-2 text-center text-white">
         <div className="container">
-          made with <i className="fa fa-heart" /> by{" "}
+          made with <Icons icon="heart" /> by{" "}
           <a
             className="badge badge-dark"
             rel="noopener"
-            href="https://github.com/tomasdetloging"
+            href="https://_tomas_dev_.vercel.app/"
             aria-label="My GitHub"
           >
             Tomi
           </a>{" "}
-          using <i className="fab fa-react" />
+          using <Icons icon="react" />
         </div>
       </div>
     </>

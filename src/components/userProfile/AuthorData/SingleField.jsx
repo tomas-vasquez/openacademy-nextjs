@@ -10,10 +10,8 @@ const SingleField = ({
   disabled,
 }) => (
   <div className="form-group row showcase_row_area">
-    <div className="col-md-4 text-right">
-      <label className="h6" htmlFor="input30">
-        {label}:
-      </label>
+    <div className="col-md-4 text-md-right">
+      <label className="h6">{label}:</label>
     </div>
     <div className="col-md-8 showcase_content_area">
       {isEditing ? (

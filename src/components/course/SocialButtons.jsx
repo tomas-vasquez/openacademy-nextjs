@@ -1,3 +1,4 @@
+import Icons from "components/common/Icons";
 import React from "react";
 
 // reactstrap components
@@ -20,7 +21,7 @@ class SocialButtons extends React.Component {
           href={"mailto:" + this.props.data.email}
           target="_blank"
         >
-          <i className="fa fa-envelope" />
+          <Icons icon="envelope" />
         </Button>
 
         {this.props.data.whatsapp_number ? (
@@ -34,7 +35,7 @@ class SocialButtons extends React.Component {
             }
             target="_blank"
           >
-            <i className="fa fa-whatsapp" />
+            <Icons icon="whatsapp" />
           </Button>
         ) : null}
         {this.props.data.link_facebook ? (
@@ -43,7 +44,7 @@ class SocialButtons extends React.Component {
             color="primary"
             href={this.props.data.link_facebook}
           >
-            <i className="fa fa-facebook" />
+            <Icons icon="facebook" />
           </Button>
         ) : null}
         {this.props.data.link_twitter ? (
@@ -53,7 +54,7 @@ class SocialButtons extends React.Component {
             href={this.props.data.link_twitter}
             target="_blank"
           >
-            <i className="fa fa-twitter" />
+            <Icons icon="twitter" />
           </Button>
         ) : null}
         {this.props.data.link_instagram ? (
@@ -63,7 +64,7 @@ class SocialButtons extends React.Component {
             href={this.props.data.link_instagram}
             target="_blank"
           >
-            <i className="fa fa-instagram" />
+            <Icons icon="instagram" />
           </Button>
         ) : null}
       </>

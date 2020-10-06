@@ -1,5 +1,5 @@
 import React from "react";
-import Invitation from "../Invitation";
+import Invitation from "../../common/Invitation";
 import ItemDescription from "./ItemDescription";
 
 export default function index({

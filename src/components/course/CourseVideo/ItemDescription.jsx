@@ -4,6 +4,7 @@ import parser from "html-react-parser";
 import { Container } from "reactstrap";
 import CardAuthor from "./CardAuthor";
 import CourseMap from "../CourseMap";
+import Icons from "components/common/Icons";
 
 const TabName = ({ title, tabName, tab, onClick, icon }) => {
   return (
@@ -15,7 +16,7 @@ const TabName = ({ title, tabName, tab, onClick, icon }) => {
         style={{ cursor: "pointer" }}
         onClick={onClick}
       >
-        <i className={`${icon} mr-2`} />
+        <Icons icon={icon} className={`mr-2`} />
         <strong className="d-none d-sm-inline">{title}</strong>
         <strong
           className={classname("d-none ", {
@@ -47,7 +48,7 @@ export default function ItemDescription({
             tab={tab}
             onClick={() => setTab("li")}
             tabName="li"
-            icon="fa fa-list"
+            icon="list"
           />
         </div>
         <TabName
@@ -55,21 +56,21 @@ export default function ItemDescription({
           tab={tab}
           onClick={() => setTab("no")}
           tabName="no"
-          icon="fa fa-pencil"
+          icon="pencil"
         />
         <TabName
           title="Preguntas (999)"
           tab={tab}
           onClick={() => setTab("pr")}
           tabName="pr"
-          icon="fa fa-comments"
+          icon="comments"
         />
         <TabName
           title="Docente"
           tab={tab}
           onClick={() => setTab("aa")}
           tabName="aa"
-          icon="fa fa-user"
+          icon="user"
         />
       </div>
       <Container fluid>

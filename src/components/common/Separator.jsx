@@ -4,7 +4,16 @@ import Icons from "./Icons";
 export default function Separator({ title, dark }) {
   return (
     <>
-      <h2 className="display-5 mb-0 text-center">{title}</h2>
+      <h2
+        style={{
+          fontSize: "2rem",
+          fontWeight: 300,
+          lineHeight: 1.2,
+        }}
+        className="mb-0 text-center"
+      >
+        {title}
+      </h2>
       <div
         className={`divider-custom my-1 mb-lg-4 ${!dark && "divider-light"}`}
       >

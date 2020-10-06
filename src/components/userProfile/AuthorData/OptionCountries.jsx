@@ -11,6 +11,7 @@ import {
 
 import { onChangeNumber } from "helpers/input";
 import { countrys as telephones } from "helpers/countrys";
+import Icons from "components/common/Icons";
 
 class OptionCountries extends React.Component {
   testUrl(whatsapp_code_area, whatsapp_number) {
@@ -34,7 +35,7 @@ class OptionCountries extends React.Component {
     return (
       <>
         <div className="form-group row showcase_row_area">
-          <div className="col-md-4 text-right">
+          <div className="col-md-4 text-md-right">
             <label className="h6" htmlFor="input90">
               WathsApp:
             </label>
@@ -73,7 +74,7 @@ class OptionCountries extends React.Component {
                   style={{ cursor: "pointer" }}
                 >
                   <InputGroupText>
-                    <i className="fa fa-external-link" />
+                    <Icons icon="external-link" />
                   </InputGroupText>
                 </InputGroupAddon>
                 <UncontrolledTooltip delay={0} target="tooltip48783807893">

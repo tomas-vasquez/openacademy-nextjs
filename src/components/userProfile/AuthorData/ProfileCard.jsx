@@ -37,13 +37,9 @@ const ProfileCard = ({ profile, editable, handlePicPicker }) => (
             />
           </Col>
           <Col xs="12" lg="8" className="order-lg-1">
-            <h1 data-aos="fade-up" data-aos-delay="100">
-              Hola !!!
-            </h1>
-            <p className="mb-4" data-aos="fade-up" data-aos-delay="200">
-              {profile.description}
-            </p>
-            <p data-aos="fade-up" data-aos-delay="300">
+            {/* <h2>{profile.name}</h2> */}
+            <p className="mb-4">{profile.description}</p>
+            <p>
               <SocialButtons data={profile} />
             </p>
           </Col>

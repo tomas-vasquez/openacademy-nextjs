@@ -2,6 +2,7 @@ import classnames from "classnames";
 import React from "react";
 import _ from "lodash";
 import Link from "next/link";
+import Icons from "components/common/Icons";
 
 const SingleItem = ({ course, index, item, currentItem }) => {
   return (
@@ -23,8 +24,9 @@ const SingleItem = ({ course, index, item, currentItem }) => {
         >
           <div style={{ cursor: "pointer" }}>
             <p className="m-0">
-              <i
-                className={classnames("fa fa-play mr-2", {
+              <Icons
+                icon="play"
+                className={classnames("mr-2", {
                   "d-none": currentItem.item_title !== item.item_title,
                 })}
               />

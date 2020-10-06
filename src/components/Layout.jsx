@@ -6,6 +6,7 @@ import NavbarCourse from "components/theme/NavbarCourse";
 import CourseMap from "./course/CourseMap";
 import { useRouter } from "next/router";
 import Header from "../components/common/header";
+import Navbar from "./theme/Navbar";
 
 export default function Layout({
   title,
@@ -25,13 +26,18 @@ export default function Layout({
             lg={items && pathname !== "/courses" ? "9" : "12"}
             className="p-0 border-right"
           >
-            {pathname !== "/login" && pathname !== "/register" ? (
-              <>
-                <NavbarCourse />
-                {pathname === "/" || pathname === "/user" ? (
-                  <Header title={title} />
-                ) : null}
-              </>
+            {pathname !== "/login" &&
+            pathname !== "/register" &&
+            pathname !== "/user" &&
+            pathname !== "/" ? (
+              <NavbarCourse />
+            ) : (
+              <Navbar />
+            )}
+            {pathname === "/" || pathname === "/user" ? (
+              title ? (
+                <Header title={title} />
+              ) : null
             ) : null}
 
             {children}

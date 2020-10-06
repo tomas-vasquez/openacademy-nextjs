@@ -38,9 +38,9 @@ $full-width: 100% !default;
 $navbar-padding: 10px 15px !default;
 
 .navbar {
-  padding: 10px 30px;
+  padding: 0px 10px;
   width: 100%;
-  z-index: 1050;
+  // z-index: 1050;
   background: $navbar-color;
 
   .photo {

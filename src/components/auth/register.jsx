@@ -1,5 +1,5 @@
 import React from "react";
-
+import { user_nameChangedHandler } from "helpers/input";
 import { Button, Row, Col, Container } from "reactstrap";
 import Link from "next/link";
 import Icons from "components/common/Icons";
@@ -17,9 +17,9 @@ export default function login() {
     router.push(targetPage);
   };
 
-  const submitHandlerLogin = (e) => {
+  const submitHandlerRegister = (e) => {
     e.preventDefault();
-    users.login(e.target, openTargetPage);
+    users.register(e.target, openTargetPage);
   };
 
   return (
@@ -56,52 +56,70 @@ export default function login() {
               action=""
               method="post"
               className="form-box"
-              onSubmit={submitHandlerLogin}
+              onSubmit={submitHandlerRegister}
             >
-              <h3 className="h4 text-black mb-4">Iniciar sesión:</h3>
+              <h3 className="h4 text-black mb-4">Crear cuenta:</h3>
               <div className="form-group">
                 <input
-                  id="input-email"
-                  type="text"
+                  type="email"
                   name="email"
+                  id="input-email"
                   className="form-control"
-                  placeholder="Email Addresss"
+                  placeholder="Correo electrónico"
                   required
+                  autoComplete="off"
                 />
               </div>
               <div className="form-group">
                 <input
-                  id="input-password"
-                  name="password"
-                  type="password"
+                  name="user_name"
+                  type="text"
+                  id="input-username"
+                  onChange={user_nameChangedHandler}
                   className="form-control"
-                  placeholder="Password"
+                  placeholder="Nombre de cuenta"
                   required
+                  minLength="8"
+                  maxLength="20"
+                  autoComplete="off"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  name="password"
+                  type="text"
+                  id="input-password"
+                  className="form-control"
+                  placeholder="Contraseña"
+                  required
+                  minLength="8"
+                  autoComplete="off"
                 />
               </div>
               <div className="custom-control custom-checkbox my-3">
                 <input
                   className="custom-control-input"
-                  name="remember_token"
-                  id="customCheckLogin"
+                  name="accept_the_terms"
+                  id="customCheckRegister"
                   type="checkbox"
                 />
                 <label
                   className="custom-control-label d-inline"
-                  htmlFor="customCheckLogin"
+                  htmlFor="customCheckRegister"
                 >
-                  Recordarme en este dispositivo
+                  Acepto los
+                  <Link href="/terms"> términos y condiciones.</Link>
                 </label>
               </div>
               <div className="form-group text-center">
                 <Button type="submit" color="info">
-                  Iniciar sesión
-                  <Icons icon="sign" className="ml-2" />
+                  Crear cuenta
+                  <Icons icon="arrowRight" className="ml-2" />
                 </Button>
               </div>
               <div className="text-center">
                 <p className="m-0 text-muted">
-                  <Link href="/register">¿No tienes una cuenta?</Link>
+                  <Link href="/login">¿Ya tienes una cuenta?</Link>
                 </p>
               </div>
             </form>

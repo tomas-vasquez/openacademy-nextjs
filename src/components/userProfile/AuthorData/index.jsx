@@ -8,6 +8,7 @@ import {
   CardTitle,
   Button,
   Collapse,
+  Container,
 } from "reactstrap";
 
 import { nameChangedHandler } from "helpers/input";
@@ -18,17 +19,21 @@ import ProfileCard from "./ProfileCard";
 import SingleField from "./SingleField";
 import SingleSocialField from "./SingleSocialField";
 import DescriptionField from "./DescriptionField";
+import DB from "helpers/db";
 
 class AuthorData extends React.Component {
   constructor(props) {
     super();
     this.state = { profile: props.profile };
     this.fetcher = new Controller_Profile();
+    this.db = new DB();
   }
 
   handlePicPicker = (e) => {
     const file = e.target.files[0];
-    this.fetcher.handle_pic_selected(file);
+    this.fetcher.handle_pic_selected(file, (newData) => {
+      this.setState({ profile: newData });
+    });
   };
 
   handleDataUpdate = (e) => {
@@ -41,8 +46,8 @@ class AuthorData extends React.Component {
   render() {
     let profile = this.state.profile;
     let editable =
-      this.props.userData &&
-      this.props.userData.user_name === profile.user_name;
+      this.db.get("userData") &&
+      this.db.get("userData").user_name === profile.user_name;
 
     return (
       <>

@@ -1,12 +1,14 @@
 import Layout from "components/Layout";
 import SEO from "components/common/Seo";
-import Login from "components/auth/login";
+import Register from "components/auth/register";
+import Invitation from "components/common/Invitation";
 
 export default function Home(props) {
   return (
     <Layout>
-      <SEO title="All posts" />
-      <Login />
+      <SEO title="Signup" />
+      <Register />
+      <Invitation />
     </Layout>
   );
 }

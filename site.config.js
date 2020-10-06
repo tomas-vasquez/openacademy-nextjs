@@ -1,5 +1,5 @@
 //http://localhost:3001";
-const apiUrl = "https://openacademy-api.herokuapp.com";
+const apiUrl = "http://localhost:3001";
 
 const siteMetadata = {
   title: "Open Academy",
