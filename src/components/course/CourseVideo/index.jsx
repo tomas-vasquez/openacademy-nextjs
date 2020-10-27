@@ -1,6 +1,7 @@
 import React from "react";
 import Invitation from "../../common/Invitation";
 import ItemDescription from "./ItemDescription";
+import Video from "./Video";
 
 export default function index({
   course,
@@ -12,14 +13,7 @@ export default function index({
   return (
     <>
       <div className="video-container shadow d-flex">
-        <video
-          className="m-auto"
-          controls
-          src={currentItem.item_video_url}
-          width="720"
-          height="420"
-          autoPlay
-        />
+        <Video src={currentItem.item_video_url} />
       </div>
       <ItemDescription
         course={course}

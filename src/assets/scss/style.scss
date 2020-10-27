@@ -75,7 +75,7 @@
 
 .video-container {
   display: flex;
-  max-height: 400px;
+  max-height: 420px;
   overflow: hidden;
   background-color: #14171c;
 }
@@ -85,7 +85,7 @@
 .video-container object,
 .video-container embed,
 .video-container div {
-  max-height: 400px;
+  max-height: 420px;
   height: 100%;
 }
 
