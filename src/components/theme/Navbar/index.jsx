@@ -9,18 +9,20 @@ import { Container, Navbar as NavBar } from "reactstrap";
 // import { banner } from "../../../data/config";
 import NavbarLinks from "./NavbarLinks";
 import Link from "next/link";
+import DB from "helpers/db";
 
 // const FirstName = banner.FirstName;
 
 export default function Navbar(props) {
   const [sidebar, toggle] = useState(false);
+  const db = new DB();
+  const userData = db.get("userData");
 
   return (
     <div className="my-navbar absolute">
       <Hamburger sidebar={sidebar} toggle={toggle} />
       <div
         className="my-navbar-overlay"
-        sidebar={sidebar}
         role="buttom"
         onClick={() => toggle(!sidebar)}
       />
@@ -41,11 +43,16 @@ export default function Navbar(props) {
             </Link>
           </div>
           <div className="d-none d-lg-flex py-auto">
-            <NavbarLinks desktop {...props} />
+            <NavbarLinks userData={userData} desktop {...props} />
           </div>
         </Container>
       </NavBar>
-      <Sidebar sidebar={sidebar} toggle={toggle} {...props} />
+      <Sidebar
+        userData={userData}
+        sidebar={sidebar}
+        toggle={toggle}
+        {...props}
+      />
     </div>
   );
 }

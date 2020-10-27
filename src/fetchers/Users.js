@@ -117,13 +117,13 @@ class Controller_Users extends Controller {
 
     axios({
       method: "get",
-      url: apiUrl + "/user/logout",
+      url: apiUrl + "/logout",
       headers: {
         "api-token": this.db.get("api-token"),
       },
     })
       .then((response) => {
-        this.alerts.showSuccess("Hasta luego...", "Sesión cerrada ");
+        this.alerts.showSuccess("", "Sesión cerrada ");
         this.clearData();
       })
       .catch((error) => {

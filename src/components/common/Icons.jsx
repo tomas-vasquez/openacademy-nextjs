@@ -16,6 +16,7 @@ import {
   faSignInAlt,
   faExternalLinkAlt,
   faEnvelope,
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -34,6 +35,9 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "sign-out":
+      return faSignOutAlt;
+
     case "envelope":
       return faEnvelope;
 

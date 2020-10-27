@@ -1,7 +1,7 @@
 import React from "react";
 import NavbarLinks from "./NavbarLinks";
 
-const Sidebar = ({ sidebar, toggle, location }) => {
+const Sidebar = ({ userData, sidebar, toggle, location }) => {
   return (
     <div
       className="sidebar d-lg-none shadow"
@@ -17,7 +17,7 @@ const Sidebar = ({ sidebar, toggle, location }) => {
       onClick={toggle}
     >
       <div className="">
-        <NavbarLinks location={location} />
+        <NavbarLinks userData={userData} location={location} />
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ export async function getItemDescription(item) {
   try {
     const response = await Axios({
       method: "get",
-      url: apiLinks.courseItemsDescriptionsUrl + item.item_content_url,
+      url: apiLinks.courseItemsDescriptionsUrl + item._id,
     });
     return response.data;
   } catch (error) {

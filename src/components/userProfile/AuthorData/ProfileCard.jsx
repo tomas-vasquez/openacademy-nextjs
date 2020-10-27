@@ -5,7 +5,7 @@ import { apiLinks } from "../../../../site.config";
 
 const getPicUrl = (profile) => {
   if (profile.pic_url) {
-    return apiLinks.userPicUrl + profile.pic_url;
+    return profile.pic_url;
   } else {
     return "/img/noPic.jpg";
   }

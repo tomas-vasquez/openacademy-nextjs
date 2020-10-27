@@ -5,16 +5,13 @@ import moment from "moment";
 import "moment/min/locales";
 import _ from "lodash";
 import Link from "next/link";
-import { apiLinks } from "../../../site.config";
 
 const formatDate = (date) => {
   return moment(date, "ISO").fromNow();
 };
 
 export default function CardCourse({ course, author }) {
-  const pic_url = author.pic_url
-    ? apiLinks.userPicUrl + author.pic_url
-    : "/img/noPic.jpg";
+  const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
 
   return (
     <Link href={"/" + course.course_short_link}>
@@ -23,9 +20,7 @@ export default function CardCourse({ course, author }) {
           <div className="h-50 align-self-stretch">
             <figure className=" m-0">
               {course.course_pic_url && (
-                <CardImg
-                  src={apiLinks.coursePicUrl + course.course_pic_url}
-                ></CardImg>
+                <CardImg src={course.course_pic_url}></CardImg>
               )}
             </figure>
             <div className="course-inner-text p-3">

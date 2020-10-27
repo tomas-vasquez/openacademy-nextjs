@@ -17,9 +17,9 @@ const siteMetadata = {
 const apiLinks = {
   apiLoginUrl: apiUrl + "/login",
   apiSignupUrl: apiUrl + "/signup",
-  userPicUrl: apiUrl + "/storage/user_pics",
-  coursePicUrl: apiUrl + "/storage/course_pics",
-  courseItemsDescriptionsUrl: apiUrl + "/storage/descriptions/",
+  // userPicUrl: apiUrl + "/storage/user_pics",
+  // coursePicUrl: apiUrl + "/storage/course_pics",
+  courseItemsDescriptionsUrl: apiUrl + "/academy/descriptions/",
   flagsUrl: apiUrl + "/storage/flags",
   testsUrl: apiUrl + "/academy/tests",
   getAllCourses: apiUrl + "/academy/courses",

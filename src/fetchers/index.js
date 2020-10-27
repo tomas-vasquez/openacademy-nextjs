@@ -1,14 +1,6 @@
 import Alerts from "helpers/Alerts";
 import DB from "helpers/db";
 
-// //store
-// import store from "store";
-// import { replace } from "connected-react-router/lib/actions";
-
-// //config
-// import { myRoutes } from "config";
-// import { reset } from "store/app_store/actions";
-
 class Controller {
   constructor() {
     this.alerts = new Alerts();
@@ -22,9 +14,8 @@ class Controller {
   */
 
   clearData = () => {
-    // store.dispatch(replace(myRoutes.login));
-    // store.dispatch(reset());
-    // new DB().clear();
+    this.db.clear();
+    document.location.reload();
   };
 
   /*!
@@ -39,8 +30,6 @@ class Controller {
     if (error.isAxiosError) {
       if (error.response) {
         if (error.response.status === 422) {
-          // Object.entries(error.response.data).forEach((error) => {
-          //   error[1].forEach((msg) => {
           switch (error.response.data.msg) {
             case "error-incorrect-password":
               return this.alerts.showAlert(
@@ -85,10 +74,6 @@ class Controller {
             default:
               return this.alerts.showAlert("Revise los datos ingresados");
           }
-          // });
-
-          // return this.alerts.showAlert("Revise los datos ingresados :P");
-          // });
         } else if (error.response.status === 406) {
           return this.alerts.showWarning("Contraseña incorrecta");
         } else if (error.response.status === 401) {

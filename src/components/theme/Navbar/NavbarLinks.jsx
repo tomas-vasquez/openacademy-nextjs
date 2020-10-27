@@ -2,9 +2,10 @@ import DB from "helpers/db";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import AvatarNavBar from "./AvatarNavBar";
 // import AnchorLink from "react-anchor-link-smooth-scroll";
 
-const NavbarLinks = ({ desktop }) => {
+const NavbarLinks = ({ userData, desktop }) => {
   const router = useRouter();
 
   const openRegisterPage = (e) => {
@@ -38,12 +39,19 @@ const NavbarLinks = ({ desktop }) => {
         ) : (
           <div className="border-top my-4" />
         )}
-        <a href="/login" onClick={openLoginPage}>
-          <p className="lead mb-0 mr-4">login</p>
-        </a>
-        <a href="/register" onClick={openRegisterPage}>
-          <p className="lead mb-0 mr-4">register</p>
-        </a>
+
+        {userData ? (
+          <AvatarNavBar desktop={desktop} userData={userData} />
+        ) : (
+          <>
+            <a href="/login" onClick={openLoginPage}>
+              <p className="lead mb-0 mr-4">login</p>
+            </a>
+            <a href="/register" onClick={openRegisterPage}>
+              <p className="lead mb-0 mr-4">register</p>
+            </a>
+          </>
+        )}
       </div>
     </>
   );

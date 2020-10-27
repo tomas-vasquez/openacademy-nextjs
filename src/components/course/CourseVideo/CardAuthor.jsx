@@ -1,5 +1,4 @@
 import React from "react";
-import { apiLinks } from "../../../../site.config";
 
 import { Col, Row } from "reactstrap";
 import SocialButtons from "../SocialButtons";
@@ -8,7 +7,7 @@ import Link from "next/link";
 export default function CardAuthor({ author }) {
   let pic_url;
   if (author.pic_url) {
-    pic_url = apiLinks.userPicUrl + author.pic_url;
+    pic_url = author.pic_url;
   } else {
     pic_url = "/img/noPic.jpg";
   }

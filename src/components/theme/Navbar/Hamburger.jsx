@@ -11,7 +11,7 @@ const Hamburger = ({ sidebar, toggle }) => {
             }
           : {}
       }
-      sidebar={sidebar}
+      // sidebar={sidebar}
       role="button"
       onClick={() => {
         toggle(!sidebar);
