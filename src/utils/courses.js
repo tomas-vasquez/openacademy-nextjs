@@ -49,7 +49,7 @@ export async function getCoursesSlugs() {
     for (let index = 0; index < items.length; index++) {
       const item = items[index];
       paths.push(
-        `/${course.course_short_link}/${item.item_title.replace(/ /g, "_")}`
+        `/${course.course_short_link}/${getShortLink(item.item_title)}`
       );
     }
   }
@@ -70,7 +70,7 @@ export async function getCoursesSlugs2() {
   return paths;
 }
 
-export async function getCourseData(course, item) {
+export async function getCourseData(course) {
   const response = await Axios({
     method: "get",
     url: apiLinks.getAllCourses,
@@ -98,3 +98,17 @@ export async function getCourseData(course, item) {
     items,
   };
 }
+
+/* =========================================================
+ *
+ * ========================================================= */
+
+export const getShortLink = (link) => {
+  let newString = link;
+  newString = newString.toLowerCase();
+  newString = newString.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  newString = newString.replace(/ /g, "_");
+  newString = newString.replace(/\?/g, "");
+  newString = newString.replace(/¿/g, "");
+  return newString;
+};

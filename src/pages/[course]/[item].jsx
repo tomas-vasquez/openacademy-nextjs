@@ -3,6 +3,7 @@ import {
   getCourseData,
   getCoursesSlugs,
   getItemDescription,
+  getShortLink,
 } from "utils/courses";
 
 export default function Post(props) {
@@ -16,9 +17,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { course, item } }) {
-  const courseData = await getCourseData(course, item);
+  const courseData = await getCourseData(course);
   const currentItem = courseData.items.find((_item) => {
-    return _item.item_title.replace(/ /g, "_") === item;
+    return getShortLink(_item.item_title) === item;
   });
   const description = await getItemDescription(currentItem);
   return { props: { currentItem, ...courseData, description } };

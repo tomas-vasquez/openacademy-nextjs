@@ -3,6 +3,7 @@ import React from "react";
 import _ from "lodash";
 import Link from "next/link";
 import Icons from "components/common/Icons";
+import { getShortLink } from "utils/courses";
 
 const SingleItem = ({ course, index, item, currentItem }) => {
   return (
@@ -16,10 +17,7 @@ const SingleItem = ({ course, index, item, currentItem }) => {
       >
         <Link
           href={
-            "/" +
-            course.course_short_link +
-            "/" +
-            item.item_title.replace(/ /g, "_")
+            "/" + course.course_short_link + "/" + getShortLink(item.item_title)
           }
         >
           <div style={{ cursor: "pointer" }}>
