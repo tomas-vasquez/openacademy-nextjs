@@ -1,10 +1,5 @@
 import Course from "components/course";
-import {
-  getCourseData,
-  getCoursesSlugs,
-  getItemDescription,
-  getShortLink,
-} from "utils/courses";
+import { getCourseData, getCoursesSlugs, getShortLink } from "utils/courses";
 
 export default function Post(props) {
   return <Course {...props} />;
@@ -21,6 +16,5 @@ export async function getStaticProps({ params: { course, item } }) {
   const currentItem = courseData.items.find((_item) => {
     return getShortLink(_item.item_title) === item;
   });
-  const description = await getItemDescription(currentItem);
-  return { props: { currentItem, ...courseData, description } };
+  return { props: { currentItem, ...courseData } };
 }

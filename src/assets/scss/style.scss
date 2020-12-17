@@ -74,19 +74,28 @@
 }
 
 .video-container {
+  height: 250px;
   display: flex;
-  max-height: 420px;
-  overflow: hidden;
   background-color: #14171c;
 }
 
-.video-container .video-js,
-.video-container video,
-.video-container object,
-.video-container embed,
-.video-container div {
-  max-height: 420px;
-  height: 100%;
+@media only screen and (min-width:400px) {
+  .video-container{
+    height: 400px;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .video-container{
+    height: 450px;
+  }
+}
+
+.video-container :first-child {
+  margin-left: auto;
+  width: 100%;
+  height:inherit;
+  margin-right: auto;
 }
 
 .comments-container {

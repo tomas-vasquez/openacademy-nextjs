@@ -31,7 +31,6 @@ const TabName = ({ title, tabName, tab, onClick, icon }) => {
 };
 
 export default function ItemDescription({
-  description,
   author,
   course,
   items,
@@ -80,8 +79,8 @@ export default function ItemDescription({
           })}
           style={{ maxWidth: 650 }}
         >
-          {description !== undefined && typeof description === "string" ? (
-            parser(description)
+          {currentItem.item_description ? (
+            parser(currentItem.item_description)
           ) : (
             <p>no description</p>
           )}

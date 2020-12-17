@@ -16,18 +16,6 @@ const sortItems = (array) => {
   return array;
 };
 
-export async function getItemDescription(item) {
-  try {
-    const response = await Axios({
-      method: "get",
-      url: apiLinks.courseItemsDescriptionsUrl + item._id,
-    });
-    return response.data;
-  } catch (error) {
-    return "sin description";
-  }
-}
-
 export async function getCoursesSlugs() {
   let paths = [];
 
@@ -45,7 +33,6 @@ export async function getCoursesSlugs() {
       url: apiLinks.getItems + course.course_short_link,
     });
     const items = sortItems(response.data.items);
-
     for (let index = 0; index < items.length; index++) {
       const item = items[index];
       paths.push(
