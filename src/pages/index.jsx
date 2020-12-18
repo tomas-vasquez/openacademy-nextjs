@@ -5,10 +5,11 @@ import SEO from "components/common/Seo";
 import { apiLinks } from "../../site.config";
 import Courses from "components/allCourses/Courses";
 
-export default function Home(props) {
+export default function Index(props) {
   return (
     <Layout title="All Courses">
       <SEO title="All posts" />
+      inicio
       <Courses
         courses={props.courses.courses}
         authors={props.courses.authors}
