@@ -39,7 +39,7 @@ export default class Index extends Component {
         id="topnav"
         className={
           this.state.sticky
-            ? "defaultscroll sticky shadow nav-sticky"
+            ? "defaultscroll sticky nav-sticky"
             : "defaultscroll  sticky"
         }
       >

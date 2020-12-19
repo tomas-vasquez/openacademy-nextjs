@@ -9,8 +9,8 @@ import PopularCourses from "components/home/PopularCourses";
 
 export default function Index(props) {
   return (
-    <Layout title="All Courses">
-      <SEO title="All posts" />
+    <Layout title="Home">
+      <SEO title="Home" />
       <Hero />
       <Partners />
       <section className="mb-5">

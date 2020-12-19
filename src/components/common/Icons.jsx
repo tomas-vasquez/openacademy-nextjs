@@ -22,6 +22,7 @@ import {
   faAngleRight,
   faPlaceOfWorship,
   faSearch,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -61,6 +62,8 @@ const getIcon = (icon) => {
     case "sign":
       return faSignInAlt;
 
+    case "arrowLeft":
+      return faArrowLeft;
     case "arrowRight":
       return faArrowRight;
 

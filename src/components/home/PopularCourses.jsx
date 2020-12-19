@@ -13,7 +13,7 @@ export default class extends Component {
     const { courses, authors } = this.props;
 
     return (
-      <div className="container mt-100">
+      <div className="container mt-5 pt-4">
         <div className="row justify-content-center">
           <div className="col-12">
             <div className="section-title text-center mb-4 pb-2">

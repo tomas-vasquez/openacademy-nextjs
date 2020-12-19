@@ -40,11 +40,11 @@ export default function SingleCourse({ course, author }) {
             <h5 className="mt-2 text-primary">
               {_.upperFirst(course.course_title)}
             </h5>
-            <p className="text-muted">
+            <p className="text-muted mb-0">
               {_.upperFirst(course.course_description)}
             </p>
 
-            <ul className="list-unstyled d-flex justify-content-between border-top mt-3 pt-3 mb-0">
+            {/* <ul className="list-unstyled d-flex justify-content-between border-top mt-3 pt-3 mb-0">
               <li className="text-muted small">
                 <i data-feather="book" className="fea icon-sm text-info"></i> 25
                 Lectures
@@ -60,7 +60,7 @@ export default function SingleCourse({ course, author }) {
                 <i data-feather="eye" className="fea icon-sm text-primary"></i>
                 3012
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div>

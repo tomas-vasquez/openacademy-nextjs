@@ -231,7 +231,7 @@
 
   &.nav-sticky {
     background: $white;
-    box-shadow: $shadow;
+    box-shadow: 0px 3px 20px rgba(60, 72, 88, 0.15);
     .navigation-menu {
       &.nav-light {
         > li {
@@ -630,7 +630,7 @@
 
   #navigation {
     position: absolute;
-    top: 66px;
+    top: 63px;
     left: 0;
     width: 100%;
     padding-bottom: 0;

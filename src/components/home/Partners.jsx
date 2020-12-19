@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Partners() {
   return (
-    <section className="py-4 border-bottom border-top">
+    <section className="mt-4 py-3 border-bottom border-top">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-2 col-md-2 col-6 text-center py-4">

@@ -19,45 +19,51 @@ export default function Layout({
 
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col
-            lg={items && pathname !== "/courses" ? "9" : "12"}
-            className="p-0 border-right"
-          >
-            {pathname !== "/login" &&
-            pathname !== "/register" &&
-            pathname !== "/user" &&
-            pathname !== "/" ? (
-              <NavbarCourse />
-            ) : (
-              <Navbar />
-            )}
-
-            {children}
-            <Footer />
-          </Col>
-          {items ? (
+      {pathname !== "/login" &&
+      pathname !== "/register" &&
+      pathname !== "/courses" &&
+      pathname !== "/user" &&
+      pathname !== "/" ? (
+        <Container fluid classname="p-0">
+          <Row>
             <Col
-              lg="3"
-              className="p-0 d-none d-lg-block h-100 bg-white"
-              style={{
-                overflowY: "scroll",
-                top: 0,
-                right: 0,
-                position: "fixed",
-                marginLeft: "auto",
-              }}
+              lg={items && pathname !== "/courses" ? "9" : "12"}
+              className="p-0 border-right"
             >
-              <CourseMap
-                course={course}
-                items={items}
-                currentItem={currentItem}
-              />
+              <div>
+                <NavbarCourse />
+              </div>
+              {children}
+              <Footer litle />
             </Col>
-          ) : null}
-        </Row>
-      </Container>
+            {items ? (
+              <Col
+                lg="3"
+                className="p-0 d-none d-lg-block h-100 bg-white"
+                style={{
+                  overflowY: "scroll",
+                  top: 0,
+                  right: 0,
+                  position: "fixed",
+                  marginLeft: "auto",
+                }}
+              >
+                <CourseMap
+                  course={course}
+                  items={items}
+                  currentItem={currentItem}
+                />
+              </Col>
+            ) : null}
+          </Row>
+        </Container>
+      ) : (
+        <Container fluid className="p-0">
+          <Navbar />
+          {children}
+          <Footer />
+        </Container>
+      )}
     </>
   );
 }

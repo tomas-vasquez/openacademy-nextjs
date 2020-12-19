@@ -45,17 +45,19 @@ export default function Hero() {
                 <div className="col-lg-5 col-md-6 col-12 mt-4 pt-2 mt-sm-0 pt-sm-0">
                   <div className="position-relative">
                     <img
-                      src={require("../../assets/images/course/online/hero.jpg")}
+                      src={require("../../assets/images/course/online/hero2.jpg")}
                       className="rounded img-fluid mx-auto d-block"
                       alt=""
                     />
                     <div className="play-icon">
                       <a
-                        href="http://vimeo.com/287684225"
-                        className="play-btn video-play-icon"
+                        href="#"
+                        className="btn btn-pills btn-danger m-0 p-3 text-lg shadow-lg"
                       >
                         <Icons icon="play" className="fa-2x" />
                       </a>
+                      {/* <a href="http://vimeo.com/287684225" className="">
+                      </a> */}
                     </div>
                   </div>
                 </div>
