@@ -31,7 +31,7 @@ export default function Invitation() {
               </Col>
               <Col xs="12" lg="auto" className="ml-auto my-auto">
                 <Button color="info" className="mt-3 my-lg-auto">
-                  Ensena en Open Academy
+                  Ensena en Your Academy
                 </Button>
               </Col>
             </Row>

@@ -1,58 +1,80 @@
-import React, { useState } from "react";
-
-import Hamburger from "./Hamburger";
-import Sidebar from "./Sidebar";
-
-import { Container, Navbar as NavBar } from "reactstrap";
-
-//config
-// import { banner } from "../../../data/config";
-import NavbarLinks from "./NavbarLinks";
-import Link from "next/link";
 import DB from "helpers/db";
+import React, { Component } from "react";
+import { Collapse } from "reactstrap";
+import AuthMenu from "./AuthMenu";
+import Navigation from "./Navigation";
 
-// const FirstName = banner.FirstName;
+export default class Index extends Component {
+  constructor() {
+    super();
+    this.state = {
+      sticky: false,
+      open: false,
+    };
+  }
 
-export default function Navbar(props) {
-  const [sidebar, toggle] = useState(false);
-  const db = new DB();
-  const userData = db.get("userData");
+  scroollHandler = (e) => {
+    const scroollTop = e.target.scrollingElement.scrollTop;
+    if (scroollTop > 60) {
+      this.setState({ sticky: true });
+    } else {
+      this.setState({ sticky: false });
+    }
+  };
 
-  return (
-    <div className="my-navbar absolute">
-      <Hamburger sidebar={sidebar} toggle={toggle} />
-      <div
-        className="my-navbar-overlay"
-        role="buttom"
-        onClick={() => toggle(!sidebar)}
-      />
-      <NavBar className="navbar-dark navbar-absolute bg-transparent">
-        <Container>
-          <div className="navbar-wrapper d-flex">
-            <Link href="/">
-              <h1
-                className="text-white py-4"
-                style={{
-                  fontSize: "1.7rem",
-                  fontWeight: 300,
-                  lineHeight: 1.2,
-                }}
+  componentDidMount() {
+    window.addEventListener("scroll", this.scroollHandler);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.scroollHandler);
+  }
+
+  render() {
+    const db = new DB();
+    const userData = db.get("userData");
+
+    return (
+      <header
+        id="topnav"
+        className={
+          this.state.sticky
+            ? "defaultscroll sticky shadow nav-sticky"
+            : "defaultscroll  sticky"
+        }
+      >
+        <div className="container">
+          <div>
+            <a className="logo" href="index.html">
+              <img
+                src={require("../../../assets/images/logo-dark.png")}
+                height="24"
+                alt=""
+              />
+            </a>
+          </div>
+          <AuthMenu />
+          <div className="menu-extras">
+            <div className="menu-item">
+              <a
+                className={
+                  this.state.open ? "navbar-toggle open" : "navbar-toggle"
+                }
+                onClick={() => this.setState({ open: !this.state.open })}
               >
-                Open Academy
-              </h1>
-            </Link>
+                <div className="lines">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </a>
+            </div>
           </div>
-          <div className="d-none d-lg-flex py-auto">
-            <NavbarLinks userData={userData} desktop {...props} />
-          </div>
-        </Container>
-      </NavBar>
-      <Sidebar
-        userData={userData}
-        sidebar={sidebar}
-        toggle={toggle}
-        {...props}
-      />
-    </div>
-  );
+          <Collapse isOpen={this.state.open} id="navigation">
+            <Navigation />
+          </Collapse>
+        </div>
+      </header>
+    );
+  }
 }

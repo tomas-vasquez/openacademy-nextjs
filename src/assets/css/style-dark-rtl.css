@@ -2579,8 +2579,8 @@ p {
     margin-top: -1px;
   }
   #topnav .navigation-menu > li > a {
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     min-height: 62px;
   }
   #topnav .navigation-menu > li:hover > .menu-arrow {

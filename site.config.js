@@ -1,7 +1,7 @@
 const apiUrl = process.env.API_URL || "http://localhost:3001";
 
 const siteMetadata = {
-  title: "Open Academy",
+  title: "Your Academy",
   author: {
     name: "Tomas Vasquez",
     summary: "who works building clean user interfaces with React.",
@@ -54,4 +54,57 @@ const socialIcons = [
   },
 ];
 
-module.exports = { socialIcons, siteMetadata, apiUrl, apiLinks };
+const navbarLinks = [
+  { title: "Inicio", url: "/" },
+  {
+    title: "Cursos",
+    submenu: [
+      { title: "Inicio", url: "/" },
+      { title: "Courses", url: "/courses" },
+    ],
+  },
+];
+
+const hero = {
+  mainTitle: "Inicia tu aprendizaje online con",
+  subTitle: "bla bla bla bla bla",
+  searchPlaceholder: "Buscar...",
+};
+
+const popularCourses = {
+  title: "Cursos mas populares",
+  subTitle: "bla bla bla bla bla",
+};
+
+const footer = {
+  aboutText:
+    "Start working with YourAcademy that can provide everything you need to generate awareness, drive traffic, connect.",
+  LinksTitle: "Enlaces",
+  links: [
+    {
+      title: "Inicio",
+      url: "/",
+    },
+    {
+      title: "Inicio",
+      url: "/",
+    },
+    {
+      title: "Inicio",
+      url: "/",
+    },
+  ],
+  newsLetterTitle: "NewsLetter",
+  newsLetterText: "Registrate y recive las ultimas novedades por tu correo.",
+};
+
+module.exports = {
+  socialIcons,
+  siteMetadata,
+  apiUrl,
+  apiLinks,
+  navbarLinks,
+  hero,
+  popularCourses,
+  footer,
+};

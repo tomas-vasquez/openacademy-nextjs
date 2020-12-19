@@ -3,17 +3,22 @@ import Axios from "axios";
 import Layout from "components/Layout";
 import SEO from "components/common/Seo";
 import { apiLinks } from "../../site.config";
-import Courses from "components/allCourses/Courses";
+import Hero from "components/home/Hero";
+import Partners from "components/home/Partners";
+import PopularCourses from "components/home/PopularCourses";
 
 export default function Index(props) {
   return (
     <Layout title="All Courses">
       <SEO title="All posts" />
-      inicio
-      <Courses
-        courses={props.courses.courses}
-        authors={props.courses.authors}
-      />
+      <Hero />
+      <Partners />
+      <section className="mb-5">
+        <PopularCourses
+          courses={props.courses.courses}
+          authors={props.courses.authors}
+        />
+      </section>
     </Layout>
   );
 }

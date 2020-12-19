@@ -19,7 +19,6 @@ export default function Layout({
 
   return (
     <>
-      <Particles />
       <Container fluid>
         <Row>
           <Col
@@ -34,11 +33,6 @@ export default function Layout({
             ) : (
               <Navbar />
             )}
-            {pathname === "/" || pathname === "/user" ? (
-              title ? (
-                <Header title={title} />
-              ) : null
-            ) : null}
 
             {children}
             <Footer />

@@ -17,6 +17,11 @@ import {
   faExternalLinkAlt,
   faEnvelope,
   faSignOutAlt,
+  faDotCircle,
+  faCircle,
+  faAngleRight,
+  faPlaceOfWorship,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -35,6 +40,15 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "search":
+      return faSearch;
+
+    case "play":
+      return faPlay;
+
+    case "dot":
+      return faAngleRight;
+
     case "sign-out":
       return faSignOutAlt;
 

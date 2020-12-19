@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "compile-sass": "node-sass src/assets/scss/style.scss src/assets/css/globals.css --output-style compressed"
+    "compile-sass": "node-sass src/assets/scss/style.scss src/assets/css/style.css --output-style compressed"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.31",
