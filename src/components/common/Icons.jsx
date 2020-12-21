@@ -23,6 +23,8 @@ import {
   faPlaceOfWorship,
   faSearch,
   faArrowLeft,
+  faFire,
+  faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -41,6 +43,12 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "books":
+      return faBook;
+
+    case "fire":
+      return faFire;
+
     case "search":
       return faSearch;
 
@@ -64,6 +72,7 @@ const getIcon = (icon) => {
 
     case "arrowLeft":
       return faArrowLeft;
+
     case "arrowRight":
       return faArrowRight;
 

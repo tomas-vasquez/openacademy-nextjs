@@ -80,8 +80,8 @@ export default function Footer({ litle }) {
                           type="email"
                           name="email"
                           id="emailsubscribe"
-                          className="form-control pl-5 rounded"
-                          placeholder="Your email : "
+                          className="form-control rounded"
+                          placeholder="Your email:"
                           required
                         />
                       </div>

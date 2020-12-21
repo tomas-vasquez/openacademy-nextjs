@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section className="section pt-5 pb-0 mt-4">
       <div className="container-fluid mt-md-1 px-0 px-md-3">
-        <div className="rounded bg-light py-5 px-3 px-sm-0">
+        <div className="rounded bg-light py-5 px-3 px-sm-0 shadow-md">
           <div className="row">
             <div className="container">
               <div className="row align-items-center">
@@ -24,7 +24,7 @@ export default function Hero() {
                             type="text"
                             id="course"
                             name="name"
-                            className="rounded shadow-lg"
+                            className="rounded shadow-md"
                             placeholder={hero.searchPlaceholder}
                           />
                           <button type="submit" className="btn btn-primary">
@@ -43,7 +43,7 @@ export default function Hero() {
                 </div>
 
                 <div className="col-lg-5 col-md-6 col-12 mt-4 pt-2 mt-sm-0 pt-sm-0">
-                  <div className="position-relative">
+                  <div className="position-relative shadow-md">
                     <img
                       src={require("../../assets/images/course/online/hero2.jpg")}
                       className="rounded img-fluid mx-auto d-block"
@@ -52,12 +52,11 @@ export default function Hero() {
                     <div className="play-icon">
                       <a
                         href="#"
-                        className="btn btn-pills btn-danger m-0 p-3 text-lg shadow-lg"
+                        className="btn btn-danger m-0 p-3 text-lg shadow-md"
+                        style={{ borderRight: "25px" }}
                       >
                         <Icons icon="play" className="fa-2x" />
                       </a>
-                      {/* <a href="http://vimeo.com/287684225" className="">
-                      </a> */}
                     </div>
                   </div>
                 </div>

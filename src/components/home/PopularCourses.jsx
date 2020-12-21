@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardImg, Media } from "reactstrap";
 
-import moment from "moment";
 import "moment/min/locales";
 import _ from "lodash";
-import Link from "next/link";
 import SingleCourse from "components/allCourses/SingleCourse";
 import { popularCourses } from "../../../site.config";
 
@@ -27,13 +24,14 @@ export default class extends Component {
 
         <div className="row">
           {courses.map((course, index) => (
-            <SingleCourse
-              key={index}
-              course={course}
-              author={authors.find((author) => {
-                return author._id === course.course_author_id;
-              })}
-            />
+            <div key={index} className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <SingleCourse
+                course={course}
+                author={authors.find((author) => {
+                  return author._id === course.course_author_id;
+                })}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -93,3 +93,26 @@
   height: inherit;
   margin-right: auto;
 }
+
+.arrow1 {
+  animation: slide1 1.5s ease-in-out infinite;
+  margin-left: 9px;
+  transition: 1.5s;
+}
+
+.btn:hover {
+  .arrow1 {
+    animation: none;
+  }
+}
+
+@keyframes slide1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(7px, 0);
+  }
+}

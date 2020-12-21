@@ -1,8 +1,15 @@
 import Course from "components/course";
+import Layout from "components/Layout";
 import { getCourseData, getCoursesSlugs, getShortLink } from "utils/courses";
 
 export default function Post(props) {
-  return <Course {...props} />;
+  const { items, currentItem, course } = props;
+
+  return (
+    <Layout items={items} currentItem={currentItem} course={course}>
+      <Course {...props} />
+    </Layout>
+  );
 }
 export async function getStaticPaths() {
   return {

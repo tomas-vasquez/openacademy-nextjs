@@ -6,6 +6,7 @@ import { apiLinks } from "../../site.config";
 import Hero from "components/home/Hero";
 import Partners from "components/home/Partners";
 import PopularCourses from "components/home/PopularCourses";
+import Invitation from "components/common/Invitation";
 
 export default function Index(props) {
   return (
@@ -19,6 +20,7 @@ export default function Index(props) {
           authors={props.courses.authors}
         />
       </section>
+      <Invitation />
     </Layout>
   );
 }

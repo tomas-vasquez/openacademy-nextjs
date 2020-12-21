@@ -1,4 +1,5 @@
 import DB from "helpers/db";
+import Link from "next/link";
 import React, { Component } from "react";
 import { Collapse } from "reactstrap";
 import AuthMenu from "./AuthMenu";
@@ -33,6 +34,7 @@ export default class Index extends Component {
   render() {
     const db = new DB();
     const userData = db.get("userData");
+    const { isDark } = this.props;
 
     return (
       <header
@@ -40,20 +42,35 @@ export default class Index extends Component {
         className={
           this.state.sticky
             ? "defaultscroll sticky nav-sticky"
-            : "defaultscroll  sticky"
+            : "defaultscroll  sticky py-1"
         }
       >
         <div className="container">
-          <div>
-            <a className="logo" href="index.html">
+          <div className="logo d-lg-none">
+            <Link href="/">
               <img
                 src={require("../../../assets/images/logo-dark.png")}
                 height="24"
                 alt=""
               />
-            </a>
+            </Link>
           </div>
-          <AuthMenu />
+          <div className="logo d-none d-lg-block">
+            <Link href="/">
+              <img
+                src={
+                  this.state.sticky
+                    ? require("../../../assets/images/logo-dark.png")
+                    : isDark
+                    ? require("../../../assets/images/logo-dark.png")
+                    : require("../../../assets/images/logo-light.png")
+                }
+                height="24"
+                alt=""
+              />
+            </Link>
+          </div>
+          <AuthMenu isDark={isDark} />
           <div className="menu-extras">
             <div className="menu-item">
               <a
@@ -71,7 +88,7 @@ export default class Index extends Component {
             </div>
           </div>
           <Collapse isOpen={this.state.open} id="navigation">
-            <Navigation />
+            <Navigation isDark={isDark} />
           </Collapse>
         </div>
       </header>

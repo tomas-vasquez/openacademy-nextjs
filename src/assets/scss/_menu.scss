@@ -176,6 +176,7 @@
       }
       &:hover {
         .menu-arrow {
+          top: 30px;
           transform: rotate(225deg);
         }
       }
@@ -306,12 +307,10 @@
         }
         &:hover {
           .menu-arrow {
-            top: 33px !important;
           }
         }
         &.active {
           .menu-arrow {
-            top: 30px;
           }
         }
       }
@@ -426,7 +425,7 @@
       &.nav-light {
         > li {
           > a {
-            color: rgba($white, 0.5);
+            color: rgba($white, 0.6);
           }
           &.active {
             > a {
@@ -617,7 +616,6 @@
           transform: rotate(45deg);
           position: absolute;
           right: 20px;
-          top: 12px;
         }
       }
       &.active {

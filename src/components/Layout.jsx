@@ -1,15 +1,13 @@
 import React from "react";
-import Particles from "./common/Particles";
 import Footer from "./theme/Footer";
 import { Container, Col, Row } from "reactstrap";
 import NavbarCourse from "components/theme/NavbarCourse";
 import CourseMap from "./course/CourseMap";
 import { useRouter } from "next/router";
-import Header from "../components/common/header";
 import Navbar from "./theme/Navbar";
 
 export default function Layout({
-  title,
+  // title,
   children,
   items,
   currentItem,
@@ -17,14 +15,20 @@ export default function Layout({
 }) {
   const { pathname } = useRouter();
 
+  const isNavbarDark = (pathname) => {
+    return (
+      (pathname !== "/login" &&
+        pathname !== "/register" &&
+        pathname === "/courses") ||
+      pathname === "/user" ||
+      pathname === "/"
+    );
+  };
+
   return (
     <>
-      {pathname !== "/login" &&
-      pathname !== "/register" &&
-      pathname !== "/courses" &&
-      pathname !== "/user" &&
-      pathname !== "/" ? (
-        <Container fluid classname="p-0">
+      {pathname.split("/")[2] ? (
+        <Container fluid ClassName="p-0">
           <Row>
             <Col
               lg={items && pathname !== "/courses" ? "9" : "12"}
@@ -59,9 +63,9 @@ export default function Layout({
         </Container>
       ) : (
         <Container fluid className="p-0">
-          <Navbar />
+          <Navbar isDark={isNavbarDark(pathname)} />
           {children}
-          <Footer />
+          {pathname !== "/login" && pathname !== "/register" && <Footer />}
         </Container>
       )}
     </>

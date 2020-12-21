@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classname from "classnames";
+import ClassName from "classnames";
 import parser from "html-react-parser";
 import { Container } from "reactstrap";
 import CardAuthor from "./CardAuthor";
@@ -10,7 +10,7 @@ const TabName = ({ title, tabName, tab, onClick, icon }) => {
   return (
     <>
       <div
-        className={classname("p-2 mr-2", {
+        className={ClassName("p-2 mr-2", {
           "border-bottom2 mx-2": tab === tabName,
         })}
         style={{ cursor: "pointer" }}
@@ -19,7 +19,7 @@ const TabName = ({ title, tabName, tab, onClick, icon }) => {
         <Icons icon={icon} className={`mr-2`} />
         <strong className="d-none d-sm-inline">{title}</strong>
         <strong
-          className={classname("d-none ", {
+          className={ClassName("d-none ", {
             "d-inline d-lg-none": tab === tabName,
           })}
         >
@@ -74,7 +74,7 @@ export default function ItemDescription({
       </div>
       <Container fluid>
         <div
-          className={classname("mx-auto", {
+          className={ClassName("mx-auto", {
             "d-none": tab !== "no",
           })}
           style={{ maxWidth: 650 }}
@@ -87,7 +87,7 @@ export default function ItemDescription({
         </div>
 
         <div
-          className={classname("mx-auto", {
+          className={ClassName("mx-auto", {
             "d-none": tab !== "aa",
           })}
           style={{ maxWidth: 650 }}
@@ -96,7 +96,7 @@ export default function ItemDescription({
         </div>
 
         <div
-          className={classname("mx-auto", {
+          className={ClassName("mx-auto", {
             "d-none": tab !== "li",
           })}
         >

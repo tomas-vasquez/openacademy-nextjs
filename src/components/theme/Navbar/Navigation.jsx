@@ -2,9 +2,9 @@ import Link from "next/link";
 import React from "react";
 import { navbarLinks } from "../../../../site.config";
 
-export default function Navigation({ isOpen }) {
+export default function Navigation({ isDark }) {
   return (
-    <ul className="navigation-menu">
+    <ul className={isDark ? "navigation-menu" : "navigation-menu nav-light"}>
       {navbarLinks.map((value, index) => {
         return (
           <li key={index} className={value.submenu ? "has-submenu" : ""}>

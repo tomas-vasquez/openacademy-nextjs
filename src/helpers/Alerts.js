@@ -18,9 +18,9 @@ class Alerts {
         showCancelButton: true,
         allowOutsideClick: backdropDismiss,
         buttonsStyling: false,
-        confirmButtonText: 'Sí, continuar <i class="fa fa-check"></i>',
+        confirmButtonText: 'Sí, continuar <i className="fa fa-check"></i>',
         confirmButtonClass: "btn btn-primary",
-        cancelButtonText: 'cancelar <i class="fa fa-times"></i>',
+        cancelButtonText: 'cancelar <i className="fa fa-times"></i>',
         cancelButtonClass: "btn btn-secundary",
       })
       .then((result) => {
@@ -114,8 +114,8 @@ class Alerts {
         buttonsStyling: false,
         confirmButtonClass: "btn btn-primary",
         cancelButtonClass: "btn btn-secondary",
-        confirmButtonText: 'reintentar <i class="fa fa-redo"></i>',
-        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
+        confirmButtonText: 'reintentar <i className="fa fa-redo"></i>',
+        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
       })
       .then((result) => {
         if (result.value) {
@@ -137,8 +137,8 @@ class Alerts {
         buttonsStyling: false,
         confirmButtonClass: "btn btn-primary",
         cancelButtonClass: "btn btn-secondary",
-        confirmButtonText: 'reintentar <i class="fa fa-redo"></i>',
-        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
+        confirmButtonText: 'reintentar <i className="fa fa-redo"></i>',
+        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
       })
       .then((result) => {
         if (result.value) {
@@ -156,7 +156,7 @@ class Alerts {
         allowOutsideClick: false,
         // title: message,
         html:
-          '<div class="pt-1 mx-auto lds-dual-ring"></div><h2 class="text-default">' +
+          '<div className="pt-1 mx-auto lds-dual-ring"></div><h2 className="text-default">' +
           message +
           "</h2>",
         showConfirmButton: false,
@@ -181,15 +181,15 @@ class Alerts {
         allowOutsideClick: false,
         // title: message,
         html:
-          '<h2 class="display-4 text-default mb-0">' +
+          '<h2 className="display-4 text-default mb-0">' +
           message +
           "</h2>" +
-          '<div class="">' +
+          '<div className="">' +
           "<br></br>" +
-          '<span id="swal-progress-label" class="mr-2">0%</span>' +
+          '<span id="swal-progress-label" className="mr-2">0%</span>' +
           "<div>" +
-          '<div class="progress" style="width: 100%;height: 10px">' +
-          '<div id="swal-progress-bar" class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>' +
+          '<div className="progress" style="width: 100%;height: 10px">' +
+          '<div id="swal-progress-bar" className="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>' +
           "</div>" +
           "</div>" +
           "</div>",
@@ -197,7 +197,7 @@ class Alerts {
         showCancelButton: true,
         buttonsStyling: false,
 
-        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
+        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
         cancelButtonClass: "btn btn-secondary",
         // onBeforeOpen: () => {
         //     swal.showLoading()

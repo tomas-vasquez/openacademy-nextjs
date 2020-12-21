@@ -71,6 +71,30 @@ const hero = {
   searchPlaceholder: "Buscar...",
 };
 
+const allCourses = {
+  title: "Cursos",
+  subTitle: "bla bla bla bla bla",
+  searchPlaceholder: "Buscar...",
+  bestCourses: {
+    title: "Mejores cursos",
+    subTitle: "bla bla bla bla bla",
+  },
+  courses: {
+    title: "Todos los cursos",
+    subTitle: "bla bla bla bla bla",
+  },
+};
+
+const singleCourse = {
+  buttonStartText: "Empezar",
+  description: {
+    descriptionTitleText: "Descripcion del curso",
+    contentTitleText: "Contenido del curso",
+    requiredTitleText: "Requisitos del curso",
+    required: [],
+  },
+};
+
 const popularCourses = {
   title: "Cursos mas populares",
   subTitle: "bla bla bla bla bla",
@@ -105,6 +129,8 @@ module.exports = {
   apiLinks,
   navbarLinks,
   hero,
+  singleCourse,
+  allCourses,
   popularCourses,
   footer,
 };

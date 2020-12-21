@@ -9,10 +9,10 @@ const SingleItem = ({ course, index, item, currentItem }) => {
   return (
     <li className="w-100">
       <div
-        className="nav-link text-muted border-bottom"
+        className="nav-link border-bottom"
         style={{
           backgroundColor:
-            currentItem.item_title === item.item_title ? "#e6f2f5" : "white",
+            currentItem?.item_title === item.item_title ? "#e6f2f5" : "white",
         }}
       >
         <Link
@@ -25,13 +25,13 @@ const SingleItem = ({ course, index, item, currentItem }) => {
               <Icons
                 icon="play"
                 className={classnames("mr-2", {
-                  "d-none": currentItem.item_title !== item.item_title,
+                  "d-none": currentItem?.item_title !== item.item_title,
                 })}
               />
 
               {`${index + 1}. ${_.upperFirst(item.item_title)}`}
             </p>
-            <small>
+            <small className="ml-3">
               {item.item_type === "video" ? (
                 <>video</>
               ) : item.item_type === "test" ? (
