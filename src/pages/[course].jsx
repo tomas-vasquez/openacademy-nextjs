@@ -26,6 +26,7 @@ export async function getStaticProps({ params: { course } }) {
     method: "get",
     url: apiLinks.getAllCourses,
   });
+
   const { courses, authors } = response.data;
   const courseData = await getCourseData(course);
   const currentItem = courseData.items[0];

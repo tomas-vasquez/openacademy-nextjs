@@ -17,7 +17,7 @@ export default function Description({ items, course }) {
                 {singleCourse.description.descriptionTitleText}:
               </h3>
             </div>
-            {parser(course.course_long_description)}
+            {parser(course.course_long_description || "")}
           </>
           {course.course_required_skills && (
             <>
