@@ -4,10 +4,10 @@ import { Button, Col, Container, Row } from "reactstrap";
 export default function Invitation() {
   return (
     <div
-      className="d-flex p-3 mt-4 border-top shadow"
-      style={{
-        backgroundColor: "#f7f8fa",
-      }}
+      className="d-flex p-3 mt-4 border-top bg-light"
+      // style={{
+      //   backgroundColor: "#f7f8fa",
+      // }}
     >
       <Container>
         <Row>

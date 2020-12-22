@@ -9,11 +9,10 @@ import { useRouter } from "next/router";
 
 export default function login() {
   const users = new Controller_Users();
-  const db = new DB();
   const router = useRouter();
 
   const openTargetPage = () => {
-    const targetPage = db.get("targetPage") || "/";
+    const targetPage = DB.get("targetPage") || "/";
     router.push(targetPage);
   };
 

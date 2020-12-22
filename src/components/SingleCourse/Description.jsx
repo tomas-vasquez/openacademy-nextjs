@@ -26,18 +26,7 @@ export default function Description({ items, course }) {
                   {singleCourse.description.requiredTitleText}:
                 </h3>
               </div>
-              <ul class="list-unstyled footer-list ">
-                {course.course_required_skills.map((skill, index) => (
-                  <li key={index}>
-                    <Icons icon="dot" />
-                    {skill.url ? (
-                      <Link href={skill.url}>{skill.title}</Link>
-                    ) : (
-                      <p>{skill.title}</p>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              {parser(course.course_required_skills || "")}
             </>
           )}
         </div>

@@ -26,7 +26,6 @@ class AuthorData extends React.Component {
     super();
     this.state = { profile: props.profile };
     this.fetcher = new Controller_Profile();
-    this.db = new DB();
   }
 
   handlePicPicker = (e) => {
@@ -46,8 +45,7 @@ class AuthorData extends React.Component {
   render() {
     let profile = this.state.profile;
     let editable =
-      this.db.get("userData") &&
-      this.db.get("userData").user_name === profile.user_name;
+      DB.get("userData") && DB.get("userData").user_name === profile.user_name;
 
     return (
       <>

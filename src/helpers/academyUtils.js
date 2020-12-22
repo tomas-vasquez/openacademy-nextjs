@@ -3,13 +3,11 @@ import store from "store";
 import Controller_Profile from "fetchers/Profile";
 import Controller_Academy from "fetchers/Academy";
 
-const db = new DB();
-
 export const loadUserData = (_callback) => {
   let userData = store.getState().userData;
 
   if (!userData) {
-    if (db.get("api-token")) {
+    if (DB.get("api-token")) {
       const profile = new Controller_Profile();
       profile.getUserData(() => {
         _callback();
@@ -91,12 +89,12 @@ const getCurrentTitle = (items) => {
 
   if (item_title !== undefined) {
     targetItem = item_title;
-    db.set("lastItem>" + courseInUrl, item_title);
+    DB.set("lastItem>" + courseInUrl, item_title);
   } else {
-    let indb = db.get("lastItem>" + courseInUrl);
+    let indb = DB.get("lastItem>" + courseInUrl);
     if (indb === undefined) {
       targetItem = classes[0].item_title;
-      db.set("lastItem>" + courseInUrl, targetItem);
+      DB.set("lastItem>" + courseInUrl, targetItem);
     } else {
       targetItem = indb;
     }
@@ -105,7 +103,7 @@ const getCurrentTitle = (items) => {
     return item.item_title === targetItem.replace(/_/g, " ");
   });
   if (aux === undefined) {
-    db.set("lastItem>" + courseInUrl, classes[0].item_title);
+    DB.set("lastItem>" + courseInUrl, classes[0].item_title);
     return classes[0].item_title;
   } else {
     return targetItem.replace(/_/g, " ");

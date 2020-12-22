@@ -1,10 +1,11 @@
 import React from "react";
 
-import "moment/min/locales";
 import _ from "lodash";
 import SingleCourse from "components/allCourses/SingleCourse";
 import { allCourses } from "../../../site.config";
-import Slider from "react-styled-carousel";
+
+import Carousel from "react-multi-carousel";
+
 import Icons from "components/common/Icons";
 
 export default function BestCourses({ courses, authors }) {
@@ -22,45 +23,30 @@ export default function BestCourses({ courses, authors }) {
         </div>
       </div>
       <div className="container mb-4">
-        <Slider
-          autoSlide={3000}
-          pauseOnMouseHover
-          responsive={[
-            { breakPoint: 1280, cardsToShow: 3 }, // this will be applied if screen size is greater than 1280px. cardsToShow will become 4.
-            { breakPoint: 760, cardsToShow: 2 },
-            { breakPoint: 0, cardsToShow: 1 },
-          ]}
-          padding="10px 0px "
-          margin="-15px"
-          DotsWrapper={() => <></>}
-          LeftArrow={
-            <div
-              style={{
-                position: "absolute",
-                left: 3,
-                zIndex: 1,
-                top: "calc(50% - 5px)",
-              }}
-              className="btn btn-light btn-icon btn-pills"
-            >
-              <Icons icon="arrowLeft" className="" />
-            </div>
-          }
-          RightArrow={
-            <div
-              style={{
-                position: "absolute",
-                right: 0,
-                top: "calc(50% - 5px)",
-              }}
-              className="btn btn-light btn-icon btn-pills"
-            >
-              <Icons icon="arrowRight" className="" />
-            </div>
-          }
+        <Carousel
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={2000}
+          showDots={true}
+          removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+          ssr={true}
+          responsive={{
+            desktop: {
+              breakpoint: { max: 4000, min: 992 },
+              items: 3,
+            },
+            tablet: {
+              breakpoint: { max: 991, min: 576 },
+              items: 2,
+            },
+            mobile: {
+              breakpoint: { max: 575, min: 0 },
+              items: 1,
+            },
+          }}
         >
           {courses.map((course, index) => (
-            <div className="m-3 mt-0" key={index}>
+            <div className="m-3 mt-0" key={`ca-${index}`}>
               <SingleCourse
                 course={course}
                 author={authors.find((author) => {
@@ -69,7 +55,7 @@ export default function BestCourses({ courses, authors }) {
               />
             </div>
           ))}
-        </Slider>
+        </Carousel>
       </div>
     </>
   );

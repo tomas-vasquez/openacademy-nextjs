@@ -1,34 +1,3 @@
-/* Template Name: Landrick - Saas & Software Landing Page Template
-   Author: Shreethemes
-   E-mail: shreethemes@gmail.com
-   Created: August 2019
-   Version: 2.5.1
-   Updated: August 2020
-   File Description: Main Css file of the template
-*/
-/*********************************/
-/*         INDEX                 */
-/*================================
- *     01.  Variables            *
- *     02.  Bootstrap Custom     *
- *     03.  Components           *
- *     04.  General              *
- *     05.  Helper               *
- *     06.  Menu                 *
- *     07.  Home / Landing       *
- *     08.  Features / Services  *
- *     09.  Testimonial          *
- *     10.  Price                *
- *     11.  C.T.A                *
- *     12.  Blog / Careers / Job *
- *     13.  Work / Projects      *
- *     14.  Team                 *
- *     15.  User Pages           *
- *     16.  Countdown            *
- *     17.  Contact              *
- *     18.  Footer               *
- ================================*/
-
 @import "variables";
 @import "bootstrap-custom";
 @import "components";
@@ -47,10 +16,27 @@
 @import "countdown";
 @import "contact";
 @import "footer";
+@import "switch";
+@import "react-multi-carousel/lib/styles.css";
+@import "dark/variables";
+
+.dark-mode {
+  color: $dark;
+  background: $bg-body;
+  * {
+    box-shadow: none !important;
+  }
+  @import "dark/bootstrap-custom";
+  @import "dark/components";
+  @import "dark/general";
+  @import "dark/helper";
+  @import "dark/menu";
+}
 
 .svg-inline--fa {
   width: 1em !important;
   max-width: 1em;
+
   max-height: 1em;
 }
 
@@ -114,5 +100,31 @@
 
   50% {
     transform: translate(7px, 0);
+  }
+}
+
+.course-price {
+  border-radius: 5px 0 0 5px;
+  margin-top: -10px;
+  padding: 5px 12px;
+  background-color: $primary;
+  float: right;
+  color: white;
+  transform: translateY(-14px);
+}
+
+.card-columns {
+  column-count: 1;
+  z-index: 1 !important;
+}
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 3 !important;
   }
 }

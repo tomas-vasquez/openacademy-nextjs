@@ -4,7 +4,6 @@ import DB from "helpers/db";
 class Controller {
   constructor() {
     this.alerts = new Alerts();
-    this.db = new DB();
   }
 
   /*!
@@ -14,7 +13,7 @@ class Controller {
   */
 
   clearData = () => {
-    this.db.clear();
+    DB.clear();
     document.location.reload();
   };
 

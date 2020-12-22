@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "compile-sass": "node-sass src/assets/scss/style.scss src/assets/css/style.css --output-style compressed"
+    "compile-sass": "node-sass src/assets/scss/style.scss src/assets/css/style.css --output-style compressed -w"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.31",
@@ -33,6 +33,7 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "16.13.1",
     "react-markdown": "^4.3.1",
+    "react-multi-carousel": "^2.6.1",
     "react-particles-js": "^3.3.0",
     "react-styled-carousel": "^0.5.1",
     "react-syntax-highlighter": "^13.5.1",

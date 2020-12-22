@@ -14,6 +14,7 @@ class CourseMap extends React.Component {
 
   recursiveRender = (index, items, tree = [], currentSection = 0) => {
     const currentItem = items[index];
+    items = items.sort((a, b) => a.item_sort - b.item_sort);
 
     if (currentItem.item_type === "separator") {
       tree.push(

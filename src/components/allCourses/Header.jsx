@@ -26,7 +26,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div className="subcribe-form" style={{ marginTop: -25 }}>
+          <div className="subcribe-form px-4" style={{ marginTop: -25 }}>
             <form style={{ maxWidth: "800px" }}>
               <div className="form-group">
                 <input

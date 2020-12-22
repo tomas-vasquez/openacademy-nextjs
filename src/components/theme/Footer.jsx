@@ -36,11 +36,8 @@ export default function Footer({ litle }) {
                 <ul className="list-unstyled  mb-0 mt-4">
                   {socialIcons.map((icon, index) => (
                     <li className="list-inline-item" key={index}>
-                      <a href="" className="">
-                        <Icons
-                          className="fa-1x text-white mx-2"
-                          icon={icon.icon}
-                        />
+                      <a href="" className="text-foot">
+                        <Icons className="fa-1x mx-2" icon={icon.icon} />
                       </a>
                     </li>
                   ))}
@@ -110,7 +107,7 @@ export default function Footer({ litle }) {
             <div className="col-sm-12">
               <div className="text-sm-left">
                 <p className={litle ? "mb-0 text-center" : "mb-0"}>
-                  © 2019-{new Date().getFullYear()} YourAcademy. Made with{" "}
+                  © 2019-{new Date().getFullYear()} cursos-online.com. Made with{" "}
                   <Icons icon="heart" /> by{" "}
                   <a
                     className="badge badge-dark"

@@ -18,7 +18,6 @@ class Controller_Profile extends Controller {
   constructor() {
     super();
     this.alerts = new Alerts();
-    this.db = new Db();
   }
 
   getProfile = (user_name, _callback) => {
@@ -27,7 +26,7 @@ class Controller_Profile extends Controller {
       url: apiUrl + "/profile?user_name=" + user_name,
       headers: {
         "Content-Type": "application/json",
-        "api-token": this.db.get("api-token"),
+        "api-token": DB.get("api-token"),
       },
     })
       .then((response) => {
@@ -102,7 +101,7 @@ class Controller_Profile extends Controller {
       method: "post",
       url: apiUrl + "/user_pic",
       headers: {
-        "api-token": this.db.get("api-token"),
+        "api-token": DB.get("api-token"),
       },
       data: formData,
       onUploadProgress: (progressEvent) => {
@@ -115,12 +114,12 @@ class Controller_Profile extends Controller {
         this.alerts.showSuccess("Foto de perfil actualizada");
 
         const newData = {
-          ...this.db.get("userData"),
+          ...DB.get("userData"),
           blob_pic_url: URL.createObjectURL(blob),
           pic_url: response.data,
         };
 
-        this.db.set("userData", newData);
+        DB.set("userData", newData);
         _callback(newData);
       })
       .catch((error) => {
@@ -157,7 +156,7 @@ class Controller_Profile extends Controller {
       url: apiUrl + "/user_pic",
       headers: {
         "Content-Type": "application/json",
-        "api-token": this.db.get("api-token"),
+        "api-token": DB.get("api-token"),
       },
     })
       .then(() => {
@@ -184,11 +183,11 @@ class Controller_Profile extends Controller {
       method: "get",
       url: apiUrl + "/user_data",
       headers: {
-        "api-token": this.db.get("api-token"),
+        "api-token": DB.get("api-token"),
       },
     })
       .then((response) => {
-        this.db.set("userData", response.data);
+        DB.set("userData", response.data);
         // store.dispatch(setUserData(response.data.user_data));
         _callback();
       })
@@ -224,13 +223,13 @@ class Controller_Profile extends Controller {
       url: apiUrl + "/user_data",
       headers: {
         "Content-Type": "application/json",
-        "api-token": this.db.get("api-token"),
+        "api-token": DB.get("api-token"),
       },
       data: data,
     })
       .then((response) => {
         this.alerts.showSuccess("Perfil actualizado");
-        this.db.set("userData", response.data);
+        DB.set("userData", response.data);
         // store.dispatch(setUserData(response.data));
         _callback(response.data);
       })

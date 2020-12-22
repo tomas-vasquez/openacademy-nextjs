@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang={siteMetadata.language}>
         <Head />
-        <body>
+        <body id="body">
           <Main />
           <NextScript />
         </body>

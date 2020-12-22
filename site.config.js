@@ -102,7 +102,7 @@ const popularCourses = {
 
 const footer = {
   aboutText:
-    "Start working with YourAcademy that can provide everything you need to generate awareness, drive traffic, connect.",
+    "Start working with cursos-online.com that can provide everything you need to generate awareness, drive traffic, connect.",
   LinksTitle: "Enlaces",
   links: [
     {

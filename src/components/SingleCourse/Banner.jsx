@@ -14,6 +14,7 @@ export default function Banner({ author, course, currentItem }) {
       className="px-0 py-5 m-0"
       style={{
         backgroundColor: "#1a274e",
+        color: "white",
       }}
     >
       <div className="container mt-5">
@@ -38,14 +39,10 @@ export default function Banner({ author, course, currentItem }) {
           </div>
           <div className="col-12 col-md-6 pl-lg-4 pr-lg-3">
             <div className="title-heading">
-              <h2 className="text-white my-4 mt-md-0">
+              <h2 className="my-4 mt-md-0">
                 {_.upperFirst(course.course_title)}
               </h2>
-              <p
-                className="mb-4 mr-5 text-white"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
+              <p className="mb-4 mr-5 " data-aos="fade-up" data-aos-delay="200">
                 {_.upperFirst(course.course_description)}
               </p>
             </div>
@@ -56,10 +53,10 @@ export default function Banner({ author, course, currentItem }) {
                 src={pic_url}
               />
               <div className="ml-2">
-                <h6 className="mb-0 text-white text-shadow">
+                <h6 className="mb-0 text-shadow">
                   {author.name ? author.name : `@${author.user_name}`}
                 </h6>
-                <p className="text-light small my-0">Professor</p>
+                <p className="small my-0">Professor</p>
               </div>
             </div>
             <div className="mt-4">

@@ -14,7 +14,7 @@ export default function Hero() {
                   <div className="title-heading mr-lg-4">
                     <h1 className="heading mb-3">
                       {hero.mainTitle}
-                      <span className="text-primary">: YourAcademy</span>
+                      <span className="text-primary">: cursos-online.com</span>
                     </h1>
                     <p className="para-desc text-muted">{hero.subTitle}</p>
                     <div className="subcribe-form mt-4 pt-2">

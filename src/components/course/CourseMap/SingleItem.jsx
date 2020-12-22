@@ -12,13 +12,16 @@ const SingleItem = ({ course, index, item, currentItem }) => {
         className="nav-link border-bottom"
         style={{
           backgroundColor:
-            currentItem?.item_title === item.item_title ? "#e6f2f5" : "white",
+            currentItem?.item_title === item.item_title
+              ? "rgb(24 202 242 / 6%)"
+              : "",
         }}
       >
         <Link
           href={
             "/" + course.course_short_link + "/" + getShortLink(item.item_title)
           }
+          replace
         >
           <div style={{ cursor: "pointer" }}>
             <p className="m-0">
