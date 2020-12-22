@@ -20,7 +20,7 @@ export default function CardCourse({ course, author }) {
         style={{ cursor: "pointer" }}
       >
         <CardBody className="p-0 ">
-          <div className="h-">
+          <div>
             <figure className=" m-0">
               {course.course_pic_url && (
                 <CardImg src={course.course_pic_url}></CardImg>
@@ -34,7 +34,7 @@ export default function CardCourse({ course, author }) {
                 <span className="course-price">gratis!</span>
               </div>
             </div>
-            <div className="course-inner-text p-3 ">
+            <div className="course-inner-text px-3 pb-3 pt-1">
               <p className="text-muted mb-0">
                 {_.upperFirst(course.course_description)}
               </p>
@@ -59,9 +59,9 @@ export default function CardCourse({ course, author }) {
             src={pic_url}
           />
           <div className="ml-2">
-            <h6 className="mb-0 text-shadow">
+            <p className="mb-0 text-shadow">
               {author.name ? author.name : `@${author.user_name}`}
-            </h6>
+            </p>
             <p className="small my-0">Professor</p>
           </div>
         </CardFooter>

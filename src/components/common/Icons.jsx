@@ -25,6 +25,8 @@ import {
   faArrowLeft,
   faFire,
   faBook,
+  faSun,
+  faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -43,6 +45,12 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "moon":
+      return faMoon;
+
+    case "sun":
+      return faSun;
+
     case "books":
       return faBook;
 

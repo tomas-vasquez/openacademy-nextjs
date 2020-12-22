@@ -1,6 +1,5 @@
 import React from "react";
 
-import "moment/min/locales";
 import _ from "lodash";
 import SingleCourse from "components/allCourses/SingleCourse";
 import { allCourses } from "../../../site.config";
@@ -8,9 +7,9 @@ import Icons from "components/common/Icons";
 
 export default function BestCourses({ courses, authors }) {
   return (
-    <div className="container my-5 ">
-      <div className="section-title text-center text-md-left mb-2">
-        <h4 className="mb-4">
+    <div className="container mt-5 mb-0">
+      <div className="section-title text-center text-md-left mb-0">
+        <h4 className="mb-2">
           <Icons icon="books" className="mr-2 text-primary" />
           {allCourses.courses.title}
         </h4>
@@ -18,9 +17,9 @@ export default function BestCourses({ courses, authors }) {
           {allCourses.courses.subTitle}
         </p>
       </div>
-      <div className="row">
+      <div className="card-columns mt-4">
         {courses.map((course, index) => (
-          <div key={index} className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+          <div key={index} className="">
             <SingleCourse
               course={course}
               author={authors.find((author) => {

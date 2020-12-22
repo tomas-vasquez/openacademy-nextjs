@@ -95,9 +95,16 @@ const singleCourse = {
   },
 };
 
+const home = {};
+
 const popularCourses = {
   title: "Cursos mas populares",
   subTitle: "bla bla bla bla bla",
+};
+
+const search = {
+  title: "Resultados de la busqueda",
+  searchPlaceholder: "Buscar...",
 };
 
 const footer = {
@@ -133,4 +140,5 @@ module.exports = {
   allCourses,
   popularCourses,
   footer,
+  search,
 };

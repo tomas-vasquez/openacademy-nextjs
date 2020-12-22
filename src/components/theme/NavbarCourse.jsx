@@ -1,6 +1,7 @@
 import Icons from "components/common/Icons";
 import Link from "next/link";
-import React, { Component } from "react";
+import React from "react";
+import Switch from "./Navbar/Switch";
 
 export default function NavbarCourse() {
   return (
@@ -22,6 +23,9 @@ export default function NavbarCourse() {
             alt=""
           />
         </a>
+      </div>
+      <div className="ml-auto">
+        <Switch />
       </div>
     </div>
   );

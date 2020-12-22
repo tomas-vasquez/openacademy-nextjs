@@ -1,5 +1,5 @@
+import Icons from "components/common/Icons";
 import DB from "helpers/db";
-
 import React, { Component } from "react";
 
 export default class Switch extends Component {
@@ -18,12 +18,13 @@ export default class Switch extends Component {
 
   render() {
     return (
-      <div>
+      <div className="my-3">
         <input
-          className="l"
           type="checkbox"
-          defaultChecked={!this.state.isDark}
-          onClick={() => {
+          class="checkbox"
+          id="chk"
+          onChange={() => {
+            console.log("hola");
             if (this.state.isDark) {
               DB.set("isDark", false);
               this.setState({ isDark: false });
@@ -38,19 +39,15 @@ export default class Switch extends Component {
               this.setState({ isDark: true });
             }
           }}
+          checked={this.state.isDark}
         />
+        <label class="label" for="chk">
+          <div class="ball">
+            <Icons icon="moon" className="moon" />
+            <Icons icon="sun" className="sun" />
+          </div>
+        </label>
       </div>
     );
   }
 }
-
-// export default function Switch() {
-//   const [isDark, setisDark] = useState(DB.get("isDark") || false);
-//   useEffect(() => {
-//     return () => {
-//       if (isDark) {
-//         document.getElementsByTagName("body")[0].classList.add("dark-mode");
-//       }
-//     };
-//   }, []);
-// }

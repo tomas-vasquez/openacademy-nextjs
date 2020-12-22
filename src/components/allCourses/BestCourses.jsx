@@ -1,19 +1,18 @@
 import React from "react";
 
 import _ from "lodash";
-import SingleCourse from "components/allCourses/SingleCourse";
 import { allCourses } from "../../../site.config";
-
 import Carousel from "react-multi-carousel";
-
 import Icons from "components/common/Icons";
+import { CardImg } from "reactstrap";
+import Link from "next/link";
 
 export default function BestCourses({ courses, authors }) {
   return (
     <>
-      <div className="container mt-5 mb-4">
+      <div className="container mt-5 mb-0">
         <div className="section-title text-center text-md-left mb-0">
-          <h4 className="mb-4">
+          <h4 className="mb-2">
             <Icons icon="fire" className="text-danger mr-2" />
             {allCourses.bestCourses.title}
           </h4>
@@ -22,18 +21,17 @@ export default function BestCourses({ courses, authors }) {
           </p>
         </div>
       </div>
-      <div className="container mb-4">
+      <div className="container mb-3 px-0">
         <Carousel
           infinite={true}
           autoPlay={true}
-          autoPlaySpeed={2000}
+          autoPlaySpeed={3000}
           showDots={true}
-          removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-          ssr={true}
+          dotListClass="pt-2"
           responsive={{
             desktop: {
               breakpoint: { max: 4000, min: 992 },
-              items: 3,
+              items: 4,
             },
             tablet: {
               breakpoint: { max: 991, min: 576 },
@@ -46,13 +44,10 @@ export default function BestCourses({ courses, authors }) {
           }}
         >
           {courses.map((course, index) => (
-            <div className="m-3 mt-0" key={`ca-${index}`}>
-              <SingleCourse
-                course={course}
-                author={authors.find((author) => {
-                  return author._id === course.course_author_id;
-                })}
-              />
+            <div className="mx-3 my-4 rounded shadow-md" key={`ca-${index}`}>
+              <Link href={`/${course.course_short_link}`}>
+                <CardImg src={course.course_pic_url}></CardImg>
+              </Link>
             </div>
           ))}
         </Carousel>

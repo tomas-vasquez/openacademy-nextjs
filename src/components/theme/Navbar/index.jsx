@@ -18,9 +18,9 @@ export default class Index extends Component {
   scroollHandler = (e) => {
     const scroollTop = e.target.scrollingElement.scrollTop;
     if (scroollTop > 60) {
-      this.setState({ sticky: true });
+      if (!this.state.sticky) this.setState({ sticky: true });
     } else {
-      this.setState({ sticky: false });
+      if (this.state.sticky) this.setState({ sticky: false });
     }
   };
 
@@ -40,9 +40,7 @@ export default class Index extends Component {
       <header
         id="topnav"
         className={
-          this.state.sticky
-            ? "defaultscroll sticky nav-sticky"
-            : "defaultscroll  sticky py-1"
+          this.state.sticky ? "bg-light sticky nav-sticky" : "sticky py-1"
         }
       >
         <div className="container">
@@ -70,7 +68,6 @@ export default class Index extends Component {
               />
             </Link>
           </div>
-
           <AuthMenu isDark={isDark} />
           <div className="menu-extras">
             <div className="menu-item">
