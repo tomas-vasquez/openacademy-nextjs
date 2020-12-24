@@ -602,8 +602,8 @@ button:not(:disabled) {
     color: $dark !important;
     border: none;
     outline: none !important;
-    padding-right: 160px;
-    padding-left: 30px;
+    padding-right: 0px;
+    padding-left: 25px;
     background-color: rgba($white, 0.8);
   }
   button {

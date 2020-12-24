@@ -9,7 +9,7 @@ export default function Hero({ word }) {
   const submitHandler = (e) => {
     e.preventDefault();
     const word = document.getElementById("search-box").value;
-    router.push(`/${"search"}?word=${word}`);
+    router.replace(`/${"search"}?word=${word}`);
   };
 
   return (
@@ -25,20 +25,21 @@ export default function Hero({ word }) {
             <div className="row">
               <div className="container">
                 <div className="title-heading text-center">
-                  <h1 className="text-white title-dark mb-3">
+                  <h2 className="text-white title-dark mb-3">
                     {`${searchConfig.title}: "${word}"`}
-                  </h1>
+                  </h2>
                 </div>
               </div>
             </div>
           </div>
           <div className="subcribe-form px-4" style={{ marginTop: -25 }}>
-            <form style={{ maxWidth: "800px" }} onSubmit={submitHandler}>
+            <form style={{ maxWidth: "400px" }} onSubmit={submitHandler}>
               <div className="form-group">
                 <input
                   type="text"
                   id="search-box"
-                  className="rounded-pill shadow-md bg-white"
+                  defaultValue={word}
+                  className="text-dark rounded-pill shadow-md bg-light"
                   placeholder={searchConfig.searchPlaceholder}
                 />
                 <button type="submit" className="btn btn-pills btn-primary">

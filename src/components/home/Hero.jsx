@@ -21,10 +21,10 @@ export default function Hero() {
               <div className="row align-items-center">
                 <div className="col-lg-7 col-md-6 col-12">
                   <div className="title-heading mr-lg-4">
-                    <h1 className="heading mb-3">
+                    <h2 className="heading mb-3">
                       {hero.mainTitle}
                       <span className="text-primary">: cursos-online.com</span>
-                    </h1>
+                    </h2>
                     <p className="para-desc text-muted">{hero.subTitle}</p>
                     <div className="subcribe-form mt-4 pt-2">
                       <form className="m-0" onSubmit={submitHandler}>
@@ -33,7 +33,7 @@ export default function Hero() {
                             type="text"
                             id="search-box"
                             name="name"
-                            className="rounded shadow-md"
+                            className="text-dark rounded shadow-md pl-3"
                             placeholder={hero.searchPlaceholder}
                           />
                           <button type="submit" className="btn btn-primary">

@@ -502,6 +502,7 @@ button:not(:disabled) {
   .text-foot {
     color: $gray-300;
   }
+
   .footer-list {
     li {
       a {
@@ -614,4 +615,8 @@ button:not(:disabled) {
       background: $white none repeat scroll 0 0;
     }
   }
+}
+
+.text-primary {
+  color: #ffffff !important;
 }

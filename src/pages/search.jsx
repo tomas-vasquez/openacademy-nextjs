@@ -60,13 +60,17 @@ export default class Courses extends Component {
   };
 
   componentDidMount() {
-    const word = new URL(document.location).searchParams.get("word");
+    const word = new URL(document.location).searchParams
+      .get("word")
+      .toLocaleLowerCase();
     this.initSearch(this.props.pack, word);
     this.setState({ word: word });
   }
 
   componentDidUpdate() {
-    const word = new URL(document.location).searchParams.get("word");
+    const word = new URL(document.location).searchParams
+      .get("word")
+      .toLocaleLowerCase();
 
     if (this.state.word !== word) {
       this.initSearch(this.props.pack, word);
@@ -79,7 +83,7 @@ export default class Courses extends Component {
     return (
       <Layout title="All Courses">
         <Header word={this.state.word} />
-        <Container>
+        <Container className=" mt-2 mb-5">
           <Row>
             <Col lg="9">
               {this.state.results ? (

@@ -21,6 +21,7 @@ export default function Layout({
         pathname !== "/register" &&
         pathname === "/courses") ||
       pathname === "/user" ||
+      pathname === "/search" ||
       pathname === "/"
     );
   };

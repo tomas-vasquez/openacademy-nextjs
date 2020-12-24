@@ -10,7 +10,7 @@ export default function BestCourses({ courses, authors }) {
     <div className="container mt-5 mb-0">
       <div className="section-title text-center text-md-left mb-0">
         <h4 className="mb-2">
-          <Icons icon="books" className="mr-2 text-primary" />
+          <Icons icon="books" className="mr-2 text-danger" />
           {allCourses.courses.title}
         </h4>
         <p className="text-muted mb-0 para-desc">

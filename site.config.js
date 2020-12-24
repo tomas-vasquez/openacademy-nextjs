@@ -109,6 +109,7 @@ const popularCourses = {
 const search = {
   title: "Resultados de la busqueda",
   searchPlaceholder: "Buscar...",
+  labelResults: "resultados:",
 };
 
 const footer = {
