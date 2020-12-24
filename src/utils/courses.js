@@ -73,11 +73,7 @@ export async function getCourseData(course) {
     return currentCourse.course_author_id === _author._id;
   });
 
-  const response2 = await Axios({
-    method: "get",
-    url: apiLinks.getItems + currentCourse.course_short_link,
-  });
-  const items = sortItems(response2.data.items);
+  const items = getItems(currentCourse.course_short_link);
 
   return {
     course: currentCourse,
@@ -86,6 +82,17 @@ export async function getCourseData(course) {
   };
 }
 
+/* =========================================================
+ *
+ * ========================================================= */
+
+export const getItems = async (course) => {
+  const response2 = await Axios({
+    method: "get",
+    url: apiLinks.getItems + course.course_short_link,
+  });
+  return response2.data.items;
+};
 /* =========================================================
  *
  * ========================================================= */
