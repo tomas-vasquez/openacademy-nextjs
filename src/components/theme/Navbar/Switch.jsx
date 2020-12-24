@@ -21,7 +21,7 @@ export default class Switch extends Component {
       <div className="my-3">
         <input
           type="checkbox"
-          class="checkbox"
+          className="checkbox"
           id="chk"
           onChange={() => {
             console.log("hola");
@@ -41,8 +41,8 @@ export default class Switch extends Component {
           }}
           checked={this.state.isDark}
         />
-        <label class="label" for="chk">
-          <div class="ball">
+        <label className="label" htmlFor="chk">
+          <div className="ball">
             <Icons icon="moon" className="moon" />
             <Icons icon="sun" className="sun" />
           </div>

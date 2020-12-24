@@ -1,8 +1,17 @@
 import Icons from "components/common/Icons";
+import { useRouter } from "next/router";
 import React from "react";
 import { allCourses } from "../../../site.config";
 
 export default function Hero() {
+  const router = useRouter();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const word = document.getElementById("search-box").value;
+    router.push(`/${"search"}?word=${word}`);
+  };
+
   return (
     <>
       <section className="section pt-5 pb-0 mt-4">
@@ -27,11 +36,11 @@ export default function Hero() {
             </div>
           </div>
           <div className="subcribe-form px-4" style={{ marginTop: -25 }}>
-            <form style={{ maxWidth: "800px" }}>
+            <form style={{ maxWidth: "800px" }} onSubmit={submitHandler}>
               <div className="form-group">
                 <input
                   type="text"
-                  id="course"
+                  id="search-box"
                   name="name"
                   className="rounded-pill shadow-md bg-white"
                   placeholder={allCourses.searchPlaceholder}

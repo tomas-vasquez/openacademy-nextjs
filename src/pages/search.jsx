@@ -6,7 +6,7 @@ import Invitation from "components/common/Invitation";
 import Header from "components/search/Header";
 import { Component } from "react";
 import { Col, Container, Row, Spinner } from "reactstrap";
-import { getItems } from "utils/courses";
+import { getItems, getShortLink } from "utils/courses";
 import Results from "components/search/Results";
 
 export default class Courses extends Component {
@@ -21,23 +21,20 @@ export default class Courses extends Component {
   }
 
   calculateScore = (string, word, level) => {
-    let score = 0;
-
-    if (!string) return score;
-    else {
-      score = string.includes(word) ? 1 : 0;
+    if (!string) {
+      return 0;
+    } else {
+      return string.includes(word) ? 1 : 0;
     }
-
-    return score;
   };
 
   initSearch = (pack, word) => {
     this.setState({ results: null });
 
-    let results = [];
+    var scores = [];
 
     for (let i = 0; i < pack.length; i++) {
-      const strings = pack[i];
+      const strings = pack[i].strings;
       let score = 0;
 
       for (let j = 0; j < strings.length; j++) {
@@ -45,7 +42,18 @@ export default class Courses extends Component {
         score = score + this.calculateScore(string, word, j);
       }
 
-      results[i] = score;
+      scores[i] = score;
+    }
+
+    let results = [];
+
+    for (let i = 0; i < pack.length; i++) {
+      if (scores[i]) {
+        results.push({
+          score: scores[i],
+          ...pack[i],
+        });
+      }
     }
 
     this.setState({ results });
@@ -54,15 +62,23 @@ export default class Courses extends Component {
   componentDidMount() {
     const word = new URL(document.location).searchParams.get("word");
     this.initSearch(this.props.pack, word);
+    this.setState({ word: word });
   }
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+    const word = new URL(document.location).searchParams.get("word");
+
+    if (this.state.word !== word) {
+      this.initSearch(this.props.pack, word);
+      this.setState({ word: word });
+    }
+  }
 
   // const { query } = useRouter();
   render() {
     return (
       <Layout title="All Courses">
-        <Header query={this.state.query} />
+        <Header word={this.state.word} />
         <Container>
           <Row>
             <Col lg="9">
@@ -87,12 +103,19 @@ export async function getStaticProps() {
   });
   const { courses } = response.data;
 
-  const coursesPack = courses.map((course) => [
-    course.course_title.toLowerCase(),
-    course.course_description.toLowerCase(),
-    course.course_long_description.toLowerCase(),
-  ]);
+  //packing courses
+  const coursesPack = courses.map((course) => ({
+    strings: [
+      course.course_title.toLowerCase(),
+      course.course_description.toLowerCase(),
+      course.course_long_description.toLowerCase(),
+    ],
+    type: "course",
+    link: "/" + course.course_short_link,
+    course,
+  }));
 
+  //packing items
   let itemsPack = [];
 
   for (let i = 0; i < courses.length; i++) {
@@ -100,10 +123,13 @@ export async function getStaticProps() {
     const items = await getItems(course);
     for (let j = 0; j < items.length; j++) {
       const item = items[j];
-      itemsPack.push([
-        item.item_title.toLowerCase(),
-        item.item_description || null,
-      ]);
+      itemsPack.push({
+        strings: [item.item_title.toLowerCase(), item.item_description || null],
+        type: "item",
+        link:
+          "/" + course.course_short_link + "/" + getShortLink(item.item_title),
+        item,
+      });
     }
   }
 

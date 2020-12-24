@@ -14,6 +14,10 @@ const siteMetadata = {
   },
 };
 
+const links = {
+  search: "busqueda",
+};
+
 const apiLinks = {
   apiLoginUrl: apiUrl + "/login",
   apiSignupUrl: apiUrl + "/signup",
@@ -130,6 +134,7 @@ const footer = {
 };
 
 module.exports = {
+  links,
   socialIcons,
   siteMetadata,
   apiUrl,

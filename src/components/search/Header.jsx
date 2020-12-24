@@ -1,8 +1,17 @@
 import Icons from "components/common/Icons";
 import React from "react";
 import { search as searchConfig } from "../../../site.config";
+import { useRouter } from "next/router";
 
-export default function Hero({ query }) {
+export default function Hero({ word }) {
+  const router = useRouter();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const word = document.getElementById("search-box").value;
+    router.push(`/${"search"}?word=${word}`);
+  };
+
   return (
     <>
       <section className="section pt-5 pb-0 mt-4">
@@ -17,18 +26,18 @@ export default function Hero({ query }) {
               <div className="container">
                 <div className="title-heading text-center">
                   <h1 className="text-white title-dark mb-3">
-                    {`${searchConfig.title}: "${query.word}"`}
+                    {`${searchConfig.title}: "${word}"`}
                   </h1>
                 </div>
               </div>
             </div>
           </div>
           <div className="subcribe-form px-4" style={{ marginTop: -25 }}>
-            <form style={{ maxWidth: "800px" }}>
+            <form style={{ maxWidth: "800px" }} onSubmit={submitHandler}>
               <div className="form-group">
                 <input
                   type="text"
-                  id="course"
+                  id="search-box"
                   className="rounded-pill shadow-md bg-white"
                   placeholder={searchConfig.searchPlaceholder}
                 />

@@ -73,12 +73,12 @@ export async function getCourseData(course) {
     return currentCourse.course_author_id === _author._id;
   });
 
-  const items = getItems(currentCourse.course_short_link);
+  const items = await getItems(currentCourse);
 
   return {
     course: currentCourse,
     author: currentAuthor,
-    items,
+    items: items,
   };
 }
 
@@ -91,7 +91,7 @@ export const getItems = async (course) => {
     method: "get",
     url: apiLinks.getItems + course.course_short_link,
   });
-  return response2.data.items;
+  return sortItems(response2.data.items);
 };
 /* =========================================================
  *
