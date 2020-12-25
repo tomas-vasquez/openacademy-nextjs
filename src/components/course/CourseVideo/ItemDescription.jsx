@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import ClassName from "classnames";
-import parser from "html-react-parser";
 import { Container } from "reactstrap";
-import CardAuthor from "./CardAuthor";
 import CourseMap from "../CourseMap";
 import Icons from "components/common/Icons";
+import _ from "lodash";
+import CardDescription from "./CardDescription";
 
 const TabName = ({ title, tabName, tab, onClick, icon }) => {
   return (
@@ -35,11 +35,20 @@ export default function ItemDescription({
   course,
   items,
   currentItem,
+  itemIndex,
 }) {
   const [tab, setTab] = useState("no");
 
   return (
     <>
+      <div className="px-3 pt-2">
+        <h4 className="mb-0 text-primary">{`${++itemIndex}- ${_.upperFirst(
+          currentItem.item_title
+        )}`}</h4>
+
+        <h5 className="text-muted ml-1">{course.course_title}</h5>
+      </div>
+
       <div className="pt-2 ml-md-4 border-bottom d-flex mb-4 mx-2">
         <div className="d-lg-none">
           <TabName
@@ -64,35 +73,15 @@ export default function ItemDescription({
           tabName="pr"
           icon="comments"
         />
-        <TabName
-          title="Docente"
-          tab={tab}
-          onClick={() => setTab("aa")}
-          tabName="aa"
-          icon="user"
-        />
       </div>
       <Container fluid>
         <div
           className={ClassName("mx-auto", {
             "d-none": tab !== "no",
           })}
-          style={{ maxWidth: 650 }}
+          style={{ maxWidth: 800 }}
         >
-          {currentItem.item_description ? (
-            parser(currentItem.item_description)
-          ) : (
-            <p>no description</p>
-          )}
-        </div>
-
-        <div
-          className={ClassName("mx-auto", {
-            "d-none": tab !== "aa",
-          })}
-          style={{ maxWidth: 650 }}
-        >
-          <CardAuthor author={author} />
+          <CardDescription currentItem={currentItem} author={author} />
         </div>
 
         <div
@@ -102,9 +91,15 @@ export default function ItemDescription({
         >
           <CourseMap course={course} items={items} currentItem={currentItem} />
         </div>
+
+        <div
+          className={ClassName("mx-auto", {
+            "d-none": tab !== "pr",
+          })}
+        >
+          (no implementado)
+        </div>
       </Container>
     </>
   );
 }
-
-// cla

@@ -18,35 +18,37 @@ export default class Switch extends Component {
 
   render() {
     return (
-      <div className="my-3">
-        <input
-          type="checkbox"
-          className="checkbox"
-          id="chk"
-          onChange={() => {
-            console.log("hola");
-            if (this.state.isDark) {
-              DB.set("isDark", false);
-              this.setState({ isDark: false });
-              document
-                .getElementsByTagName("body")[0]
-                .classList.remove("dark-mode");
-            } else {
-              document
-                .getElementsByTagName("body")[0]
-                .classList.add("dark-mode");
-              DB.set("isDark", true);
-              this.setState({ isDark: true });
-            }
-          }}
-          checked={this.state.isDark}
-        />
-        <label className="label" htmlFor="chk">
-          <div className="ball">
-            <Icons icon="moon" className="moon" />
-            <Icons icon="sun" className="sun" />
-          </div>
-        </label>
+      <div className="menu-extras my-auto mx-2">
+        <div className="menu-item">
+          <input
+            type="checkbox"
+            className="checkbox"
+            id="chk"
+            onChange={() => {
+              console.log("hola");
+              if (this.state.isDark) {
+                DB.set("isDark", false);
+                this.setState({ isDark: false });
+                document
+                  .getElementsByTagName("body")[0]
+                  .classList.remove("dark-mode");
+              } else {
+                document
+                  .getElementsByTagName("body")[0]
+                  .classList.add("dark-mode");
+                DB.set("isDark", true);
+                this.setState({ isDark: true });
+              }
+            }}
+            checked={this.state.isDark}
+          />
+          <label className="label" htmlFor="chk">
+            <div className="ball">
+              <Icons icon="moon" className="moon" />
+              <Icons icon="sun" className="sun" />
+            </div>
+          </label>
+        </div>
       </div>
     );
   }

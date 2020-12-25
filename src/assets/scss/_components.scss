@@ -850,7 +850,14 @@ button:not(:disabled) {
 
 @media (min-width: 768px) {
   .img-result-container {
-    width: 160px !important;
+    width: 200px !important;
     height: auto;
   }
+}
+
+.on-hover:hover {
+  background-color: $light !important;
+  border-radius: 10px;
+  transition: 0.2s;
+  transform: translateY(-1px);
 }

@@ -7,6 +7,7 @@ export default function index({
   items,
   currentItem,
   course,
+  itemIndex,
 }) {
   return (
     <div className="site-wrap bg-white">
@@ -17,7 +18,7 @@ export default function index({
           author={author}
           items={items}
           currentItem={currentItem}
-          // itemIndex={itemIndex}
+          itemIndex={itemIndex}
         />
       ) : null}
     </div>

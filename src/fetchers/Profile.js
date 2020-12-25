@@ -11,8 +11,9 @@ import axios from "axios";
 
 import { cropToProfilePic } from "helpers/image";
 
-import { apiUrl, apiLinks } from "../../site.config";
+import { apiUrl } from "../../site.config";
 import Controller from "fetchers";
+import DB from "helpers/db";
 
 class Controller_Profile extends Controller {
   constructor() {

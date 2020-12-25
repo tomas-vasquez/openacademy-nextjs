@@ -4,7 +4,13 @@ import ItemDescription from "./ItemDescription";
 import Video from "./Video";
 import { getShortLink } from "utils/courses";
 
-export default function index({ course, items, currentItem, author }) {
+export default function index({
+  course,
+  items,
+  currentItem,
+  author,
+  itemIndex,
+}) {
   const nextIndex =
     items.findIndex((value) => {
       return value._id === currentItem._id;
@@ -25,6 +31,7 @@ export default function index({ course, items, currentItem, author }) {
         author={author}
         items={items}
         currentItem={currentItem}
+        itemIndex={itemIndex}
       />
       <Invitation />
     </>

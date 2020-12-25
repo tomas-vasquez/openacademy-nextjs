@@ -17,23 +17,21 @@ export default function Search() {
 
   return (
     <>
-      <div className="menu-extras m-3">
-        <div className="menu-item">
-          <a href="#!">
-            <Icons icon="user-circle" className="fa-1x" />
-          </a>
-        </div>
-      </div>
-
-      <div className="menu-extras my-3 ml-3 mr-0">
-        <div className="menu-item">
+      <div className="menu-extras mx-2 my-auto">
+        <div className="menu-item pt-2">
           <a
+            className="text-muted pt-1"
             href="#!"
             onClick={() => {
               setOpen(true);
             }}
           >
-            <Icons icon="search" className="fa-1x" />
+            <Icons
+              icon="search"
+              style={{
+                fontSize: "20px",
+              }}
+            />
           </a>
         </div>
       </div>

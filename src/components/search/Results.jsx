@@ -1,8 +1,9 @@
+import Axios from "axios";
 import Icons from "components/common/Icons";
 import parser from "html-react-parser";
 import Link from "next/link";
 import React from "react";
-import { Card, CardBody, CardImg, Col, Container, Row } from "reactstrap";
+import { Card, CardBody, CardImg } from "reactstrap";
 import { search } from "../../../site.config";
 
 export default function Results({ results }) {
@@ -12,13 +13,26 @@ export default function Results({ results }) {
 
     if (src.startsWith("https://www.youtube.com/watch")) {
       id = new URL(src).searchParams.get("v");
+      return `http://img.youtube.com/vi/${id}/0.jpg`;
     } else if (src.startsWith("https://www.youtube.com/embed/")) {
       id = new URL(src).pathname.slice(7);
+      return `http://img.youtube.com/vi/${id}/0.jpg`;
     } else if (src.startsWith("https://youtu.be/")) {
       id = new URL(src).pathname;
+      return `http://img.youtube.com/vi/${id}/0.jpg`;
     }
 
-    return `http://img.youtube.com/vi/${id}/0.jpg`;
+    if (src.startsWith("https://vimeo.com/")) {
+      id = new URL(src).pathname.slice(1);
+      let data = Axios.get(`http://vimeo.com/api/v2/video/${id}.json`).then(
+        (data) => {
+          let src2 = data.data[0].thumbnail_large;
+          document.getElementById(`image-${item._id}`).src = src2;
+        }
+      );
+
+      return "/nc";
+    }
   };
 
   return (
@@ -29,7 +43,7 @@ export default function Results({ results }) {
       {results.map((element, index) => (
         <Link key={index} href={element.link}>
           <Card
-            className="bg-transparent mb-4 mx-0 border-0"
+            className="bg-transparent mb-4 mx-0 border-0 on-hover"
             style={{
               cursor: "pointer",
             }}
@@ -64,6 +78,7 @@ export default function Results({ results }) {
             ) : (
               <div className="d-block d-md-flex">
                 <CardImg
+                  id={`image-${element.item._id}`}
                   className="img-result-container"
                   src={getPicUrl(element.item)}
                 />
@@ -85,23 +100,6 @@ export default function Results({ results }) {
                   </CardBody>
                 </div>
               </div>
-
-              // <CardBody className="p-3">
-              //   <h4 className="text-primary">
-              //     <Icons icon="playCircle" className="mr-2" />
-              //     {element.item.item_title}
-              //   </h4>
-              //   <div
-              //     style={{
-              //       maxHeight: 100,
-              //       overflow: "hidden",
-              //     }}
-              //   >
-              //     {parser(element.item.item_description || "")}
-              //   </div>
-              //   <small className="mb-0 text-success">{element.link}</small>
-              //   {/* {JSON.stringify(element)} */}
-              // </CardBody>
             )}
           </Card>
         </Link>

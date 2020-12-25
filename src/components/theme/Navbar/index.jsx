@@ -54,6 +54,7 @@ export default class Index extends Component {
               />
             </Link>
           </div>
+
           <div className="logo d-none d-lg-block">
             <Link href="/">
               <img
@@ -87,14 +88,10 @@ export default class Index extends Component {
             </div>
           </div>
 
-          <AuthMenu isDark={isDark} />
-
-          <Search />
-
-          <div className="menu-extras">
-            <div className="menu-item">
-              <Switch />
-            </div>
+          <div className="d-flex float-right" style={{ height: 60 }}>
+            <Switch />
+            <Search />
+            <AuthMenu isDark={isDark} />
           </div>
 
           <Collapse isOpen={this.state.open} id="navigation">

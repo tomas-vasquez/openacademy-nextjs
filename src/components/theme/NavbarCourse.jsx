@@ -1,18 +1,24 @@
 import Icons from "components/common/Icons";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import Switch from "./Navbar/Switch";
 
 export default function NavbarCourse() {
+  const router = useRouter();
+
   return (
-    <div className="bg-black px-2 d-flex content">
+    <div className="bg-black d-flex mx-md-3">
       <div className="buy-button ml-2 my-auto">
-        <Link href="/courses" target="_blank">
-          <p className="btn btn-primary p-2 m-0">
-            <Icons icon="arrowLeft" className="mr-2" />
-            All courses
-          </p>
-        </Link>
+        <a
+          className="btn btn-primary py-2 px-3"
+          href="#!"
+          onClick={() => {
+            router.back();
+          }}
+        >
+          <Icons icon="arrowLeft" className="m-0" />
+          <span className="d-none d-md-inline ml-2">back</span>
+        </a>
       </div>
 
       <div className="">
@@ -24,7 +30,7 @@ export default function NavbarCourse() {
           />
         </a>
       </div>
-      <div className="ml-auto">
+      <div className="my-auto ml-auto">
         <Switch />
       </div>
     </div>

@@ -1,6 +1,4 @@
-import Icons from "components/common/Icons";
 import CourseMap from "components/course/CourseMap";
-import Link from "next/link";
 import React from "react";
 import { Container, Row } from "reactstrap";
 import { singleCourse } from "../../../site.config";

@@ -23,5 +23,11 @@ export async function getStaticProps({ params: { course, item } }) {
   const currentItem = courseData.items.find((_item) => {
     return getShortLink(_item.item_title) === item;
   });
-  return { props: { currentItem, ...courseData } };
+
+  const itemIndex = courseData.items.findIndex((_item) => {
+    return getShortLink(_item.item_title) === item;
+  });
+
+  console.log(itemIndex);
+  return { props: { currentItem, itemIndex, ...courseData } };
 }

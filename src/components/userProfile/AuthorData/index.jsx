@@ -8,7 +8,7 @@ import {
   CardTitle,
   Button,
   Collapse,
-  Container,
+  // Container,
 } from "reactstrap";
 
 import { nameChangedHandler } from "helpers/input";
