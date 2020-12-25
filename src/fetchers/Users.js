@@ -4,6 +4,8 @@ import Alerts from "helpers/Alerts";
 import { apiLinks, apiUrl } from "../../site.config";
 import axios from "axios";
 
+import DB from "helpers/db";
+
 class Controller_Users extends Controller {
   constructor() {
     super();
@@ -43,8 +45,8 @@ class Controller_Users extends Controller {
       })
         .then((response) => {
           this.alerts.showSuccess("Espere...", "Perfecto!!!");
-          this.db.set("api-token", response.data.api_token);
-          this.db.set("userData", response.data.user_data);
+          DB.set("api-token", response.data.api_token);
+          DB.set("userData", response.data.user_data);
           _callback();
         })
         .catch((error) => {
@@ -91,8 +93,8 @@ class Controller_Users extends Controller {
     })
       .then((response) => {
         this.alerts.showSuccess("Espere...", "Perfecto!!!");
-        this.db.set("api-token", response.data.api_token);
-        this.db.set("userData", response.data.user_data);
+        DB.set("api-token", response.data.api_token);
+        DB.set("userData", response.data.user_data);
         _callback();
       })
       .catch((error) => {
@@ -119,7 +121,7 @@ class Controller_Users extends Controller {
       method: "get",
       url: apiUrl + "/logout",
       headers: {
-        "api-token": this.db.get("api-token"),
+        "api-token": DB.get("api-token"),
       },
     })
       .then((response) => {

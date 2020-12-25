@@ -5,7 +5,12 @@ class PHUserProfile extends React.Component {
   render() {
     return (
       <>
-        <Container className="mt-2 mb-5">
+        <Container
+          className="mb-5"
+          style={{
+            marginTop: -60,
+          }}
+        >
           <Row>
             <Col xs="12" lg="8" className="order-lg-2">
               <Card className="mb-4">
@@ -57,35 +62,36 @@ class PHUserProfile extends React.Component {
                 </CardBody>
               </Card>
 
-              <div className="ph-item">
-                <div className="ph-col-12">
+              <div className="card">
+                <div className="ph-item mb-0">
                   <div className="ph-col-12">
-                    {/* <div className="ph-picture" /> */}
-                    <div className="ph-row">
-                      <div className="ph-col-10 big" />
-                      <div className="ph-col-2 empty big" />
-                      <div className="ph-col-4" />
-                      <div className="ph-col-8 empty" />
-                      <div className="ph-col-6" />
-                      <div className="ph-col-6 empty" />
-                      <div className="ph-col-12" />
-                      <div className="ph-col-4" />
-                      <div className="ph-col-8 empty" />
-                      <div className="ph-col-6" />
-                      <div className="ph-col-6 empty" />
-                      <div className="ph-col-12" />
-                      <div className="ph-col-10 big" />
-                      <div className="ph-col-2 empty big" />
-                      <div className="ph-col-4" />
-                      <div className="ph-col-8 empty" />
-                      <div className="ph-col-6" />
-                      <div className="ph-col-6 empty" />
-                      <div className="ph-col-12" />
-                      <div className="ph-col-4" />
-                      <div className="ph-col-8 empty" />
-                      <div className="ph-col-6" />
-                      <div className="ph-col-6 empty" />
-                      <div className="ph-col-12" />
+                    <div className="ph-col-12">
+                      <div className="ph-row">
+                        <div className="ph-col-10 big" />
+                        <div className="ph-col-2 empty big" />
+                        <div className="ph-col-4" />
+                        <div className="ph-col-8 empty" />
+                        <div className="ph-col-6" />
+                        <div className="ph-col-6 empty" />
+                        <div className="ph-col-12" />
+                        <div className="ph-col-4" />
+                        <div className="ph-col-8 empty" />
+                        <div className="ph-col-6" />
+                        <div className="ph-col-6 empty" />
+                        <div className="ph-col-12" />
+                        <div className="ph-col-10 big" />
+                        <div className="ph-col-2 empty big" />
+                        <div className="ph-col-4" />
+                        <div className="ph-col-8 empty" />
+                        <div className="ph-col-6" />
+                        <div className="ph-col-6 empty" />
+                        <div className="ph-col-12" />
+                        <div className="ph-col-4" />
+                        <div className="ph-col-8 empty" />
+                        <div className="ph-col-6" />
+                        <div className="ph-col-6 empty" />
+                        <div className="ph-col-12" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -93,50 +99,54 @@ class PHUserProfile extends React.Component {
             </Col>
 
             <Col xs="12" lg="4" className="order-lg-1">
-              <div className="ph-item pb-0 ">
-                <div className="ph-col-12">
-                  <div className="ph-picture" />
-                  <div className="ph-row">
-                    <div className="ph-col-4" />
-                    <div className="ph-col-8 empty" />
-                    <div className="ph-col-12" />
+              <div className="card pb-0 mb-4">
+                <div className="ph-item pb-0 mb-0">
+                  <div className="ph-col-12">
+                    <div className="ph-picture" />
+                    <div className="ph-row">
+                      <div className="ph-col-4" />
+                      <div className="ph-col-8 empty" />
+                      <div className="ph-col-12" />
+                    </div>
                   </div>
-                </div>
 
-                <div className="ph-col-2">
-                  <div className="ph-avatar" />
-                </div>
+                  <div className="ph-col-2">
+                    <div className="ph-avatar" />
+                  </div>
 
-                <div>
-                  <div className="ph-row">
-                    <div className="ph-col-12" />
-                    <div className="ph-col-2" />
-                    <div className="ph-col-10 empty" />
-                    <div className="ph-col-8 big" />
-                    <div className="ph-col-4 big empty" />
+                  <div>
+                    <div className="ph-row">
+                      <div className="ph-col-12" />
+                      <div className="ph-col-2" />
+                      <div className="ph-col-10 empty" />
+                      <div className="ph-col-8 big" />
+                      <div className="ph-col-4 big empty" />
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="ph-item pb-0">
-                <div className="ph-col-12">
-                  <div className="ph-picture" />
-                  <div className="ph-row">
-                    <div className="ph-col-4" />
-                    <div className="ph-col-8 empty" />
-                    <div className="ph-col-12" />
+              <div className="card">
+                <div className="ph-item pb-0 m-0">
+                  <div className="ph-col-12">
+                    <div className="ph-picture" />
+                    <div className="ph-row">
+                      <div className="ph-col-4" />
+                      <div className="ph-col-8 empty" />
+                      <div className="ph-col-12" />
+                    </div>
                   </div>
-                </div>
-                <div className="ph-col-2">
-                  <div className="ph-avatar" />
-                </div>
-                <div>
-                  <div className="ph-row">
-                    <div className="ph-col-12" />
-                    <div className="ph-col-2" />
-                    <div className="ph-col-10 empty" />
-                    <div className="ph-col-8 big" />
-                    <div className="ph-col-4 big empty" />
+                  <div className="ph-col-2">
+                    <div className="ph-avatar" />
+                  </div>
+                  <div>
+                    <div className="ph-row">
+                      <div className="ph-col-12" />
+                      <div className="ph-col-2" />
+                      <div className="ph-col-10 empty" />
+                      <div className="ph-col-8 big" />
+                      <div className="ph-col-4 big empty" />
+                    </div>
                   </div>
                 </div>
               </div>

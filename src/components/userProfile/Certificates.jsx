@@ -1,3 +1,4 @@
+import Icons from "components/common/Icons";
 import React from "react";
 
 // reactstrap components
@@ -10,7 +11,7 @@ export default class Certificates extends React.Component {
         <Card className="shadow">
           <CardHeader>
             <CardTitle tag="h5" className="m-0">
-              <i className="fa fa-medal mr-3" />
+              <Icons icon="books" className="mr-2" />
               Certificados
             </CardTitle>
           </CardHeader>
@@ -20,7 +21,7 @@ export default class Certificates extends React.Component {
         <Card className="mt-4 shadow">
           <CardHeader>
             <CardTitle tag="h5" className="m-0">
-              <i className="fa fa-book mr-3" />
+              <Icons icon="books" className="mr-2" />
               Cursos
             </CardTitle>
           </CardHeader>
@@ -30,7 +31,7 @@ export default class Certificates extends React.Component {
         <Card className="mt-4 shadow">
           <CardHeader>
             <CardTitle tag="h5" className="m-0">
-              <i className="fa fa-microphone mr-3" />
+              <Icons icon="books" className="mr-2" />
               Conferencias
             </CardTitle>
           </CardHeader>

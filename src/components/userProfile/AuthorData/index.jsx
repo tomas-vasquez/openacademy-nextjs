@@ -20,6 +20,7 @@ import SingleField from "./SingleField";
 import SingleSocialField from "./SingleSocialField";
 import DescriptionField from "./DescriptionField";
 import DB from "helpers/db";
+import Icons from "components/common/Icons";
 
 class AuthorData extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class AuthorData extends React.Component {
           <CardHeader>
             <CardTitle tag="h5" className="m-0 d-flex">
               <span>
-                <i className="fa fa-user mr-3" />
+                <Icons icon="user" className="mr-2" />
                 Datos del perfíl
               </span>
             </CardTitle>

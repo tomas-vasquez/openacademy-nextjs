@@ -58,7 +58,7 @@ export default function login() {
                 >
                   <h3 className="h4 text-black  mb-4">Iniciar sesión:</h3>
                   <div className="form-group">
-                    <labell>Tu correo:</labell>
+                    <label>Tu correo:</label>
                     <input
                       id="input-email"
                       type="text"
