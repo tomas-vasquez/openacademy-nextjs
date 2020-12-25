@@ -7,10 +7,10 @@ export default function NavbarCourse() {
   const router = useRouter();
 
   return (
-    <div className="bg-black d-flex mx-md-3">
+    <div className="bg-black d-flex px-md-3">
       <div className="buy-button ml-2 my-auto">
         <a
-          className="btn btn-primary py-2 px-3"
+          className="btn btn-primary py-1 px-2"
           href="#!"
           onClick={() => {
             router.back();

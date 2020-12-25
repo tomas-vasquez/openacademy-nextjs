@@ -11,7 +11,7 @@ const TabName = ({ title, tabName, tab, onClick, icon }) => {
     <>
       <div
         className={ClassName("p-2 mr-2", {
-          "border-bottom2 mx-2": tab === tabName,
+          "border-bottom2": tab === tabName,
         })}
         style={{ cursor: "pointer" }}
         onClick={onClick}
