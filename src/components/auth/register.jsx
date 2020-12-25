@@ -36,6 +36,18 @@ export default function login() {
             className="row pt-5 d-flex"
             style={{ minHeight: "100vh", zIndex: 1 }}
           >
+            <div className="col-12 col-md-6 ml-auto d-none d-md-flex">
+              <div className="mr-5 title-heading my-auto">
+                <h1 className="heading text-white title-dark mb-4">
+                  Bienvenido !!!
+                </h1>
+                <p className="mb-4" style={{ color: "white" }}>
+                  Para acceder a todo el contenido de nuestra academia deves
+                  iniciar sesion en tu cuenta; si no tienes una cuenta, puedes
+                  crearla en menos de un minuto!
+                </p>
+              </div>
+            </div>
             <div className="my-auto col-12 col-md-6 col-lg-5">
               <div className="shape-before">
                 <form
@@ -114,22 +126,6 @@ export default function login() {
                   className="img-fluid shape-img"
                   alt=""
                 />
-              </div>
-            </div>
-            <div className="col-12 col-md-6 ml-auto d-none d-md-flex">
-              <div className="ml-5 title-heading my-auto">
-                <h1 className="heading text-white title-dark mb-4">
-                  Bienvenido !!!
-                </h1>
-                <p
-                  className="mb-4 text-white"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  Para acceder a todo el contenido de nuestra academia deves
-                  iniciar sesion en tu cuenta; si no tienes una cuenta, puedes
-                  crearla en menos de un minuto!
-                </p>
               </div>
             </div>
           </div>

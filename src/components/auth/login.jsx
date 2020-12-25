@@ -36,23 +36,19 @@ export default function login() {
             className="row pt-5 d-flex"
             style={{ minHeight: "100vh", zIndex: 1 }}
           >
-            <div className="col-12 col-md-6 mr-auto d-none d-md-flex">
+            <div className="col-12 col-md-6 mr-auto d-none ">
               <div className="title-heading my-auto">
                 <h1 className="heading text-white title-dark mb-4">
                   Bienvenido !!!
                 </h1>
-                <p
-                  className="mb-4 mr-5 text-white"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
+                <p className="mb-4 mr-5" style={{ color: "white" }}>
                   Para acceder a todo el contenido de nuestra academia deves
                   iniciar sesion en tu cuenta; si no tienes una cuenta, puedes
                   crearla en menos de un minuto!
                 </p>
               </div>
             </div>
-            <div className="my-auto col-12 col-md-6 col-lg-5">
+            <div className="my-auto col-12 col-md-6 col-lg-5 mx-auto">
               <div className="shape-before">
                 <form
                   action=""

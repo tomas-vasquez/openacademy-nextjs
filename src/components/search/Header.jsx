@@ -22,13 +22,11 @@ export default function Hero({ word }) {
               backgroundColor: "#1a274e",
             }}
           >
-            <div className="row">
-              <div className="container">
-                <div className="title-heading text-center">
-                  <h2 className="text-white title-dark mb-3">
-                    {`${searchConfig.title}: "${word}"`}
-                  </h2>
-                </div>
+            <div className="container">
+              <div className="title-heading text-center">
+                <h2 className="text-white title-dark mb-3">
+                  {`${searchConfig.title}: "${word}"`}
+                </h2>
               </div>
             </div>
           </div>

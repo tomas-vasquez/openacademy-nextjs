@@ -21,10 +21,6 @@ const links = {
 const apiLinks = {
   apiLoginUrl: apiUrl + "/login",
   apiSignupUrl: apiUrl + "/signup",
-  // userPicUrl: apiUrl + "/storage/user_pics",
-  // coursePicUrl: apiUrl + "/storage/course_pics",
-  courseItemsDescriptionsUrl: apiUrl + "/academy/descriptions/",
-  flagsUrl: apiUrl + "/storage/flags",
   testsUrl: apiUrl + "/academy/tests",
   getAllCourses: apiUrl + "/academy/courses",
   getItems: apiUrl + "/academy/items/",
@@ -60,13 +56,16 @@ const socialIcons = [
 
 const navbarLinks = [
   { title: "Inicio", url: "/" },
-  {
-    title: "Cursos",
-    submenu: [
-      { title: "Inicio", url: "/" },
-      { title: "Courses", url: "/courses" },
-    ],
-  },
+  { title: "Cursos", url: "/courses" },
+  { title: "Blog", url: "/blog" },
+
+  // {
+  //   title: "Cursos",
+  //   submenu: [
+  //     { title: "Inicio", url: "/" },
+  //     { title: "Courses", url: "/courses" },
+  //   ],
+  // },
 ];
 
 const hero = {
@@ -113,8 +112,7 @@ const search = {
 };
 
 const footer = {
-  aboutText:
-    "Start working with cursos-online.com that can provide everything you need to generate awareness, drive traffic, connect.",
+  aboutText: "Comprometidos en darte el mejor contenido gratuito de internet.",
   LinksTitle: "Enlaces",
   links: [
     {

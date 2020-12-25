@@ -847,3 +847,10 @@ button:not(:disabled) {
     font-size: 36px !important;
   }
 }
+
+@media (min-width: 768px) {
+  .img-result-container {
+    width: 160px !important;
+    height: auto;
+  }
+}

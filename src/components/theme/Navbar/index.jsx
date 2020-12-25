@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { Collapse } from "reactstrap";
 import AuthMenu from "./AuthMenu";
 import Navigation from "./Navigation";
+import Search from "./Search";
 import Switch from "./Switch";
 
 export default class Index extends Component {
@@ -33,7 +34,7 @@ export default class Index extends Component {
   }
 
   render() {
-    const userData = DB.get("userData");
+    // const userData = DB.get("userData");
     const { isDark } = this.props;
 
     return (
@@ -68,7 +69,7 @@ export default class Index extends Component {
               />
             </Link>
           </div>
-          <AuthMenu isDark={isDark} />
+
           <div className="menu-extras">
             <div className="menu-item">
               <a
@@ -85,11 +86,17 @@ export default class Index extends Component {
               </a>
             </div>
           </div>
+
+          <AuthMenu isDark={isDark} />
+
+          <Search />
+
           <div className="menu-extras">
             <div className="menu-item">
               <Switch />
             </div>
           </div>
+
           <Collapse isOpen={this.state.open} id="navigation">
             <Navigation isDark={isDark} />
           </Collapse>
