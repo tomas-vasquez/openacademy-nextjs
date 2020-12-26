@@ -40,8 +40,8 @@ export default function ItemDescription({
   const [tab, setTab] = useState("no");
 
   return (
-    <>
-      <div className="px-3 pt-2">
+    <div className="container-fluid">
+      <div className="px-lg-3 pt-2">
         <h4 className="mb-0 text-primary">{`${++itemIndex}- ${_.upperFirst(
           currentItem.item_title
         )}`}</h4>
@@ -100,6 +100,6 @@ export default function ItemDescription({
           (no implementado)
         </div>
       </Container>
-    </>
+    </div>
   );
 }

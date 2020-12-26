@@ -57,7 +57,9 @@ export default function Banner({ author, course, currentItem }) {
                   <h6 className="mb-0 text-shadow">
                     {author.name ? author.name : `@${author.user_name}`}
                   </h6>
-                  <p className="small my-0">Professor</p>
+                  <p className="small my-0 text-muted">
+                    {author.short_description || ""}
+                  </p>
                 </div>
               </div>
             </Link>

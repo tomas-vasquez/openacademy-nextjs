@@ -28,6 +28,5 @@ export async function getStaticProps({ params: { course, item } }) {
     return getShortLink(_item.item_title) === item;
   });
 
-  console.log(itemIndex);
   return { props: { currentItem, itemIndex, ...courseData } };
 }

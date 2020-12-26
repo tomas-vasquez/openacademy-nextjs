@@ -5,7 +5,7 @@ export default function CardDescription({ currentItem, author }) {
   const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
 
   return (
-    <div>
+    <>
       <div className="teacher d-flex align-items-center mb-3">
         <img
           alt={author.name}
@@ -18,7 +18,9 @@ export default function CardDescription({ currentItem, author }) {
               {author.name ? author.name : `@${author.user_name}`}
             </strong>
           </h6>
-          <p className="small my-0">Professor</p>
+          <p className="small my-0 text-muted">
+            {author.short_description || ""}
+          </p>
         </div>
       </div>
       {currentItem.item_description ? (
@@ -26,6 +28,6 @@ export default function CardDescription({ currentItem, author }) {
       ) : (
         <p>no description</p>
       )}
-    </div>
+    </>
   );
 }

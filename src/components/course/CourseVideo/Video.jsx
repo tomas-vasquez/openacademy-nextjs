@@ -43,6 +43,7 @@ const Video = ({ src, nextLink }) => {
         {(src.startsWith("https://www.youtube") ||
           src.startsWith("https://youtu.be")) && (
           <YouTube
+            height={420}
             videoId={id}
             opts={{
               playerVars: {

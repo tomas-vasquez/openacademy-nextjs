@@ -29,17 +29,17 @@ export default function Layout({
   return (
     <>
       {pathname.split("/")[2] ? (
-        <Container fluid className="p-0">
+        <Container fluid>
           <Row>
             <Col
               lg={items && pathname !== "/courses" ? "9" : "12"}
-              className="p-0 border-right"
+              className="p-0 m-0 border-right"
             >
-              <div>
+              <Container fluid className="p-0 m-0">
                 <NavbarCourse />
-              </div>
-              {children}
-              <Footer litle />
+                {children}
+                <Footer litle />
+              </Container>
             </Col>
             {items ? (
               <Col
