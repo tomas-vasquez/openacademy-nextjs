@@ -9,14 +9,14 @@ export default function AuthName() {
   const openRegisterPage = (e) => {
     e.preventDefault();
     if (router.pathname !== "/login" && router.pathname !== "/register")
-      DB.set("targetPage", document.location.pathname);
+      DB.set("targetPage", document.location.href);
     router.push("/register");
   };
 
   const openLoginPage = (e) => {
     e.preventDefault();
     if (router.pathname !== "/login" && router.pathname !== "/register")
-      DB.set("targetPage", document.location.pathname);
+      DB.set("targetPage", document.location.href);
     router.push("/login");
   };
 

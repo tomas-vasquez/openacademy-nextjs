@@ -69,11 +69,13 @@ class OptionCountries extends React.Component {
                       this.props.whatsapp_number
                     )
                   }
-                  id={"tooltip48783807893"}
                   addonType="append"
                   style={{ cursor: "pointer" }}
                 >
-                  <InputGroupText>
+                  <InputGroupText
+                    id={"tooltip48783807893"}
+                    className="text-muted bg-light"
+                  >
                     <Icons icon="external-link" />
                   </InputGroupText>
                 </InputGroupAddon>

@@ -1,24 +1,17 @@
 import React from "react";
 import { Card, CardBody, CardFooter, CardImg, Media } from "reactstrap";
-
-import moment from "moment";
-import "moment/min/locales";
 import _ from "lodash";
 import Link from "next/link";
-
-const formatDate = (date) => {
-  return moment(date, "ISO").fromNow();
-};
 
 export default function CardCourse({ course, author }) {
   const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
 
   return (
-    <Link href={"/" + course.course_short_link}>
-      <Card
-        className="border-1 course mb-5 shadow-md"
-        style={{ cursor: "pointer" }}
-      >
+    <Card
+      className="border-1 course mb-5 shadow-md"
+      style={{ cursor: "pointer" }}
+    >
+      <Link href={"/" + course.course_short_link}>
         <CardBody className="p-0 ">
           <div>
             <figure className=" m-0">
@@ -52,6 +45,8 @@ export default function CardCourse({ course, author }) {
             </div>
           </div>
         </CardBody>
+      </Link>
+      <Link href={`/user?name=${author.user_name}`}>
         <CardFooter className="d-flex align-items-center p-2">
           <img
             alt={author.name}
@@ -62,10 +57,12 @@ export default function CardCourse({ course, author }) {
             <p className="mb-0 text-shadow">
               {author.name ? author.name : `@${author.user_name}`}
             </p>
-            <p className="small my-0">Professor</p>
+            <p className="small my-0 text-muted">
+              {author.short_description || ""}
+            </p>
           </div>
         </CardFooter>
-      </Card>
-    </Link>
+      </Link>
+    </Card>
   );
 }

@@ -13,7 +13,7 @@ class PHUserProfile extends React.Component {
         >
           <Row>
             <Col xs="12" lg="8" className="order-lg-2">
-              <Card className="mb-4">
+              <Card className="mb-4 shadow-md">
                 <CardBody
                   style={{
                     padding: "30px 15px",
@@ -62,7 +62,7 @@ class PHUserProfile extends React.Component {
                 </CardBody>
               </Card>
 
-              <div className="card">
+              <div className="card shadow-md">
                 <div className="ph-item mb-0">
                   <div className="ph-col-12">
                     <div className="ph-col-12">
@@ -99,7 +99,7 @@ class PHUserProfile extends React.Component {
             </Col>
 
             <Col xs="12" lg="4" className="order-lg-1">
-              <div className="card pb-0 mb-4">
+              <div className="card pb-0 mb-4 shadow-md">
                 <div className="ph-item pb-0 mb-0">
                   <div className="ph-col-12">
                     <div className="ph-picture" />
@@ -126,7 +126,7 @@ class PHUserProfile extends React.Component {
                 </div>
               </div>
 
-              <div className="card">
+              <div className="card shadow-md">
                 <div className="ph-item pb-0 m-0">
                   <div className="ph-col-12">
                     <div className="ph-picture" />

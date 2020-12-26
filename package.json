@@ -17,6 +17,8 @@
     "@u-wave/react-vimeo": "^0.9.2",
     "axios": "^0.20.0",
     "clsx": "^1.1.1",
+    "dotenv": "^8.2.0",
+    "fs": "^0.0.1-security",
     "html-react-parser": "^0.14.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
@@ -51,6 +53,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jfelix61/nextjs-starter-blog.git"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false,
+    "net": false,
+    "tls": false
   },
   "homepage": "https://github.com/Jfelix61/nextjs-starter-blog#readme",
   "keywords": [

@@ -43,9 +43,9 @@ export default class Switch extends Component {
             checked={this.state.isDark}
           />
           <label className="label" htmlFor="chk">
-            <div className="ball">
-              <Icons icon="moon" className="moon" />
-              <Icons icon="sun" className="sun" />
+            <div className="ball d-flex">
+              <Icons icon="moon" className="moon my-auto" />
+              <Icons icon="sun" className="sun my-auto" />
             </div>
           </label>
         </div>

@@ -443,33 +443,33 @@ button:not(:disabled) {
         padding-right: 40px !important;
       }
     }
-    a.faq[data-toggle="collapse"] {
-      background-color: $white;
-      color: $primary;
-      transition: all 0.5s;
-      &:before {
-        content: "\F0143";
-        display: block;
-        font-family: "Material Design Icons";
-        font-size: 18px;
-        color: $dark;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: all 0.5s ease;
-      }
-      &.collapsed {
-        background-color: $white;
-        color: $dark !important;
-        transition: all 0.5s;
-        &:before {
-          top: 15px;
-          transform: rotate(180deg);
-          color: $dark !important;
-        }
-      }
-    }
+    // a.faq[data-toggle="collapse"] {
+    //   background-color: $white;
+    //   color: $primary;
+    //   transition: all 0.5s;
+    //   &:before {
+    //     content: "\F0143";
+    //     display: block;
+    //     font-family: "Material Design Icons";
+    //     font-size: 18px;
+    //     color: $dark;
+    //     position: absolute;
+    //     right: 20px;
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    //     transition: all 0.5s ease;
+    //   }
+    //   &.collapsed {
+    //     background-color: $white;
+    //     color: $dark !important;
+    //     transition: all 0.5s;
+    //     &:before {
+    //       top: 15px;
+    //       transform: rotate(180deg);
+    //       color: $dark !important;
+    //     }
+    //   }
+    // }
     .title {
       font-size: 16px;
     }

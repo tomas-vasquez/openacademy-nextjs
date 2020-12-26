@@ -46,19 +46,21 @@ export default function Banner({ author, course, currentItem }) {
                 {_.upperFirst(course.course_description)}
               </p>
             </div>
-            <div className="teacher d-flex align-items-center px-2">
-              <img
-                alt={author.name}
-                className="avatar avatar-md-sm rounded-circle shadow"
-                src={pic_url}
-              />
-              <div className="ml-2">
-                <h6 className="mb-0 text-shadow">
-                  {author.name ? author.name : `@${author.user_name}`}
-                </h6>
-                <p className="small my-0">Professor</p>
+            <Link href={`/user?name=${author.user_name}`}>
+              <div className="teacher d-flex align-items-center px-2">
+                <img
+                  alt={author.name}
+                  className="avatar avatar-md-sm rounded-circle shadow"
+                  src={pic_url}
+                />
+                <div className="ml-2">
+                  <h6 className="mb-0 text-shadow">
+                    {author.name ? author.name : `@${author.user_name}`}
+                  </h6>
+                  <p className="small my-0">Professor</p>
+                </div>
               </div>
-            </div>
+            </Link>
             <div className="mt-4">
               <Link
                 href={

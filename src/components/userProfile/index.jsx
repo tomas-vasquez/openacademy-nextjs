@@ -34,7 +34,7 @@ export default class user extends Component {
   };
 
   componentDidMount() {
-    // this.loadData();
+    this.loadData();
   }
 
   render() {
@@ -50,7 +50,6 @@ export default class user extends Component {
             }`}
           />
           <Container
-            // className="my-5"
             style={{
               marginTop: "-60px",
             }}

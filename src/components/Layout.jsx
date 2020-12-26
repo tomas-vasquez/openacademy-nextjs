@@ -20,7 +20,7 @@ export default function Layout({
       (pathname !== "/login" &&
         pathname !== "/register" &&
         pathname === "/courses") ||
-      pathname === "/user" ||
+      // pathname === "/user" ||
       pathname === "/search" ||
       pathname === "/"
     );
@@ -29,7 +29,7 @@ export default function Layout({
   return (
     <>
       {pathname.split("/")[2] ? (
-        <Container fluid ClassName="p-0">
+        <Container fluid className="p-0">
           <Row>
             <Col
               lg={items && pathname !== "/courses" ? "9" : "12"}

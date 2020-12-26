@@ -234,14 +234,14 @@ button:not(:disabled) {
   .card {
     background: #212e36;
     box-shadow: none;
-    a.faq[data-toggle="collapse"] {
-      &.collapsed {
-        color: $dark !important;
-        &:before {
-          color: $dark !important;
-        }
-      }
-    }
+    // a.faq[data-toggle="collapse"] {
+    //   &.collapsed {
+    //     color: $dark !important;
+    //     &:before {
+    //       color: $dark !important;
+    //     }
+    //   }
+    // }
   }
 }
 

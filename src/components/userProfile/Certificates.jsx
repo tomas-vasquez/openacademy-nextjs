@@ -8,9 +8,9 @@ export default class Certificates extends React.Component {
   render() {
     return (
       <>
-        <Card className="shadow">
-          <CardHeader>
-            <CardTitle tag="h5" className="m-0">
+        <Card className="shadow-md">
+          <CardHeader className="py-1 px-2">
+            <CardTitle tag="h6" className="m-0">
               <Icons icon="books" className="mr-2" />
               Certificados
             </CardTitle>
@@ -18,9 +18,9 @@ export default class Certificates extends React.Component {
           <CardBody>Sin certificados que mostrar...</CardBody>
         </Card>
 
-        <Card className="mt-4 shadow">
-          <CardHeader>
-            <CardTitle tag="h5" className="m-0">
+        <Card className="mt-4 shadow-md">
+          <CardHeader className="py-1 px-2">
+            <CardTitle tag="h6" className="m-0">
               <Icons icon="books" className="mr-2" />
               Cursos
             </CardTitle>
@@ -28,9 +28,9 @@ export default class Certificates extends React.Component {
           <CardBody>Sin certificados que mostrar...</CardBody>
         </Card>
 
-        <Card className="mt-4 shadow">
-          <CardHeader>
-            <CardTitle tag="h5" className="m-0">
+        <Card className="mt-4 shadow-md">
+          <CardHeader className="py-1 px-2">
+            <CardTitle tag="h6" className="m-0">
               <Icons icon="books" className="mr-2" />
               Conferencias
             </CardTitle>

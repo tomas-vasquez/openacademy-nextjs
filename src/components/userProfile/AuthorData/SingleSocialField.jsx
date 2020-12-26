@@ -18,7 +18,10 @@ const SingleSocialField = ({ name, defaultValue, isEditing }) => (
       {isEditing ? (
         <InputGroup>
           <InputGroupAddon addonType="prepend">
-            <InputGroupText style={{ width: 40 }}>
+            <InputGroupText
+              style={{ width: 40 }}
+              className="text-muted bg-light"
+            >
               <Icons icon={name} />
             </InputGroupText>
           </InputGroupAddon>
@@ -35,11 +38,13 @@ const SingleSocialField = ({ name, defaultValue, isEditing }) => (
                 "blank"
               );
             }}
-            id={`tooltip-${name}`}
             addonType="append"
             style={{ cursor: "pointer" }}
           >
-            <InputGroupText>
+            <InputGroupText
+              id={`tooltip-${name}`}
+              className="text-muted bg-light"
+            >
               <Icons icon="external-link" />
             </InputGroupText>
           </InputGroupAddon>

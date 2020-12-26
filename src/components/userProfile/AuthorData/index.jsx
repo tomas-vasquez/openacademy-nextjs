@@ -56,15 +56,15 @@ class AuthorData extends React.Component {
           handlePicPicker={this.handlePicPicker}
         />
 
-        <Card className="shadow mb-4">
-          <CardHeader>
+        <Card className="shadow-md mb-4">
+          {/* <CardHeader className="py-2 px-3">
             <CardTitle tag="h5" className="m-0 d-flex">
               <span>
                 <Icons icon="user" className="mr-2" />
                 Datos del perfíl
               </span>
             </CardTitle>
-          </CardHeader>
+          </CardHeader> */}
           <CardBody>
             <form onSubmit={this.handleDataUpdate} id="form-user-data">
               <h5 className="heading-small text-muted mb-4">
@@ -119,6 +119,7 @@ class AuthorData extends React.Component {
 
               <DescriptionField
                 defaultValue={profile.description}
+                defaultValue2={profile.short_description}
                 isEditing={editable}
               />
 

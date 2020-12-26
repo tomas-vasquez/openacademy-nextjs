@@ -18,10 +18,10 @@ class Alerts {
         showCancelButton: true,
         allowOutsideClick: backdropDismiss,
         buttonsStyling: false,
-        confirmButtonText: 'Sí, continuar <i className="fa fa-check"></i>',
-        confirmButtonClass: "btn btn-primary",
-        cancelButtonText: 'cancelar <i className="fa fa-times"></i>',
-        cancelButtonClass: "btn btn-secundary",
+        confirmButtonText: 'Sí, continuar <i class="fa fa-check"></i>',
+        confirmButtonClass: "btn btn-primary mx-1",
+        cancelButtonText: 'cancelar <i class="fa fa-times"></i>',
+        cancelButtonClass: "btn btn-secundary mx-1",
       })
       .then((result) => {
         if (result.value) {
@@ -46,7 +46,7 @@ class Alerts {
       showConfirmButton: true,
       buttonsStyling: false,
       allowOutsideClick: backdropDismiss,
-      confirmButtonClass: "btn btn-primary",
+      confirmButtonClass: "btn btn-primary mx-1",
       onAfterClose: (result) => {
         if (onDidDismiss !== null) onDidDismiss(result);
       },
@@ -83,7 +83,7 @@ class Alerts {
       timer: 2000,
       showConfirmButton: false,
       buttonsStyling: false,
-      confirmButtonClass: "btn btn-primary",
+      confirmButtonClass: "btn btn-primary mx-1",
     });
   };
 
@@ -97,7 +97,7 @@ class Alerts {
       toast: true,
       showConfirmButton: false,
       buttonsStyling: false,
-      confirmButtonClass: "btn btn-primary",
+      confirmButtonClass: "btn btn-primary mx-1",
     });
   };
 
@@ -112,10 +112,10 @@ class Alerts {
         showCancelButton: !isStrict,
         allowOutsideClick: !isStrict,
         buttonsStyling: false,
-        confirmButtonClass: "btn btn-primary",
-        cancelButtonClass: "btn btn-secondary",
-        confirmButtonText: 'reintentar <i className="fa fa-redo"></i>',
-        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
+        confirmButtonClass: "btn btn-primary mx-1",
+        cancelButtonClass: "btn btn-secondary mx-1",
+        confirmButtonText: 'reintentar <i class="fa fa-redo"></i>',
+        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
       })
       .then((result) => {
         if (result.value) {
@@ -135,10 +135,10 @@ class Alerts {
         showCancelButton: !isStrict,
         allowOutsideClick: !isStrict,
         buttonsStyling: false,
-        confirmButtonClass: "btn btn-primary",
-        cancelButtonClass: "btn btn-secondary",
-        confirmButtonText: 'reintentar <i className="fa fa-redo"></i>',
-        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
+        confirmButtonClass: "btn btn-primary mx-1",
+        cancelButtonClass: "btn btn-secondary mx-1",
+        confirmButtonText: 'reintentar <i class="fa fa-redo"></i>',
+        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
       })
       .then((result) => {
         if (result.value) {
@@ -156,13 +156,13 @@ class Alerts {
         allowOutsideClick: false,
         // title: message,
         html:
-          '<div className="pt-1 mx-auto lds-dual-ring"></div><h2 className="text-default">' +
+          '<div class="pt-1 mx-auto lds-dual-ring"></div><h2 class="text-default">' +
           message +
           "</h2>",
         showConfirmButton: false,
-        // onBeforeOpen: () => {
-        //     swal.showLoading()
-        // }
+        onBeforeOpen: () => {
+          swal.showLoading();
+        },
       });
     } else {
       swal.close();
@@ -181,15 +181,14 @@ class Alerts {
         allowOutsideClick: false,
         // title: message,
         html:
-          '<h2 className="display-4 text-default mb-0">' +
+          '<h2 class="text-default mb-2">' +
           message +
           "</h2>" +
-          '<div className="">' +
-          "<br></br>" +
-          '<span id="swal-progress-label" className="mr-2">0%</span>' +
+          '<div class="">' +
+          '<span id="swal-progress-label" class="mr-2">0%</span>' +
           "<div>" +
-          '<div className="progress" style="width: 100%;height: 10px">' +
-          '<div id="swal-progress-bar" className="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>' +
+          '<div class="progress" style="width: 100%;height: 10px">' +
+          '<div id="swal-progress-bar" class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>' +
           "</div>" +
           "</div>" +
           "</div>",
@@ -197,7 +196,7 @@ class Alerts {
         showCancelButton: true,
         buttonsStyling: false,
 
-        cancelButtonText: 'cancelar  <i className="fa fa-times"></i>',
+        cancelButtonText: 'cancelar  <i class="fa fa-times"></i>',
         cancelButtonClass: "btn btn-secondary",
         // onBeforeOpen: () => {
         //     swal.showLoading()

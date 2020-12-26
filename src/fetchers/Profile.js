@@ -88,45 +88,46 @@ class Controller_Profile extends Controller {
 
   handle_pic_selected(file, _callback) {
     cropToProfilePic(file, (blob) => {
-      this.unsafeUploadPic(blob, _callback);
+      this.alerts.showUploding(true, "subiendo...");
+
+      var formData = new FormData();
+      formData.append("blob", blob);
+
+      axios({
+        method: "post",
+        url: apiUrl + "/user_pic",
+        headers: {
+          "api-token": DB.get("api-token"),
+        },
+        data: formData,
+        onUploadProgress: (progressEvent) => {
+          let percentage = progressEvent.loaded / (progressEvent.total / 100);
+          this.alerts.setUplodingPercentage(percentage);
+        },
+      })
+        .then((response) => {
+          this.alerts.showUploding(false);
+          this.alerts.showSuccess("Foto de perfil actualizada");
+
+          const newData = {
+            ...DB.get("userData"),
+            blob_pic_url: URL.createObjectURL(blob),
+            ...response.data,
+          };
+
+          console.log("->>>", newData);
+          DB.set("userData", newData);
+          _callback(newData);
+        })
+        .catch((error) => {
+          this.errorsHandler(error, () =>
+            this.handle_pic_selected(file, _callback)
+          );
+        });
     });
   }
 
-  unsafeUploadPic = (blob, _callback) => {
-    this.alerts.showUploding(true, "subiendo...");
-
-    var formData = new FormData();
-    formData.append("blob", blob);
-
-    axios({
-      method: "post",
-      url: apiUrl + "/user_pic",
-      headers: {
-        "api-token": DB.get("api-token"),
-      },
-      data: formData,
-      onUploadProgress: (progressEvent) => {
-        let percentage = progressEvent.loaded / (progressEvent.total / 100);
-        this.alerts.setUplodingPercentage(percentage);
-      },
-    })
-      .then((response) => {
-        this.alerts.showUploding(false);
-        this.alerts.showSuccess("Foto de perfil actualizada");
-
-        const newData = {
-          ...DB.get("userData"),
-          blob_pic_url: URL.createObjectURL(blob),
-          pic_url: response.data,
-        };
-
-        DB.set("userData", newData);
-        _callback(newData);
-      })
-      .catch((error) => {
-        this.errorsHandler(error, () => this.unsafeUploadPic(blob));
-      });
-  };
+  unsafeUploadPic = (blob, _callback) => {};
 
   deletePic = () => {
     swal
