@@ -5,6 +5,7 @@ import NavbarCourse from "components/theme/NavbarCourse";
 import CourseMap from "./course/CourseMap";
 import { useRouter } from "next/router";
 import Navbar from "./theme/Navbar";
+import PerfectScrollWraper from "./common/PerfectScrollWraper";
 
 export default function Layout({
   // title,
@@ -35,42 +36,48 @@ export default function Layout({
               lg={items && pathname !== "/courses" ? "9" : "12"}
               className="p-0 m-0 border-right"
             >
-              <Container fluid className="p-0 m-0">
-                <NavbarCourse />
-                {children}
-                <Footer litle />
-              </Container>
+              <PerfectScrollWraper>
+                <Container fluid className="p-0 m-0">
+                  <NavbarCourse />
+                  {children}
+                  <Footer litle />
+                </Container>
+              </PerfectScrollWraper>
             </Col>
             {items ? (
               <Col
                 lg="3"
                 className="p-0 d-none d-lg-block h-100 bg-white"
                 style={{
-                  overflowY: "scroll",
+                  // overflowY: "scroll",
                   top: 0,
                   right: 0,
-                  position: "fixed",
+                  // position: "fixed",
                   marginLeft: "auto",
                 }}
               >
-                <CourseMap
-                  course={course}
-                  items={items}
-                  currentItem={currentItem}
-                />
+                <PerfectScrollWraper>
+                  <CourseMap
+                    course={course}
+                    items={items}
+                    currentItem={currentItem}
+                  />
+                </PerfectScrollWraper>
               </Col>
             ) : null}
           </Row>
         </Container>
       ) : (
-        <Container fluid className="p-0">
-          <Navbar
-            isDark={isNavbarDark(pathname)}
-            sticky={pathname === "/login" || pathname === "/register"}
-          />
-          {children}
-          {pathname !== "/login" && pathname !== "/register" && <Footer />}
-        </Container>
+        <PerfectScrollWraper>
+          <Container fluid className="p-0">
+            <Navbar
+              isDark={isNavbarDark(pathname)}
+              sticky={pathname === "/login" || pathname === "/register"}
+            />
+            {children}
+            {pathname !== "/login" && pathname !== "/register" && <Footer />}
+          </Container>
+        </PerfectScrollWraper>
       )}
     </>
   );

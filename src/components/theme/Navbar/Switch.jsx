@@ -10,7 +10,7 @@ export default class Switch extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (DB.get("isDark")) {
       document.getElementsByTagName("body")[0].classList.add("dark-mode");
     }

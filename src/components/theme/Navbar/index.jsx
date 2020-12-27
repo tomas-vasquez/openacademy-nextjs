@@ -18,7 +18,7 @@ export default class Index extends Component {
   }
 
   scroollHandler = (e) => {
-    const scroollTop = window.scrollY;
+    const scroollTop = document.getElementById("scroll-container").scrollTop;
     if (scroollTop > 60) {
       if (!this.state.sticky) this.setState({ sticky: true });
     } else {
@@ -27,7 +27,9 @@ export default class Index extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener("scroll", this.scroollHandler);
+    document
+      .getElementById("scroll-container")
+      .addEventListener("ps-scroll-y", this.scroollHandler);
     this.scroollHandler();
   }
 
@@ -36,7 +38,9 @@ export default class Index extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.scroollHandler);
+    document
+      .getElementById("scroll-container")
+      .removeEventListener("ps-scroll-y", this.scroollHandler);
   }
 
   render() {
@@ -49,6 +53,7 @@ export default class Index extends Component {
         className={
           this.state.sticky ? "bg-light sticky nav-sticky" : "sticky py-1"
         }
+        style={{ zIndex: 1001 }}
       >
         <div className="container">
           <div className="d-flex float-left" style={{ height: 60 }}>
