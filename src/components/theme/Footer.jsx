@@ -1,7 +1,7 @@
 import Icons from "components/common/Icons";
 import Link from "next/link";
 import React from "react";
-import { socialIcons, footer } from "../../../site.config";
+import { socialIcons, footer, siteMetadata } from "../../../site.config";
 
 export default function Footer({ litle }) {
   return (
@@ -25,13 +25,30 @@ export default function Footer({ litle }) {
           <div className="container">
             <div className="row">
               <div className="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                <a href="#" className="logo-footer">
-                  <img
-                    src={require("../../assets/images/logo-light.png")}
-                    height="24"
-                    alt=""
-                  />
-                </a>
+                <div className="logo">
+                  <Link href="/">
+                    <h3
+                      className="m-0"
+                      style={{
+                        color: "#fff",
+                      }}
+                    >
+                      <i
+                        style={{
+                          boderRadius: "50%",
+                          color: "#fff",
+                        }}
+                      >
+                        <Icons
+                          icon="code"
+                          className="mr-2 bg-primary p-1 rounded "
+                        />
+                      </i>
+                      {siteMetadata.title}
+                    </h3>
+                  </Link>
+                </div>
+
                 <p className="mt-4">{footer.aboutText}</p>
                 <ul className="list-unstyled  mb-0 mt-4">
                   {socialIcons.map((icon, index) => (

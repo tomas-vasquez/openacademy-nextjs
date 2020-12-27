@@ -11,7 +11,7 @@ export default function CardCourse({ course, author }) {
       className="border-1 course mb-5 shadow-md"
       style={{ cursor: "pointer" }}
     >
-      <Link href={"/" + course.course_short_link}>
+      <Link href={"/" + course.course_short_link || ""}>
         <CardBody className="p-0 ">
           <div>
             <figure className=" m-0">

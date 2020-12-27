@@ -1,4 +1,4 @@
-import DB from "helpers/db";
+import Icons from "components/common/Icons";
 import Link from "next/link";
 import React, { Component } from "react";
 import { Collapse } from "reactstrap";
@@ -6,18 +6,19 @@ import AuthMenu from "./AuthMenu";
 import Navigation from "./Navigation";
 import Search from "./Search";
 import Switch from "./Switch";
+import { siteMetadata } from "../../../../site.config";
 
 export default class Index extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      sticky: false,
+      sticky: props.sticky || false,
       open: false,
     };
   }
 
   scroollHandler = (e) => {
-    const scroollTop = e.target.scrollingElement.scrollTop;
+    const scroollTop = window.scrollY;
     if (scroollTop > 60) {
       if (!this.state.sticky) this.setState({ sticky: true });
     } else {
@@ -27,6 +28,11 @@ export default class Index extends Component {
 
   componentDidMount() {
     window.addEventListener("scroll", this.scroollHandler);
+    this.scroollHandler();
+  }
+
+  componentDidUpdate() {
+    this.scroollHandler();
   }
 
   componentWillUnmount() {
@@ -45,30 +51,30 @@ export default class Index extends Component {
         }
       >
         <div className="container">
-          <div className="logo d-lg-none">
-            <Link href="/">
-              <img
-                src={require("../../../assets/images/logo-dark.png")}
-                height="24"
-                alt=""
-              />
-            </Link>
-          </div>
-
-          <div className="logo d-none d-lg-block">
-            <Link href="/">
-              <img
-                src={
-                  this.state.sticky
-                    ? require("../../../assets/images/logo-dark.png")
-                    : isDark
-                    ? require("../../../assets/images/logo-dark.png")
-                    : require("../../../assets/images/logo-light.png")
-                }
-                height="24"
-                alt=""
-              />
-            </Link>
+          <div className="d-flex float-left" style={{ height: 60 }}>
+            <div className="logo my-auto">
+              <Link href="/">
+                <h3
+                  className={
+                    this.state.sticky
+                      ? "m-0 text-dark"
+                      : isDark
+                      ? "m-0 text-dark"
+                      : "m-0 white"
+                  }
+                >
+                  <Icons
+                    icon="code"
+                    className="mr-2 bg-primary p-1 rounded white"
+                    color="#fff"
+                  />
+                  {/* {JSON.stringify(this.state.sticky) +
+                    " - " +
+                    JSON.stringify(isDark)} */}
+                  {siteMetadata.title}
+                </h3>
+              </Link>
+            </div>
           </div>
 
           <div className="menu-extras">

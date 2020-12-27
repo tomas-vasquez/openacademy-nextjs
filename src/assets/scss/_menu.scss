@@ -10,9 +10,10 @@
   background-color: transparent;
   border: 0;
   transition: all 0.5s ease;
+  color: $light;
+
   .logo {
     float: left;
-    color: $dark !important;
     .l-dark {
       display: none;
     }
@@ -286,6 +287,7 @@
   padding: 0;
   letter-spacing: 1px;
   line-height: 64px;
+  color: $light;
 }
 @media (min-width: 992px) {
   #topnav {
@@ -616,11 +618,6 @@
           transform: rotate(45deg);
           position: absolute;
           right: 20px;
-        }
-      }
-      &.active {
-        a {
-          color: $primary;
         }
       }
     }

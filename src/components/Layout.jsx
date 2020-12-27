@@ -64,7 +64,10 @@ export default function Layout({
         </Container>
       ) : (
         <Container fluid className="p-0">
-          <Navbar isDark={isNavbarDark(pathname)} />
+          <Navbar
+            isDark={isNavbarDark(pathname)}
+            sticky={pathname === "/login" || pathname === "/register"}
+          />
           {children}
           {pathname !== "/login" && pathname !== "/register" && <Footer />}
         </Container>

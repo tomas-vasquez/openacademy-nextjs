@@ -29,6 +29,7 @@ import {
   faCertificate,
   faMedal,
   faUserCircle,
+  faCode,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -47,6 +48,9 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "code":
+      return faCode;
+
     case "user-circle":
       return faUserCircle;
 

@@ -1,7 +1,7 @@
 const apiUrl = process.env.API_URL || "http://localhost:3001";
 
 const siteMetadata = {
-  title: "Your Academy",
+  title: "tu-academia",
   author: {
     name: "Tomas Vasquez",
     summary: "who works building clean user interfaces with React.",

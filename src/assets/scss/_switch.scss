@@ -15,7 +15,7 @@
 }
 .label {
   // background-color: #111;
-  background-color: #88c8f7;
+  background-color: #56b3f8;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -30,7 +30,7 @@
 }
 
 .label .ball {
-  border: solid 1px #88c8f7;
+  border: solid 1px #56b3f8;
   background-color: white;
   border-radius: 50%;
   position: absolute;
@@ -65,7 +65,6 @@
   display: none;
 }
 .fa-sun {
-  padding-top: 1px;
   color: #fcca05;
 }
 

@@ -5,7 +5,9 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang={siteMetadata.language}>
-        <Head />
+        <Head>
+          <link rel="shortcut icon" href="/static/favicon.png" />
+        </Head>
         <body id="body">
           <Main />
           <NextScript />

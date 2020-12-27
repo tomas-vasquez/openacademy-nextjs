@@ -12,13 +12,13 @@ export default function BestCourses({ courses, authors }) {
     <>
       <div className="container mt-5 mb-0">
         <div className="section-title text-center text-md-left mb-0">
-          <h4 className="mb-2">
+          <h5 className="mb-1">
             <Icons icon="fire" className="text-danger mr-2" />
             {allCourses.bestCourses.title}
-          </h4>
-          <p className="text-muted mb-0 para-desc">
+          </h5>
+          {/* <p className="text-muted mb-0 para-desc">
             {allCourses.bestCourses.subTitle}
-          </p>
+          </p> */}
         </div>
       </div>
       <div className="container mb-3 px-0">
