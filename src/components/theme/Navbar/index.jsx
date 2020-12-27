@@ -59,7 +59,7 @@ export default class Index extends Component {
           <div className="d-flex float-left" style={{ height: 60 }}>
             <div className="logo my-auto">
               <Link href="/">
-                <h3
+                <h4
                   className={
                     this.state.sticky
                       ? "m-0 text-dark"
@@ -70,14 +70,14 @@ export default class Index extends Component {
                 >
                   <Icons
                     icon="code"
-                    className="mr-2 bg-primary p-1 rounded white"
+                    className="mr-2 bg-primary p-1 rounded white fa-1x"
                     color="#fff"
                   />
                   {/* {JSON.stringify(this.state.sticky) +
                     " - " +
                     JSON.stringify(isDark)} */}
                   {siteMetadata.title}
-                </h3>
+                </h4>
               </Link>
             </div>
           </div>

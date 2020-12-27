@@ -620,3 +620,7 @@ button:not(:disabled) {
 .text-primary {
   color: #ffffff !important;
 }
+
+.on-hover:hover {
+  background-color: $light !important;
+}

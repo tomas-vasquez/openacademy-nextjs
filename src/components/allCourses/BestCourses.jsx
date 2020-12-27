@@ -11,8 +11,8 @@ import CustomLinkWrapper from "components/common/CustomLinkWrapper";
 export default function BestCourses({ courses, authors }) {
   return (
     <>
-      <div className="container mt-5 mb-0">
-        <div className="section-title text-center text-md-left mb-0">
+      <div className="container-fluid mt-5 mb-0 mx-md-1">
+        <div className="section-title text-left mb-0">
           <h5 className="mb-1">
             <Icons icon="fire" className="text-danger mr-2" />
             {allCourses.bestCourses.title}
@@ -21,22 +21,20 @@ export default function BestCourses({ courses, authors }) {
             {allCourses.bestCourses.subTitle}
           </p> */}
         </div>
-      </div>
-      <div className="container mb-3 px-0">
+
         <Carousel
           infinite={true}
           autoPlay={true}
           autoPlaySpeed={3000}
-          showDots={true}
-          dotListClass="pt-2"
+          showDots={false}
           responsive={{
             desktop: {
               breakpoint: { max: 4000, min: 992 },
-              items: 4,
+              items: 5,
             },
             tablet: {
               breakpoint: { max: 991, min: 576 },
-              items: 2,
+              items: 3,
             },
             mobile: {
               breakpoint: { max: 575, min: 0 },
@@ -45,10 +43,10 @@ export default function BestCourses({ courses, authors }) {
           }}
         >
           {courses.map((course, index) => (
-            <div className="mx-3 my-4 rounded shadow-md" key={`ca-${index}`}>
+            <div className="mx-2 my-4 shadow-md" key={`ca-${index}`}>
               <Link href={`/${course.course_short_link || ""}`}>
                 <CustomLinkWrapper>
-                  <CardImg src={course.course_pic_url}></CardImg>
+                  <CardImg className="rounded-md" src={course.course_pic_url} />
                 </CustomLinkWrapper>
               </Link>
             </div>

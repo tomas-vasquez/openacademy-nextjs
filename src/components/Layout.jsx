@@ -69,14 +69,14 @@ export default function Layout({
         </Container>
       ) : (
         <PerfectScrollWraper>
-          <Container fluid className="p-0">
+          <>
             <Navbar
               isDark={isNavbarDark(pathname)}
               sticky={pathname === "/login" || pathname === "/register"}
             />
             {children}
             {pathname !== "/login" && pathname !== "/register" && <Footer />}
-          </Container>
+          </>
         </PerfectScrollWraper>
       )}
     </>

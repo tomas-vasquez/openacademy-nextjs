@@ -9,7 +9,7 @@ export default function CardCourse({ course, author }) {
 
   return (
     <Card
-      className="border-1 course mb-5 shadow-md"
+      className="border-1 course shadow-md rounded-bottom mb-0"
       style={{ cursor: "pointer" }}
     >
       <Link href={`/${course.course_short_link}`}>
@@ -18,7 +18,10 @@ export default function CardCourse({ course, author }) {
             <div>
               <figure className=" m-0">
                 {course.course_pic_url && (
-                  <CardImg src={course.course_pic_url}></CardImg>
+                  <CardImg
+                    className="rounded-top"
+                    src={course.course_pic_url}
+                  />
                 )}
               </figure>
               <div className="d-flex">

@@ -513,6 +513,9 @@
   #topnav {
     background-color: $white;
     box-shadow: $shadow;
+    .logo {
+      color: $dark;
+    }
     s .logo {
       .l-dark {
         display: inline-block !important;
