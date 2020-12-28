@@ -21,15 +21,15 @@ import {
   faSearch,
   faArrowLeft,
   faFire,
-  faBook,
   faSun,
   faMoon,
   faPlayCircle,
-  faBookReader,
-  faCertificate,
   faMedal,
   faUserCircle,
   faCode,
+  faExclamationTriangle,
+  faPlus,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -48,6 +48,15 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "trash":
+      return faTrash;
+
+    case "plus":
+      return faPlus;
+
+    case "alert":
+      return faExclamationTriangle;
+
     case "code":
       return faCode;
 

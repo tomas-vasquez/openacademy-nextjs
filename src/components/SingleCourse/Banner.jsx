@@ -5,8 +5,9 @@ import _ from "lodash";
 import Link from "next/link";
 import { singleCourse } from "../../../site.config";
 import { getShortLink } from "utils/courses";
+import PaymentButton from "./Payment/PaymentButton";
 
-export default function Banner({ author, course, currentItem }) {
+export default function Banner({ author, course }) {
   const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
 
   return (
@@ -63,26 +64,7 @@ export default function Banner({ author, course, currentItem }) {
                 </div>
               </div>
             </Link>
-            <div className="mt-4">
-              <Link
-                href={
-                  "/" +
-                  course.course_short_link +
-                  "/" +
-                  getShortLink(currentItem.item_title)
-                }
-              >
-                <p
-                  className="btn btn-primary w-100 heading"
-                  style={{
-                    fontSize: 25,
-                  }}
-                >
-                  {singleCourse.buttonStartText}
-                  <Icons icon="arrowRight" className="ml-2 arrow1" />
-                </p>
-              </Link>
-            </div>
+            <PaymentButton course={course} author={author} />
           </div>
         </div>
       </div>

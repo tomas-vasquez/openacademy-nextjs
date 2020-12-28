@@ -43,10 +43,13 @@ export default function BestCourses({ courses, authors }) {
           }}
         >
           {courses.map((course, index) => (
-            <div className="mx-2 my-4 shadow-md" key={`ca-${index}`}>
+            <div className="mx-2 my-4" key={`ca-${index}`}>
               <Link href={`/${course.course_short_link || ""}`}>
                 <CustomLinkWrapper>
-                  <CardImg className="rounded-md" src={course.course_pic_url} />
+                  <CardImg
+                    className="rounded-md shadow-md"
+                    src={course.course_pic_url}
+                  />
                 </CustomLinkWrapper>
               </Link>
             </div>

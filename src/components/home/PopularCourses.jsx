@@ -10,7 +10,7 @@ export default class extends Component {
     const { courses, authors } = this.props;
 
     return (
-      <div className="container mt-5">
+      <div className="mt-5 p-0 mx-4">
         <div className="row justify-content-center">
           <div className="col-12">
             <div className="section-title text-center mb-4">
@@ -24,7 +24,7 @@ export default class extends Component {
 
         <div className="card-columns mt-4">
           {courses.map((course, index) => (
-            <div key={index} className="">
+            <div key={index} className="mb-4">
               <SingleCourse
                 course={course}
                 author={authors.find((author) => {

@@ -9,7 +9,7 @@ export default function CardCourse({ course, author }) {
 
   return (
     <Card
-      className="border-1 course shadow-md rounded-bottom mb-0"
+      className="shadow-md rounded-bottom rounded-top mb-0"
       style={{ cursor: "pointer" }}
     >
       <Link href={`/${course.course_short_link}`}>

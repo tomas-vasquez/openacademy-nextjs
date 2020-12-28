@@ -98,8 +98,6 @@ const singleCourse = {
   },
 };
 
-const home = {};
-
 const popularCourses = {
   title: "Cursos mas populares",
   subTitle: "bla bla bla bla bla",
@@ -145,4 +143,5 @@ module.exports = {
   popularCourses,
   footer,
   search,
+  paymentMethods: require("./config/paymentMethods"),
 };

@@ -1,27 +1,11 @@
 import Alerts from "helpers/Alerts";
 import DB from "helpers/db";
+import Router from "next/router";
 
 class Controller {
   constructor() {
     this.alerts = new Alerts();
   }
-
-  /*!
-  =========================================================
-  * 
-  =========================================================
-  */
-
-  clearData = () => {
-    DB.clear();
-    document.location.reload();
-  };
-
-  /*!
-  =========================================================
-  * 
-  =========================================================
-  */
 
   errorsHandler = (error, retryHandler, isStrict) => {
     console.error("%c Error > %c", "background:red; color:white", "", error);
@@ -81,7 +65,9 @@ class Controller {
             "Ups... Su sesión caducó",
             true,
             () => {
-              this.clearData();
+              DB.clear("userData");
+              DB.set("targetPage", document.location.href);
+              Router.push("/login");
             }
           );
         } else {

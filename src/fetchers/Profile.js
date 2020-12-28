@@ -1,16 +1,6 @@
-// import swal from "sweetalert2";
 import Alerts from "helpers/Alerts";
-import Db from "helpers/db";
-
-// import store from "store";/
-// import { setUserData } from "store/userData_store/actions";
-
 import axios from "axios";
-// import { userPicUrl } from "config";
-// import Controller_admin from ".";
-
 import { cropToProfilePic } from "helpers/image";
-
 import { apiUrl } from "../../site.config";
 import Controller from "fetchers";
 import DB from "helpers/db";
