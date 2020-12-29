@@ -1,8 +1,9 @@
-export const setUserData = (data) => ({
-  type: "SET_USERDATA",
+export const addReport = (data) => ({
+  type: "ADD_REPORT",
   data,
 });
 
-export const deleteUserData = (data) => ({
-  type: "DELETE_USERDATA",
+export const deleteReport = (data) => ({
+  type: "DELETE_REPORT",
+  data,
 });

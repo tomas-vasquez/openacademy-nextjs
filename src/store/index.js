@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 
 import userDataReducer from "store/userData_store/reducer";
 import appReducer from "store/app_store/reducer";
+import paymentReports from "store/payment_report_store/reducer";
 
 import thunk from "redux-thunk";
 
@@ -9,6 +10,7 @@ const store = createStore(
   combineReducers({
     app: appReducer,
     userData: userDataReducer,
+    paymentReports: paymentReports,
   }),
   applyMiddleware(thunk)
 );

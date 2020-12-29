@@ -97,7 +97,7 @@ class Controller_Users extends Controller {
         this.alerts.showSuccess("Espere...", "Perfecto!!!");
         DB.set("api-token", response.data.api_token);
         store.dispatch(setUserData(response.data.user_data));
-        store.log();
+        // store.log();
         DB.set("userData", response.data.user_data);
         _callback();
       })

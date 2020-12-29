@@ -31,6 +31,7 @@ import {
   faPlus,
   faTrash,
   faDoorClosed,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -49,6 +50,9 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "eye":
+      return faEye;
+
     case "logout":
       return faSignOutAlt;
 

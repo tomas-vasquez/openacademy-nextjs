@@ -23,7 +23,7 @@ export default function PaymentButton({ course, author }) {
         </Button>
       </div>
       <ModalDialog
-        isOpen={!openModal}
+        isOpen={openModal}
         toggle={toggle}
         course={course}
         author={author}

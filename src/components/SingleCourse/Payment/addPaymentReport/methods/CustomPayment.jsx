@@ -13,7 +13,7 @@ import {
   CardImg,
 } from "reactstrap";
 
-import PaymentReports from "../../../../fetchers/paymentReports";
+import PaymentReports from "../../../../../fetchers/paymentReports";
 
 export default function CustomPayment({ course, author, parentToggle }) {
   const [openModal, setOpenModal] = useState(false);

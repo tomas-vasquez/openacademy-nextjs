@@ -5,11 +5,21 @@ import _ from "lodash";
 import Link from "next/link";
 import { singleCourse } from "../../../site.config";
 import { getShortLink } from "utils/courses";
-import PaymentButton from "./Payment/PaymentButton";
+import PaymentButton from "./Payment/addPaymentReport/PaymentButton";
 
-export default function Banner({ author, course }) {
+import { connect } from "react-redux";
+import PreviewButton from "./Payment/previewPaymentReport/PreviewButton";
+
+function Banner({ author, course, paymentReports }) {
   const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
 
+  const currentReport = paymentReports
+    .filter((report) => {
+      return report.report_target.tipe === "course";
+    })
+    .find((report, index) => {
+      return course._id === report.report_target._id;
+    });
   return (
     <section
       className="px-0 py-5 m-0"
@@ -64,10 +74,24 @@ export default function Banner({ author, course }) {
                 </div>
               </div>
             </Link>
-            <PaymentButton course={course} author={author} />
+            {!currentReport ? (
+              <PaymentButton course={course} author={author} />
+            ) : (
+              <PreviewButton
+                course={course}
+                author={author}
+                currentReport={currentReport}
+              />
+            )}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+const mapStateToProps = (state) => ({
+  paymentReports: state.paymentReports,
+});
+
+export default connect(mapStateToProps)(Banner);

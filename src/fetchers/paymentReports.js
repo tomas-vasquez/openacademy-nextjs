@@ -1,6 +1,8 @@
 import Axios from "axios";
 import Controller from "fetchers";
 import DB from "helpers/db";
+import store from "store";
+import { addReport, deleteReport } from "store/payment_report_store/actions";
 import { apiUrl } from "../../site.config";
 
 class PaymentReports extends Controller {
@@ -30,6 +32,8 @@ class PaymentReports extends Controller {
     })
       .then((response) => {
         console.log(response.data);
+        store.dispatch(addReport(response.data));
+        store.log();
         this.alerts.showSuccess("Espere...", "Perfecto!!!");
         _callback();
       })
@@ -37,6 +41,39 @@ class PaymentReports extends Controller {
         console.log(error);
         this.errorsHandler(error, () => {
           this.uploadReport(course, pics, description, _callback);
+        });
+      });
+  };
+
+  /* =========================================================
+   *
+   * ========================================================= */
+
+  deleteReport = (paymentReport) => {
+    this.UNSAFE_deleteReport(paymentReport);
+  };
+
+  UNSAFE_deleteReport = (paymentReportId) => {
+    this.alerts.showLoading();
+
+    Axios({
+      method: "delete",
+      url: `${apiUrl}/payment/report/${paymentReportId}`,
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": DB.get("api-token"),
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+        store.dispatch(deleteReport(paymentReportId));
+        store.log();
+        this.alerts.showSuccess("Espere...", "Perfecto!!!");
+      })
+      .catch((error) => {
+        console.log(error);
+        this.errorsHandler(error, () => {
+          this.UNSAFE_deleteReport(paymentReportId);
         });
       });
   };
