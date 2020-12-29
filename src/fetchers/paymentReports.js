@@ -36,7 +36,7 @@ class PaymentReports extends Controller {
       .catch((error) => {
         console.log(error);
         this.errorsHandler(error, () => {
-          this.uploadReport(pics, description);
+          this.uploadReport(course, pics, description, _callback);
         });
       });
   };

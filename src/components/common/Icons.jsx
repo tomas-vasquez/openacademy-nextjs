@@ -30,6 +30,7 @@ import {
   faExclamationTriangle,
   faPlus,
   faTrash,
+  faDoorClosed,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -48,6 +49,9 @@ import {
 
 const getIcon = (icon) => {
   switch (icon) {
+    case "logout":
+      return faSignOutAlt;
+
     case "trash":
       return faTrash;
 

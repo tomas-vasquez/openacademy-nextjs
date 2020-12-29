@@ -1,11 +1,18 @@
 import Alerts from "helpers/Alerts";
 import DB from "helpers/db";
 import Router from "next/router";
+import store from "store";
+import { deleteUserData } from "store/userData_store/actions";
 
 class Controller {
   constructor() {
     this.alerts = new Alerts();
   }
+
+  clearData = () => {
+    DB.clear("userData");
+    store.dispatch(deleteUserData());
+  };
 
   errorsHandler = (error, retryHandler, isStrict) => {
     console.error("%c Error > %c", "background:red; color:white", "", error);

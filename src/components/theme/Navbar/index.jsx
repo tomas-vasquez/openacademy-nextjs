@@ -7,8 +7,9 @@ import Navigation from "./Navigation";
 import Search from "./Search";
 import Switch from "./Switch";
 import { siteMetadata } from "../../../../site.config";
+import { connect } from "react-redux";
 
-export default class Index extends Component {
+class Navbar extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -102,7 +103,7 @@ export default class Index extends Component {
           <div className="d-flex float-right" style={{ height: 60 }}>
             <Switch />
             <Search />
-            <AuthMenu isDark={isDark} />
+            <AuthMenu userData={this.props.userData} isDark={isDark} />
           </div>
 
           <Collapse isOpen={this.state.open} id="navigation">
@@ -113,3 +114,9 @@ export default class Index extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  userData: state.userData,
+});
+
+export default connect(mapStateToProps)(Navbar);

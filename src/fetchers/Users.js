@@ -5,6 +5,8 @@ import { apiLinks, apiUrl } from "../../site.config";
 import axios from "axios";
 
 import DB from "helpers/db";
+import store from "store";
+import { setUserData } from "store/userData_store/actions";
 
 class Controller_Users extends Controller {
   constructor() {
@@ -94,6 +96,8 @@ class Controller_Users extends Controller {
       .then((response) => {
         this.alerts.showSuccess("Espere...", "Perfecto!!!");
         DB.set("api-token", response.data.api_token);
+        store.dispatch(setUserData(response.data.user_data));
+        store.log();
         DB.set("userData", response.data.user_data);
         _callback();
       })
@@ -125,7 +129,7 @@ class Controller_Users extends Controller {
       },
     })
       .then((response) => {
-        this.alerts.showSuccess("", "Sesión cerrada ");
+        this.alerts.showSuccess("", "Sesión cerrada");
         this.clearData();
       })
       .catch((error) => {

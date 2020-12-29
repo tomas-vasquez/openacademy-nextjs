@@ -30,6 +30,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
     "node-sass": "^4.14.1",
+    "nprogress": "^0.2.0",
     "perfect-scrollbar": "^1.5.0",
     "postcss-preset-env": "^6.7.0",
     "react": "16.13.1",
@@ -39,16 +40,20 @@
     "react-markdown": "^4.3.1",
     "react-multi-carousel": "^2.6.1",
     "react-particles-js": "^3.3.0",
+    "react-redux": "^7.2.2",
     "react-styled-carousel": "^0.5.1",
     "react-syntax-highlighter": "^13.5.1",
     "react-youtube": "^7.13.0",
     "reactstrap": "^8.4.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "sweetalert2": "^10.0.2",
     "typeface-merriweather": "^0.0.72",
     "typeface-open-sans": "^0.0.75"
   },
   "devDependencies": {
-    "gray-matter": "^4.0.2"
+    "gray-matter": "^4.0.2",
+    "redux-devtools": "^3.7.0"
   },
   "license": "MIT",
   "repository": {
