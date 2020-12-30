@@ -15,10 +15,10 @@ function Banner({ author, course, paymentReports }) {
 
   const currentReport = paymentReports
     .filter((report) => {
-      return report.report_target.tipe === "course";
+      return report.report_subject.tipe === "course";
     })
     .find((report, index) => {
-      return course._id === report.report_target._id;
+      return course._id === report.report_subject._id;
     });
   return (
     <section

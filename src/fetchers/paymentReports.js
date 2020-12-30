@@ -10,16 +10,17 @@ class PaymentReports extends Controller {
     this.alerts.showLoading();
     var formData = new FormData();
 
-    formData.append(
-      "target",
-      JSON.stringify({ tipe: "course", _id: course._id })
-    );
     pics.forEach((pic, index) => {
       if (pic) {
         formData.append(`pic${index}`, pic);
       }
     });
-    formData.append("description", description);
+    formData.append("report_description", description);
+    formData.append("report_addressee_id", course.course_author_id);
+    formData.append(
+      "report_subject",
+      JSON.stringify({ tipe: "course", _id: course._id })
+    );
 
     Axios({
       method: "post",
