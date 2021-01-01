@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "./theme/Footer";
 import { Container, Col, Row } from "reactstrap";
 import NavbarCourse from "components/theme/NavbarCourse";
@@ -7,25 +7,45 @@ import { useRouter } from "next/router";
 import Navbar from "./theme/Navbar";
 import PerfectScrollWraper from "./common/PerfectScrollWraper";
 
-export default function Layout({
-  // title,
+import { connect } from "react-redux";
+import PaymentReports from "../fetchers/paymentReports";
+import { setUserData } from "store/userData_store/actions";
+import DB from "helpers/db";
+
+function Layout({
   children,
   items,
   currentItem,
   course,
+  userData,
+  paymentReports,
+  setUserData,
 }) {
   const { pathname } = useRouter();
+
+  const _loadPymentReports = () => {
+    new PaymentReports().loadPymentReports(() => {});
+  };
 
   const isNavbarDark = (pathname) => {
     return (
       (pathname !== "/login" &&
         pathname !== "/register" &&
         pathname === "/courses") ||
-      // pathname === "/user" ||
       pathname === "/search" ||
       pathname === "/"
     );
   };
+
+  useEffect(() => {
+    if (userData) {
+      if (!paymentReports) {
+        _loadPymentReports();
+      }
+    } else {
+      setUserData(DB.get("userData"));
+    }
+  });
 
   return (
     <>
@@ -82,3 +102,14 @@ export default function Layout({
     </>
   );
 }
+
+const mapStateToProps = (state) => ({
+  userData: state.userData,
+  paymentReports: state.paymentReports,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setUserData: (userData) => dispatch(setUserData(userData)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

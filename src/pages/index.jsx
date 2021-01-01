@@ -10,8 +10,8 @@ import Invitation from "components/common/Invitation";
 
 export default function Index(props) {
   return (
-    <Layout title="Home">
-      <SEO title="Home" />
+    <Layout title="Inicio">
+      <SEO title="Inicio" />
       <Hero />
       <Partners />
       <section className="mb-5">

@@ -2,9 +2,6 @@ import Icons from "components/common/Icons";
 import { useRouter } from "next/router";
 import React from "react";
 import DB from "../../../helpers/db";
-import { deleteUserData } from "store/userData_store/actions";
-import store from "store";
-import user from "components/userProfile";
 import Controller_Users from "fetchers/Users";
 
 export default function AuthMenu({ userData, isDark }) {
@@ -31,7 +28,7 @@ export default function AuthMenu({ userData, isDark }) {
 
   return (
     <>
-      <div className="mx-2 d-none d-md-block">
+      <div className="mx-2 d-none d-md-flex">
         {!userData ? (
           <>
             <div className="buy-button p-0 m-0">
@@ -59,7 +56,9 @@ export default function AuthMenu({ userData, isDark }) {
           <>
             <ul
               className={
-                isDark ? "navigation-menu" : "navigation-menu nav-light"
+                isDark
+                  ? "navigation-menu my-auto"
+                  : "my-auto navigation-menu nav-light"
               }
             >
               <li className="has-submenu m-0">

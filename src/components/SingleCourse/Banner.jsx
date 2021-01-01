@@ -1,10 +1,7 @@
-import Icons from "components/common/Icons";
 import React from "react";
 import { CardImg } from "reactstrap";
 import _ from "lodash";
 import Link from "next/link";
-import { singleCourse } from "../../../site.config";
-import { getShortLink } from "utils/courses";
 import PaymentButton from "./Payment/addPaymentReport/PaymentButton";
 
 import { connect } from "react-redux";
@@ -13,13 +10,16 @@ import PreviewButton from "./Payment/previewPaymentReport/PreviewButton";
 function Banner({ author, course, paymentReports }) {
   const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
 
-  const currentReport = paymentReports
-    .filter((report) => {
-      return report.report_subject.tipe === "course";
-    })
-    .find((report, index) => {
-      return course._id === report.report_subject._id;
-    });
+  let currentReport = null;
+  if (paymentReports) {
+    currentReport = paymentReports
+      .filter((report) => {
+        return report.report_subject.tipe === "course";
+      })
+      .find((report, index) => {
+        return course._id === report.report_subject._id;
+      });
+  }
   return (
     <section
       className="px-0 py-5 m-0"

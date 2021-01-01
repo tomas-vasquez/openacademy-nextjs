@@ -6,7 +6,7 @@ import { addReport, deleteReport } from "store/payment_report_store/actions";
 import { apiUrl } from "../../site.config";
 
 class PaymentReports extends Controller {
-  uploadReport = (course, pics, description, _callback) => {
+  uploadReport = (course, pics, description, _success) => {
     this.alerts.showLoading();
     var formData = new FormData();
 
@@ -36,12 +36,12 @@ class PaymentReports extends Controller {
         store.dispatch(addReport(response.data));
         store.log();
         this.alerts.showSuccess("Espere...", "Perfecto!!!");
-        _callback();
+        _success();
       })
       .catch((error) => {
         console.log(error);
         this.errorsHandler(error, () => {
-          this.uploadReport(course, pics, description, _callback);
+          this.uploadReport(course, pics, description, _success);
         });
       });
   };
@@ -70,6 +70,36 @@ class PaymentReports extends Controller {
         store.dispatch(deleteReport(paymentReportId));
         store.log();
         this.alerts.showSuccess("Espere...", "Perfecto!!!");
+      })
+      .catch((error) => {
+        console.log(error);
+        this.errorsHandler(error, () => {
+          this.UNSAFE_deleteReport(paymentReportId);
+        });
+      });
+  };
+
+  loadPymentReports = (_success) => {
+    Axios({
+      method: "get",
+      url: `${apiUrl}/payment/report`,
+      headers: {
+        "Content-Type": "application/json",
+        "api-token": DB.get("api-token"),
+      },
+    })
+      .then((response) => {
+        const reports = [...response.data];
+
+        console.log("->", reports);
+        if (reports.length > 0) {
+          reports.forEach((report, index) => {
+            console.log("report", report);
+            store.dispatch(addReport(report));
+          });
+        }
+        store.log();
+        _success();
       })
       .catch((error) => {
         console.log(error);
