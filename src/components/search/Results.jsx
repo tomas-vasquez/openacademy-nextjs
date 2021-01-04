@@ -9,7 +9,7 @@ import { search } from "../../../site.config";
 export default function Results({ results }) {
   const getPicUrl = (item) => {
     let id = "";
-    let src = item.item_video_url;
+    let src = item.item_video_url || "";
 
     if (src.startsWith("https://www.youtube.com/watch")) {
       id = new URL(src).searchParams.get("v");
@@ -24,12 +24,11 @@ export default function Results({ results }) {
 
     if (src.startsWith("https://vimeo.com/")) {
       id = new URL(src).pathname.slice(1);
-      let data = Axios.get(`http://vimeo.com/api/v2/video/${id}.json`).then(
-        (data) => {
-          let src2 = data.data[0].thumbnail_large;
+      Axios.get(`http://vimeo.com/api/v2/video/${id}.json`).then((data) => {
+        let src2 = data.data[0].thumbnail_large;
+        if (document.getElementById(`image-${item._id}`))
           document.getElementById(`image-${item._id}`).src = src2;
-        }
-      );
+      });
 
       return "/nc";
     }

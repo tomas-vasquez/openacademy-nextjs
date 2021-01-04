@@ -21,8 +21,14 @@ export default class user extends Component {
     const urlSearchParams = new URLSearchParams(document.location.search);
     const userName = urlSearchParams.get("name");
 
+    if (this.state.profile)
+      this.setState({
+        profile: null,
+      });
+
     this.profile.getProfile(userName, (response, error) => {
       this.setState({
+        username: userName,
         profile: response
           ? response.user_data
             ? response.user_data
@@ -35,6 +41,13 @@ export default class user extends Component {
 
   componentDidMount() {
     this.loadData();
+  }
+
+  componentDidUpdate() {
+    const urlSearchParams = new URLSearchParams(document.location.search);
+    const userName = urlSearchParams.get("name");
+
+    if (this.state.username !== userName) this.loadData();
   }
 
   render() {

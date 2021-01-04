@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import DB from "../../../helpers/db";
 import Controller_Users from "fetchers/Users";
+import Link from "next/link";
 
 export default function AuthMenu({ userData, isDark }) {
   const router = useRouter();
@@ -74,6 +75,17 @@ export default function AuthMenu({ userData, isDark }) {
                     left: -20,
                   }}
                 >
+                  <li className="has-submenu">
+                    <Link href={`/user?name=${userData.user_name}`}>
+                      <a
+                        href={`/user?name=${userData.user_name}`}
+                        // onClick={(e) => e.preventDefault()}
+                      >
+                        <Icons icon="user" className="mr-2" />
+                        Mi perfil
+                      </a>
+                    </Link>
+                  </li>
                   <li className="has-submenu">
                     <a href="#!" onClick={handleLogout}>
                       <Icons icon="logout" className="mr-2" />

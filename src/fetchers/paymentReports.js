@@ -32,9 +32,7 @@ class PaymentReports extends Controller {
       data: formData,
     })
       .then((response) => {
-        console.log(response.data);
         store.dispatch(addReport(response.data));
-        store.log();
         this.alerts.showSuccess("Espere...", "Perfecto!!!");
         _success();
       })
@@ -54,27 +52,25 @@ class PaymentReports extends Controller {
     this.UNSAFE_deleteReport(paymentReport);
   };
 
-  UNSAFE_deleteReport = (paymentReportId) => {
+  UNSAFE_deleteReport = (paymentReport) => {
     this.alerts.showLoading();
 
     Axios({
       method: "delete",
-      url: `${apiUrl}/payment/report/${paymentReportId}`,
+      url: `${apiUrl}/payment/report/${paymentReport._id}`,
       headers: {
         "Content-Type": "application/json",
         "api-token": DB.get("api-token"),
       },
     })
       .then((response) => {
-        console.log(response.data);
-        store.dispatch(deleteReport(paymentReportId));
-        store.log();
+        store.dispatch(deleteReport(paymentReport));
         this.alerts.showSuccess("Espere...", "Perfecto!!!");
       })
       .catch((error) => {
         console.log(error);
         this.errorsHandler(error, () => {
-          this.UNSAFE_deleteReport(paymentReportId);
+          this.UNSAFE_deleteReport(paymentReport);
         });
       });
   };
@@ -91,20 +87,17 @@ class PaymentReports extends Controller {
       .then((response) => {
         const reports = [...response.data];
 
-        console.log("->", reports);
         if (reports.length > 0) {
-          reports.forEach((report, index) => {
-            console.log("report", report);
+          reports.forEach((report) => {
             store.dispatch(addReport(report));
           });
         }
-        store.log();
         _success();
       })
       .catch((error) => {
         console.log(error);
         this.errorsHandler(error, () => {
-          this.UNSAFE_deleteReport(paymentReportId);
+          this.UNSAFE_deleteReport(paymentReport);
         });
       });
   };

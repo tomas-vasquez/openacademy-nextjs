@@ -29,7 +29,11 @@ export default function CardCourse({ course, author }) {
                   {_.upperFirst(course.course_title)}
                 </span>
                 <div>
-                  <span className="course-price">gratis!</span>
+                  <span className="course-price">
+                    {course.course_price > 0
+                      ? `${course.course_price} $`
+                      : "gratis!"}
+                  </span>
                 </div>
               </div>
               <div className="course-inner-text px-3 pb-3 pt-1">
@@ -37,15 +41,15 @@ export default function CardCourse({ course, author }) {
                   {_.upperFirst(course.course_description)}
                 </p>
                 <div>
-                  <span className="badge badge-xs badge-secondary mr-1">
-                    Design
-                  </span>
-                  <span className="badge badge-xs badge-secondary mr-1">
-                    Design
-                  </span>
-                  <span className="badge badge-xs badge-secondary mr-1">
-                    Design
-                  </span>
+                  {course.course_tags &&
+                    course.course_tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="badge badge-xs badge-secondary mr-1"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                 </div>
               </div>
             </div>

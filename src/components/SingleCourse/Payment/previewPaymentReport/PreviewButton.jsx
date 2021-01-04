@@ -11,7 +11,7 @@ export default function PreviewButton({ course, author, currentReport }) {
 
   const handleDeleteReport = (e) => {
     e.preventDefault();
-    new PaymentReports().deleteReport(currentReport._id);
+    new PaymentReports().deleteReport(currentReport);
   };
 
   return (

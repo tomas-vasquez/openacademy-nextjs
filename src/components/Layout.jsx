@@ -43,7 +43,7 @@ function Layout({
         _loadPymentReports();
       }
     } else {
-      setUserData(DB.get("userData"));
+      if (DB.get("userData")) setUserData(DB.get("userData"));
     }
   });
 

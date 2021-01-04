@@ -1,13 +1,16 @@
 import React from "react";
-import { CardImg } from "reactstrap";
+import { Button, CardImg } from "reactstrap";
 import _ from "lodash";
 import Link from "next/link";
 import PaymentButton from "./Payment/addPaymentReport/PaymentButton";
 
 import { connect } from "react-redux";
 import PreviewButton from "./Payment/previewPaymentReport/PreviewButton";
+import Icons from "components/common/Icons";
+import { getShortLink } from "utils/courses";
+import { singleCourse } from "../../../site.config";
 
-function Banner({ author, course, paymentReports }) {
+function Banner({ author, course, paymentReports, currentItem }) {
   const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
 
   let currentReport = null;
@@ -74,14 +77,37 @@ function Banner({ author, course, paymentReports }) {
                 </div>
               </div>
             </Link>
-            {!currentReport ? (
-              <PaymentButton course={course} author={author} />
+            {course.course_price > 0 ? (
+              !currentReport ? (
+                <PaymentButton course={course} author={author} />
+              ) : (
+                <PreviewButton
+                  course={course}
+                  author={author}
+                  currentReport={currentReport}
+                />
+              )
             ) : (
-              <PreviewButton
-                course={course}
-                author={author}
-                currentReport={currentReport}
-              />
+              <div className="mt-4">
+                <Link
+                  href={
+                    "/" +
+                    course.course_short_link +
+                    "/" +
+                    getShortLink(currentItem.item_title)
+                  }
+                >
+                  <p
+                    className="btn btn-primary w-100 heading"
+                    style={{
+                      fontSize: 25,
+                    }}
+                  >
+                    {singleCourse.buttonStartText}
+                    <Icons icon="arrowRight" className="ml-2 arrow1" />
+                  </p>
+                </Link>
+              </div>
             )}
           </div>
         </div>

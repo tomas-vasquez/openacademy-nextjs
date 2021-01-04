@@ -1,10 +1,20 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import createSocketIoMiddleware from "redux-socket.io";
 
 import userDataReducer from "store/userData_store/reducer";
 import appReducer from "store/app_store/reducer";
 import paymentReports from "store/payment_report_store/reducer";
 
-import thunk from "redux-thunk";
+import logger from "redux-logger";
+import io from "socket.io-client";
+import { apiUrl } from "../../site.config";
+import DB from "helpers/db";
+
+const socket = io(apiUrl, {
+  query: "token=" + DB.get("api-token"),
+});
+
+let socketIoMiddleware = createSocketIoMiddleware(socket, "action/");
 
 const store = createStore(
   combineReducers({
@@ -12,7 +22,7 @@ const store = createStore(
     userData: userDataReducer,
     paymentReports: paymentReports,
   }),
-  applyMiddleware(thunk)
+  applyMiddleware(logger, socketIoMiddleware)
 );
 
 store.log = () => {
