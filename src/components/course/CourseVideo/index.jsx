@@ -25,7 +25,7 @@ export default function index({
 
   return (
     <>
-      <Video src={currentItem.item_video_url} nextLink={nextLink} />
+      <Video src={currentItem.item_video_url || ""} nextLink={nextLink} />
       <ItemDescription
         course={course}
         author={author}

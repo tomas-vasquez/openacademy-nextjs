@@ -6,8 +6,6 @@ import Switch from "./Navbar/Switch";
 import { siteMetadata } from "../../../site.config";
 
 export default function NavbarCourse({ isDark }) {
-  const router = useRouter();
-
   return (
     <div className="bg-black d-flex px-md-3">
       {/* <div className="buy-button ml-2 my-auto">
