@@ -1,12 +1,9 @@
-import Axios from "axios";
-
 import Layout from "components/Layout";
-import { apiLinks } from "../../site.config";
 import Invitation from "components/common/Invitation";
 import Header from "components/search/Header";
 import { Component } from "react";
 import { Col, Container, Row, Spinner } from "reactstrap";
-import { getItems, getShortLink } from "utils/courses";
+import { getAllCourses, getItems, getShortLink } from "utils/courses";
 import Results from "components/search/Results";
 
 export default class Courses extends Component {
@@ -100,41 +97,46 @@ export default class Courses extends Component {
     );
   }
 }
+
 export async function getStaticProps() {
-  const response = await Axios({
-    method: "get",
-    url: apiLinks.getAllCourses,
-  });
-  const { courses } = response.data;
+  const courses = await getAllCourses();
 
   //packing courses
-  const coursesPack = courses.map((course) => ({
-    strings: [
-      course.course_title.toLowerCase(),
-      course.course_description.toLowerCase(),
-      course.course_long_description.toLowerCase(),
-    ],
-    type: "course",
-    link: "/" + course.course_short_link,
-    course,
-  }));
+  const coursesPack = [];
+
+  courses.forEach((course) => {
+    coursesPack.push({
+      strings: [
+        course.course_title.toLowerCase(),
+        course.course_description.toLowerCase(),
+        course.course_long_description
+          ? course.course_long_description.toLowerCase()
+          : null,
+      ],
+      type: "course",
+      link: "/" + course.course_short_link,
+      course,
+    });
+  });
 
   //packing items
-  let itemsPack = [];
+  const itemsPack = [];
 
-  for (let i = 0; i < courses.length; i++) {
-    const course = courses[i];
+  for (const course of courses) {
     const items = await getItems(course);
-    for (let j = 0; j < items.length; j++) {
-      const item = items[j];
+
+    items.forEach((item) => {
       itemsPack.push({
-        strings: [item.item_title.toLowerCase(), item.item_description || null],
+        strings: [
+          item.item_title.toLowerCase(),
+          item.item_description.toLowerCase(),
+        ],
         type: "item",
         link:
           "/" + course.course_short_link + "/" + getShortLink(item.item_title),
         item,
       });
-    }
+    });
   }
 
   return {
