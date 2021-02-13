@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import "moment/min/locales";
-import _ from "lodash";
 import SingleCourse from "components/allCourses/SingleCourse";
 import { popularCourses } from "../../../site.config";
 
@@ -28,7 +26,7 @@ export default class extends Component {
               <SingleCourse
                 course={course}
                 author={authors.find((author) => {
-                  return author._id === course.course_author_id;
+                  return author.id === course.course_author_id;
                 })}
               />
             </div>

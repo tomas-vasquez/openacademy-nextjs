@@ -2,7 +2,7 @@ import Icons from "components/common/Icons";
 import { useRouter } from "next/router";
 import React from "react";
 import DB from "../../../helpers/db";
-import Controller_Users from "fetchers/Users";
+// import Controller_Users from "fetchers/Users";
 import Link from "next/link";
 
 export default function AuthMenu({ userData, isDark }) {
@@ -24,7 +24,7 @@ export default function AuthMenu({ userData, isDark }) {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    new Controller_Users().logout();
+    // new Controller_Users().logout();
   };
 
   return (
@@ -32,7 +32,7 @@ export default function AuthMenu({ userData, isDark }) {
       <div className="mx-2 d-none d-md-flex">
         {!userData ? (
           <>
-            <div className="buy-button p-0 m-0">
+            <div className="buy-button p-0 m-0 mr-2">
               <a
                 className="btn btn-primary my-0 p-2"
                 href="/register"
@@ -42,7 +42,7 @@ export default function AuthMenu({ userData, isDark }) {
                 Registrarme
               </a>
             </div>
-            <div className="buy-button p-0 mr-2 ml-0">
+            <div className="buy-button p-0 ml-0">
               <a
                 className="btn btn-light text-dark my-0 p-2"
                 href="/login"
@@ -86,6 +86,7 @@ export default function AuthMenu({ userData, isDark }) {
                       </a>
                     </Link>
                   </li>
+
                   <li className="has-submenu">
                     <a href="#!" onClick={handleLogout}>
                       <Icons icon="logout" className="mr-2" />

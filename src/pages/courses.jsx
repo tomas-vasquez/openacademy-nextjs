@@ -1,38 +1,31 @@
-import Axios from "axios";
-
 import Layout from "components/Layout";
 import SEO from "components/common/Seo";
-import { apiLinks } from "../../site.config";
 import AllCourses from "components/allCourses/Courses";
 import Invitation from "components/common/Invitation";
 import Header from "components/allCourses/Header";
 import BestCourses from "components/allCourses/BestCourses";
+import { getAllAuthors, getAllCourses } from "utils/courses";
 
-export default function Courses(props) {
+export default function Courses({ courses, authors }) {
   return (
     <Layout title="All Courses">
       <SEO title="All posts" />
       <Header />
-      <BestCourses
-        courses={props.courses.courses}
-        authors={props.courses.authors}
-      />
-      <AllCourses
-        courses={props.courses.courses}
-        authors={props.courses.authors}
-      />
+      <BestCourses courses={courses} />
+      <AllCourses courses={courses} authors={authors} />
       <Invitation />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const response = await Axios({
-    method: "get",
-    url: apiLinks.getAllCourses,
-  });
-  const courses = response.data;
+  const courses = await getAllCourses();
+  const authors = await getAllAuthors(courses);
+
   return {
-    props: { courses },
+    props: {
+      courses,
+      authors,
+    },
   };
 }

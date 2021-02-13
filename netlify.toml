@@ -1,5 +1,0 @@
-[build]
-  publish = "out"
-
-  # Default build command.
-  command = "npm run build && npx next export"

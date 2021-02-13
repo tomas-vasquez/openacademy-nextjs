@@ -5,8 +5,6 @@ import Link from "next/link";
 import CustomLinkWrapper from "components/common/CustomLinkWrapper";
 
 export default function CardCourse({ course, author }) {
-  const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
-
   return (
     <Card
       className="shadow-md rounded-bottom rounded-top mb-0"
@@ -17,12 +15,12 @@ export default function CardCourse({ course, author }) {
           <CardBody className="p-0 ">
             <div>
               <figure className=" m-0">
-                {course.course_pic_url && (
-                  <CardImg
-                    className="rounded-top"
-                    src={course.course_pic_url}
-                  />
-                )}
+                <CardImg
+                  className="rounded-top"
+                  src={
+                    course.course_pic_url || require("assets/images/noPic.png")
+                  }
+                />
               </figure>
               <div className="d-flex">
                 <span className="mt-3 ml-3 h5 text-primary mb-0 mr-auto">
@@ -62,12 +60,10 @@ export default function CardCourse({ course, author }) {
             <img
               alt={author.name}
               className="avatar avatar-md-sm rounded-circle shadow-md"
-              src={pic_url}
+              src={author.user_pic || require("assets/images/noPic.png")}
             />
             <div className="ml-2">
-              <p className="mb-0 text-shadow">
-                {author.name ? author.name : `@${author.user_name}`}
-              </p>
+              <p className="mb-0 text-shadow">{author.user_name}</p>
               <p className="small my-0 text-muted">
                 {author.short_description || ""}
               </p>

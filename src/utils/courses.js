@@ -1,5 +1,50 @@
-import Axios from "axios";
+// import Axios from "axios";
 import { apiLinks } from "../../site.config";
+
+// Firebase
+import firebase from "firebase/app";
+import firebaseConfig from "firebase.config";
+import "firebase/firestore";
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app(); // if already initialized, use that one
+}
+
+var fireStore = firebase.firestore();
+
+export const getAllCourses = async () => {
+  let courses = [];
+  const querySnapshot = await fireStore.collection("courses").get();
+  for (const doc of querySnapshot.docs) {
+    const course = doc.data();
+    courses.push(course);
+  }
+  return courses;
+};
+
+export const getAllAuthors = async (courses) => {
+  let profiles = [];
+  let authorIds = [];
+  let profileRefs = [];
+
+  authorIds = courses.map((course) => course.course_author_id);
+  authorIds = [...new Set(authorIds)];
+
+  profileRefs = authorIds.map((authorId) =>
+    fireStore.collection("profiles").doc(`${authorId}`)
+  );
+
+  const querySnapshot = await fireStore.collection("profiles").get();
+
+  for (const doc of querySnapshot.docs) {
+    const profile = { ...doc.data(), id: doc.id };
+    profiles.push(profile);
+  }
+
+  return profiles;
+};
 
 const sortItems = (array) => {
   var aux = array;
@@ -19,27 +64,27 @@ const sortItems = (array) => {
 export async function getCoursesSlugs() {
   let paths = [];
 
-  const response = await Axios({
-    method: "get",
-    url: apiLinks.getAllCourses,
-  });
-  const courses = response.data.courses;
+  // const response = await Axios({
+  //   method: "get",
+  //   url: apiLinks.getAllCourses,
+  // });
+  // const courses = response.data.courses;
 
-  for (let index = 0; index < courses.length; index++) {
-    const course = courses[index];
+  // for (let index = 0; index < courses.length; index++) {
+  //   const course = courses[index];
 
-    const response = await Axios({
-      method: "get",
-      url: apiLinks.getItems + course.course_short_link,
-    });
-    const items = sortItems(response.data.items);
-    for (let index = 0; index < items.length; index++) {
-      const item = items[index];
-      paths.push(
-        `/${course.course_short_link}/${getShortLink(item.item_title)}`
-      );
-    }
-  }
+  //   const response = await Axios({
+  //     method: "get",
+  //     url: apiLinks.getItems + course.course_short_link,
+  //   });
+  //   const items = sortItems(response.data.items);
+  //   for (let index = 0; index < items.length; index++) {
+  //     const item = items[index];
+  //     paths.push(
+  //       `/${course.course_short_link}/${getShortLink(item.item_title)}`
+  //     );
+  //   }
+  // }
   return paths;
 }
 

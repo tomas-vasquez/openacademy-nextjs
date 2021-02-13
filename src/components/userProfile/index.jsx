@@ -3,7 +3,7 @@ import { Row, Col, Container } from "reactstrap";
 
 import Certificates from "components/userProfile/Certificates";
 import AuthorData from "components/userProfile/AuthorData";
-import Controller_Profile from "fetchers/Profile";
+// import Controller_Profile from "fetchers/Profile";
 import Header from "./Hero";
 import PHUserProfile from "./PHUserProfile";
 
@@ -14,7 +14,7 @@ export default class user extends Component {
       username: "",
       profile: null,
     };
-    this.profile = new Controller_Profile();
+    // this.profile = new Controller_Profile();
   }
 
   loadData = () => {
@@ -26,17 +26,17 @@ export default class user extends Component {
         profile: null,
       });
 
-    this.profile.getProfile(userName, (response, error) => {
-      this.setState({
-        username: userName,
-        profile: response
-          ? response.user_data
-            ? response.user_data
-            : ""
-          : null,
-        error: error,
-      });
-    });
+    // this.profile.getProfile(userName, (response, error) => {
+    //   this.setState({
+    //     username: userName,
+    //     profile: response
+    //       ? response.user_data
+    //         ? response.user_data
+    //         : ""
+    //       : null,
+    //     error: error,
+    //   });
+    // });
   };
 
   componentDidMount() {

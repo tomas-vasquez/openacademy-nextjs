@@ -28,7 +28,7 @@ function Banner({ author, course, paymentReports, currentItem }) {
       className="px-0 py-5 m-0"
       style={{
         backgroundColor: "#1a274e",
-        color: "white",
+        color: "whi_te",
       }}
     >
       <div className="container mt-5">

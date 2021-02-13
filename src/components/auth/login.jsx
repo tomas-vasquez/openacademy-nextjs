@@ -3,12 +3,12 @@ import React from "react";
 import { Button } from "reactstrap";
 import Link from "next/link";
 import Icons from "components/common/Icons";
-import Controller_Users from "fetchers/Users";
+// import Controller_Users from "fetchers/Users";
 import DB from "helpers/db";
 import { useRouter } from "next/router";
 
 export default function login() {
-  const users = new Controller_Users();
+  // const users = new Controller_Users();
   const router = useRouter();
 
   const openTargetPage = () => {
@@ -16,10 +16,10 @@ export default function login() {
     router.push(targetPage);
   };
 
-  const submitHandlerLogin = (e) => {
-    e.preventDefault();
-    users.login(e.target, openTargetPage);
-  };
+  // const submitHandlerLogin = (e) => {
+  //   e.preventDefault();
+  //   users.login(e.target, openTargetPage);
+  // };
 
   return (
     <>

@@ -1,5 +1,5 @@
 import Icons from "components/common/Icons";
-import PaymentReports from "fetchers/paymentReports";
+// import PaymentReports from "fetchers/paymentReports";
 import React, { useState } from "react";
 import { Button, Card, CardBody } from "reactstrap";
 // import ModalDialog from "./ModalDialog";
@@ -11,7 +11,7 @@ export default function PreviewButton({ course, author, currentReport }) {
 
   const handleDeleteReport = (e) => {
     e.preventDefault();
-    new PaymentReports().deleteReport(currentReport);
+    // new PaymentReports().deleteReport(currentReport);
   };
 
   return (

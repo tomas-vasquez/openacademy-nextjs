@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 
 import { nameChangedHandler } from "helpers/input";
-import Controller_Profile from "fetchers/Profile";
+// import Controller_Profile from "fetchers/Profile";
 
 import OptionCountries from "./OptionCountries";
 import ProfileCard from "./ProfileCard";
@@ -26,21 +26,21 @@ class AuthorData extends React.Component {
   constructor(props) {
     super();
     this.state = { profile: props.profile };
-    this.fetcher = new Controller_Profile();
+    // this.fetcher = new Controller_Profile();
   }
 
   handlePicPicker = (e) => {
     const file = e.target.files[0];
-    this.fetcher.handle_pic_selected(file, (newData) => {
-      this.setState({ profile: newData });
-    });
+    // this.fetcher.handle_pic_selected(file, (newData) => {
+    //   this.setState({ profile: newData });
+    // });
   };
 
   handleDataUpdate = (e) => {
     e.preventDefault();
-    this.fetcher.updateUserData(e.target, (newProfile) => {
-      this.setState({ profile: newProfile });
-    });
+    // this.fetcher.updateUserData(e.target, (newProfile) => {
+    //   this.setState({ profile: newProfile });
+    // });
   };
 
   render() {

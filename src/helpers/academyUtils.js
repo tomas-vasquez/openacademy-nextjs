@@ -1,7 +1,7 @@
 import DB from "helpers/db";
 import store from "store";
-import Controller_Profile from "fetchers/Profile";
-import Controller_Academy from "fetchers/Academy";
+// import Controller_Profile from "fetchers/Profile";
+// import Controller_Academy from "fetchers/Academy";
 
 export const loadUserData = (_callback) => {
   let userData = store.getState().userData;

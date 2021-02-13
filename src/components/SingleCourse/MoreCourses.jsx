@@ -28,6 +28,7 @@ export default function MoreCourses({ courses, course, authors, author }) {
             </h3>
           </div>
         </div>
+
         <div className="container mt-0 mb-5">
           <div className="row">
             {moreCourses.map((course, index) => (

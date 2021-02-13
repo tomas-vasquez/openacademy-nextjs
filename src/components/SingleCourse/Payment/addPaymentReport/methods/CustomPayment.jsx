@@ -13,7 +13,7 @@ import {
   CardImg,
 } from "reactstrap";
 
-import PaymentReports from "../../../../../fetchers/paymentReports";
+// import PaymentReports from "../../../../../fetchers/paymentReports";
 
 export default function CustomPayment({ course, author, parentToggle }) {
   const [openModal, setOpenModal] = useState(false);
@@ -26,9 +26,9 @@ export default function CustomPayment({ course, author, parentToggle }) {
     const pics = [pic0, pic1, pic2];
     const description = document.getElementById("description").value;
 
-    new PaymentReports().uploadReport(course, pics, description, () => {
-      console.log("hola perrrrroooo111");
-    });
+    // new PaymentReports().uploadReport(course, pics, description, () => {
+    //   console.log("hola perrrrroooo111");
+    // });
   };
 
   const SinglePic = ({ pic, onChange, onDelete, index }) => (

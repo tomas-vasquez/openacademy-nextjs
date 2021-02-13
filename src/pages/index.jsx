@@ -1,24 +1,20 @@
-import Axios from "axios";
-
 import Layout from "components/Layout";
 import SEO from "components/common/Seo";
-import { apiLinks } from "../../site.config";
 import Hero from "components/home/Hero";
 import Partners from "components/home/Partners";
 import PopularCourses from "components/home/PopularCourses";
 import Invitation from "components/common/Invitation";
 
-export default function Index(props) {
+import { getAllAuthors, getAllCourses } from "utils/courses";
+
+export default function Index({ courses, authors }) {
   return (
     <Layout title="Inicio">
       <SEO title="Inicio" />
       <Hero />
       <Partners />
       <section className="mb-5">
-        <PopularCourses
-          courses={props.courses.courses}
-          authors={props.courses.authors}
-        />
+        <PopularCourses courses={courses} authors={authors} />
       </section>
       <Invitation />
     </Layout>
@@ -26,12 +22,13 @@ export default function Index(props) {
 }
 
 export async function getStaticProps() {
-  const response = await Axios({
-    method: "get",
-    url: apiLinks.getAllCourses,
-  });
-  const courses = response.data;
+  const courses = await getAllCourses();
+  const authors = await getAllAuthors(courses);
+
   return {
-    props: { courses },
+    props: {
+      courses,
+      authors,
+    },
   };
 }

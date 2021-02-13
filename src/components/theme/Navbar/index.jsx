@@ -7,7 +7,6 @@ import Navigation from "./Navigation";
 import Search from "./Search";
 import Switch from "./Switch";
 import { siteMetadata } from "../../../../site.config";
-import { connect } from "react-redux";
 
 class Navbar extends Component {
   constructor(props) {
@@ -115,8 +114,4 @@ class Navbar extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  userData: state.userData,
-});
-
-export default connect(mapStateToProps)(Navbar);
+export default Navbar;

@@ -1,4 +1,4 @@
-const apiUrl = process.env.API_URL || "http://localhost:3001";
+const apiUrl = "https://openacademy-api.herokuapp.com";
 
 const siteMetadata = {
   title: "tu-academia",

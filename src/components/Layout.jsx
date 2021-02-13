@@ -7,25 +7,8 @@ import { useRouter } from "next/router";
 import Navbar from "./theme/Navbar";
 import PerfectScrollWraper from "./common/PerfectScrollWraper";
 
-import { connect } from "react-redux";
-import PaymentReports from "../fetchers/paymentReports";
-import { setUserData } from "store/userData_store/actions";
-import DB from "helpers/db";
-
-function Layout({
-  children,
-  items,
-  currentItem,
-  course,
-  userData,
-  paymentReports,
-  setUserData,
-}) {
+function Layout({ children, items, currentItem, course }) {
   const { pathname } = useRouter();
-
-  const _loadPymentReports = () => {
-    new PaymentReports().loadPymentReports(() => {});
-  };
 
   const isNavbarDark = (pathname) => {
     return (
@@ -36,16 +19,6 @@ function Layout({
       pathname === "/"
     );
   };
-
-  useEffect(() => {
-    if (userData) {
-      if (!paymentReports) {
-        _loadPymentReports();
-      }
-    } else {
-      if (DB.get("userData")) setUserData(DB.get("userData"));
-    }
-  });
 
   return (
     <>
@@ -103,13 +76,4 @@ function Layout({
   );
 }
 
-const mapStateToProps = (state) => ({
-  userData: state.userData,
-  paymentReports: state.paymentReports,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setUserData: (userData) => dispatch(setUserData(userData)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default Layout;

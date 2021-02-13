@@ -1,6 +1,5 @@
 import React from "react";
 
-import _ from "lodash";
 import { allCourses } from "../../../site.config";
 import Carousel from "react-multi-carousel";
 import Icons from "components/common/Icons";
@@ -8,7 +7,7 @@ import { CardImg } from "reactstrap";
 import Link from "next/link";
 import CustomLinkWrapper from "components/common/CustomLinkWrapper";
 
-export default function BestCourses({ courses, authors }) {
+export default function BestCourses({ courses }) {
   return (
     <>
       <div className="container-fluid mt-5 mb-0 mx-md-1">
@@ -17,9 +16,6 @@ export default function BestCourses({ courses, authors }) {
             <Icons icon="fire" className="text-danger mr-2" />
             {allCourses.bestCourses.title}
           </h5>
-          {/* <p className="text-muted mb-0 para-desc">
-            {allCourses.bestCourses.subTitle}
-          </p> */}
         </div>
 
         <Carousel
@@ -48,7 +44,10 @@ export default function BestCourses({ courses, authors }) {
                 <CustomLinkWrapper>
                   <CardImg
                     className="rounded-md shadow-md"
-                    src={course.course_pic_url}
+                    src={
+                      course.course_pic_url ||
+                      require("assets/images/noPic.png")
+                    }
                   />
                 </CustomLinkWrapper>
               </Link>
