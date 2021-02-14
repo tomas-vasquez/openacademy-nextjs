@@ -2,13 +2,16 @@ import React from "react";
 import CourseVideo from "./CourseVideo";
 
 export default function index({
-  author,
   description,
   items,
   currentItem,
   course,
-  itemIndex,
+  authors,
 }) {
+  const author = authors.find(
+    (author) => author.id === currentItem.item_author_id
+  );
+
   return (
     <div className="site-wrap bg-white">
       {currentItem.item_type === "video" ? (
@@ -18,7 +21,6 @@ export default function index({
           author={author}
           items={items}
           currentItem={currentItem}
-          itemIndex={itemIndex}
         />
       ) : null}
     </div>

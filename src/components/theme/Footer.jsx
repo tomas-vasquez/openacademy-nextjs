@@ -6,20 +6,6 @@ import { socialIcons, footer, siteMetadata } from "../../../site.config";
 export default function Footer({ litle }) {
   return (
     <>
-      {/* <div className="position-relative">
-        <div className="shape overflow-hidden text-footer">
-          <svg
-            viewBox="0 0 2880 250"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M720 125L2160 0H2880V250H0V125H720Z"
-              fill="currentColor"
-            ></path>
-          </svg>
-        </div>
-      </div> */}
       {!litle && (
         <footer className="footer">
           <div className="container">
@@ -116,26 +102,14 @@ export default function Footer({ litle }) {
           </div>
         </footer>
       )}
-      <footer
-        className={litle ? "footer footer-bar py-3" : "footer footer-bar py-4"}
-      >
+      <footer className="footer footer-bar py-3">
         <div className="container text-center">
           <div className="row align-items-center">
             <div className="col-sm-12">
-              <div className="text-sm-left">
-                <p className={litle ? "mb-0 text-center" : "mb-0"}>
-                  © 2019-{new Date().getFullYear()} cursos-online.com. Made with{" "}
-                  <Icons icon="heart" /> by{" "}
-                  <a
-                    className="badge badge-dark"
-                    rel="noopener"
-                    href="https://tomas-dev.vercel.app/"
-                    aria-label="My GitHub"
-                  >
-                    Tomi
-                  </a>{" "}
-                  using <Icons icon="react" />
-                </p>
+              <div className="text-sm-center">
+                <small className={litle ? "mb-0 text-center" : "mb-0"}>
+                  ©{new Date().getFullYear()} tu-academia.com
+                </small>
               </div>
             </div>
           </div>

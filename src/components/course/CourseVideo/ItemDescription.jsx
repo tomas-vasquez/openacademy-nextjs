@@ -42,11 +42,9 @@ export default function ItemDescription({
   return (
     <div className="container-fluid">
       <div className="px-lg-3 pt-2">
-        <h4 className="mb-0 text-primary">{`${++itemIndex}- ${_.upperFirst(
-          currentItem.item_title
-        )}`}</h4>
+        <h1 className="h4 mb-0">{`${_.upperFirst(currentItem.item_title)}`}</h1>
 
-        <h5 className="text-muted ml-1">{course.course_title}</h5>
+        <h2 className="h6 text-muted">{course.course_title}</h2>
       </div>
 
       <div className="pt-2 ml-md-4 border-bottom d-flex mb-4 mx-2">

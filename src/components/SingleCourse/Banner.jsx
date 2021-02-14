@@ -114,15 +114,17 @@ function Banner({ course, authors, paymentReports, items }) {
                     getShortLink(items[0].item_title)
                   }
                 >
-                  <p
-                    className="btn btn-primary w-100 heading"
-                    style={{
-                      fontSize: 25,
-                    }}
-                  >
-                    {singleCourse.buttonStartText}
-                    <Icons icon="arrowRight" className="ml-2 arrow1" />
-                  </p>
+                  <a>
+                    <p
+                      className="btn btn-primary w-100 heading"
+                      style={{
+                        fontSize: 25,
+                      }}
+                    >
+                      {singleCourse.buttonStartText}
+                      <Icons icon="arrowRight" className="ml-2 arrow1" />
+                    </p>
+                  </a>
                 </Link>
               </div>
             )}

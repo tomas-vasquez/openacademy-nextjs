@@ -2,7 +2,7 @@ import React from "react";
 import parser from "html-react-parser";
 
 export default function CardDescription({ currentItem, author }) {
-  const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
+  const pic_url = author.user_pic ? author.user_pic : "/img/noPic.jpg";
 
   return (
     <>
@@ -14,9 +14,7 @@ export default function CardDescription({ currentItem, author }) {
         />
         <div className="ml-2">
           <h6 className="mb-0 text-shadow">
-            <strong>
-              {author.name ? author.name : `@${author.user_name}`}
-            </strong>
+            <strong>{`${author.user_name}`}</strong>
           </h6>
           <p className="small my-0 text-muted">
             {author.short_description || ""}

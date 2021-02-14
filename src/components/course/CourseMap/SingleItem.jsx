@@ -34,7 +34,7 @@ const SingleItem = ({ course, index, item, currentItem }) => {
 
               {`${index + 1}. ${_.upperFirst(item.item_title)}`}
             </p>
-            <small className="ml-3">
+            <small className="text-muted">
               {item.item_type === "video" ? (
                 <>video</>
               ) : item.item_type === "test" ? (
