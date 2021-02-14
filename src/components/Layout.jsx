@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Footer from "./theme/Footer";
 import { Container, Col, Row } from "reactstrap";
 import NavbarCourse from "components/theme/NavbarCourse";
@@ -42,10 +42,8 @@ function Layout({ children, items, currentItem, course }) {
                 lg="3"
                 className="p-0 d-none d-lg-block h-100 bg-white"
                 style={{
-                  // overflowY: "scroll",
                   top: 0,
                   right: 0,
-                  // position: "fixed",
                   marginLeft: "auto",
                 }}
               >

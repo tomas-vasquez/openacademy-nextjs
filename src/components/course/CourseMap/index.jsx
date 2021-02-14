@@ -83,8 +83,9 @@ class CourseMap extends React.Component {
             this.setState({ col_0: !this.state.col_0 });
           }}
         />
-
-        {this.recursiveRender(0, this.props.items)}
+        {this.props.items[0]
+          ? this.recursiveRender(0, this.props.items)
+          : "no hay nada aqui"}
       </>
     ) : null;
   }

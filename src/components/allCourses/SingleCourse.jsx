@@ -1,8 +1,7 @@
 import React from "react";
-import { Card, CardBody, CardFooter, CardImg, Media } from "reactstrap";
+import { Card, CardBody, CardFooter, CardImg } from "reactstrap";
 import _ from "lodash";
 import Link from "next/link";
-import CustomLinkWrapper from "components/common/CustomLinkWrapper";
 
 export default function CardCourse({ course, author }) {
   return (
@@ -11,7 +10,7 @@ export default function CardCourse({ course, author }) {
       style={{ cursor: "pointer" }}
     >
       <Link href={`/${course.course_short_link}`}>
-        <CustomLinkWrapper>
+        <a style={{ textDecoration: "none" }}>
           <CardBody className="p-0 ">
             <div>
               <figure className=" m-0">
@@ -52,10 +51,10 @@ export default function CardCourse({ course, author }) {
               </div>
             </div>
           </CardBody>
-        </CustomLinkWrapper>
+        </a>
       </Link>
       <Link href={`/user?name=${author.user_name}`}>
-        <CustomLinkWrapper>
+        <a>
           <CardFooter className="d-flex align-items-center p-2">
             <img
               alt={author.name}
@@ -69,7 +68,7 @@ export default function CardCourse({ course, author }) {
               </p>
             </div>
           </CardFooter>
-        </CustomLinkWrapper>
+        </a>
       </Link>
     </Card>
   );

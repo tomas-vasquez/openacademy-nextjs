@@ -1,6 +1,3 @@
-// import Axios from "axios";
-import { apiLinks } from "../../site.config";
-
 // Firebase
 import firebase from "firebase/app";
 import firebaseConfig from "firebase.config";

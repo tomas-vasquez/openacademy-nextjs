@@ -4,25 +4,29 @@ import _ from "lodash";
 import Link from "next/link";
 import PaymentButton from "./Payment/addPaymentReport/PaymentButton";
 
-import { connect } from "react-redux";
 import PreviewButton from "./Payment/previewPaymentReport/PreviewButton";
 import Icons from "components/common/Icons";
 import { getShortLink } from "utils/courses";
 import { singleCourse } from "../../../site.config";
 
-function Banner({ author, course, paymentReports, currentItem }) {
-  const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
+function Banner({ course, authors, paymentReports, items }) {
+  // let currentReport = null;
+  // if (paymentReports) {
+  //   currentReport = paymentReports
+  //     .filter((report) => {
+  //       return report.report_subject.tipe === "course";
+  //     })
+  //     .find((report, index) => {
+  //       return course._id === report.report_subject._id;
+  //     });
+  // }
 
-  let currentReport = null;
-  if (paymentReports) {
-    currentReport = paymentReports
-      .filter((report) => {
-        return report.report_subject.tipe === "course";
-      })
-      .find((report, index) => {
-        return course._id === report.report_subject._id;
-      });
-  }
+  const author = authors.find(
+    (author) => author.id === course.course_author_id
+  );
+
+  const pic_url = author.user_pic ? author.user_pic : "/img/noPic.jpg";
+
   return (
     <section
       className="px-0 py-5 m-0"
@@ -53,10 +57,18 @@ function Banner({ author, course, paymentReports, currentItem }) {
           </div>
           <div className="col-12 col-md-6 pl-lg-4 pr-lg-3">
             <div className="title-heading">
-              <h2 className="my-4 mt-md-0">
+              <h1
+                className="h2 my-4 mt-md-0 text-shadow"
+                style={{ color: "#fff" }}
+              >
                 {_.upperFirst(course.course_title)}
-              </h2>
-              <p className="mb-4 mr-5 " data-aos="fade-up" data-aos-delay="200">
+              </h1>
+              <p
+                className="mb-4 mr-5"
+                data-aos="fade-up"
+                data-aos-delay="200"
+                style={{ color: "#fff" }}
+              >
                 {_.upperFirst(course.course_description)}
               </p>
             </div>
@@ -68,33 +80,38 @@ function Banner({ author, course, paymentReports, currentItem }) {
                   src={pic_url}
                 />
                 <div className="ml-2">
-                  <h6 className="mb-0 text-shadow">
-                    {author.name ? author.name : `@${author.user_name}`}
-                  </h6>
-                  <p className="small my-0 text-muted">
+                  <h6
+                    className="mb-0 text-shadow"
+                    style={{ color: "#fff" }}
+                  >{`${author.user_name}`}</h6>
+                  <p
+                    className="small my-0 text-muted"
+                    style={{ color: "#fff" }}
+                  >
                     {author.short_description || ""}
                   </p>
                 </div>
               </div>
             </Link>
-            {course.course_price > 0 ? (
-              !currentReport ? (
-                <PaymentButton course={course} author={author} />
-              ) : (
-                <PreviewButton
-                  course={course}
-                  author={author}
-                  currentReport={currentReport}
-                />
-              )
-            ) : (
+            {items[0] && (
+              // course.course_price > 0 ? (
+              // !currentReport ? (
+              //   <PaymentButton course={course} author={author} />
+              // ) : (
+              //   <PreviewButton
+              //     course={course}
+              //     author={author}
+              //     currentReport={currentReport}
+              //   />
+              // )
+              // ) : (
               <div className="mt-4">
                 <Link
                   href={
                     "/" +
                     course.course_short_link +
                     "/" +
-                    getShortLink(currentItem.item_title)
+                    getShortLink(items[0].item_title)
                   }
                 >
                   <p
@@ -109,6 +126,7 @@ function Banner({ author, course, paymentReports, currentItem }) {
                 </Link>
               </div>
             )}
+            {/*  )} */}
           </div>
         </div>
       </div>
@@ -116,8 +134,4 @@ function Banner({ author, course, paymentReports, currentItem }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  paymentReports: state.paymentReports,
-});
-
-export default connect(mapStateToProps)(Banner);
+export default Banner;

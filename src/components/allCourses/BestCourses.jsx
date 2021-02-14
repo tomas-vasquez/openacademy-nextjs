@@ -5,7 +5,6 @@ import Carousel from "react-multi-carousel";
 import Icons from "components/common/Icons";
 import { CardImg } from "reactstrap";
 import Link from "next/link";
-import CustomLinkWrapper from "components/common/CustomLinkWrapper";
 
 export default function BestCourses({ courses }) {
   return (
@@ -41,7 +40,7 @@ export default function BestCourses({ courses }) {
           {courses.map((course, index) => (
             <div className="mx-2 my-4" key={`ca-${index}`}>
               <Link href={`/${course.course_short_link || ""}`}>
-                <CustomLinkWrapper>
+                <a>
                   <CardImg
                     className="rounded-md shadow-md"
                     src={
@@ -49,7 +48,7 @@ export default function BestCourses({ courses }) {
                       require("assets/images/noPic.png")
                     }
                   />
-                </CustomLinkWrapper>
+                </a>
               </Link>
             </div>
           ))}

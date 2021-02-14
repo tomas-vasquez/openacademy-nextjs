@@ -1,35 +1,40 @@
 import SingleCourse from "components/SingleCourse";
 import Layout from "components/Layout";
-import { getCourseData, getCoursesSlugs2 } from "utils/courses";
-import Axios from "axios";
-import { apiLinks } from "../../site.config";
+import { getAllAuthors, getAllCourses, getItems } from "utils/courses";
 
 export default function Post(props) {
-  const { items, currentItem, course } = props;
-
   return (
-    <Layout items={items} currentItem={currentItem} course={course}>
+    <Layout>
       <SingleCourse {...props} />
     </Layout>
   );
 }
 
 export async function getStaticPaths() {
+  const courses = await getAllCourses();
+  const paths = [];
+
+  courses.forEach((course) => {
+    paths.push(`/${course.course_short_link}`);
+  });
+
   return {
-    paths: await getCoursesSlugs2(),
+    paths,
     fallback: false,
   };
 }
 
-export async function getStaticProps({ params: { course } }) {
-  const response = await Axios({
-    method: "get",
-    url: apiLinks.getAllCourses,
-  });
+export async function getStaticProps({
+  params: { course: course_short_link },
+}) {
+  const courses = await getAllCourses();
+  const authors = await getAllAuthors(courses);
 
-  const { courses, authors } = response.data;
-  const courseData = await getCourseData(course);
-  const currentItem = courseData.items[0];
+  const course = courses.find(
+    (course) => course.course_short_link === course_short_link
+  );
 
-  return { props: { courses, authors, currentItem, ...courseData } };
+  const items = await getItems(course);
+
+  return { props: { courses, authors, course, items } };
 }
