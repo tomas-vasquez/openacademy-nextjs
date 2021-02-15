@@ -10,7 +10,7 @@ import { getShortLink } from "utils/courses";
 import { singleCourse } from "../../../site.config";
 
 function Banner({ course, authors, paymentReports, items }) {
-  // let currentReport = null;
+  let currentReport = null;
   // if (paymentReports) {
   //   currentReport = paymentReports
   //     .filter((report) => {
@@ -93,42 +93,41 @@ function Banner({ course, authors, paymentReports, items }) {
                 </div>
               </div>
             </Link>
-            {items[0] && (
-              // course.course_price > 0 ? (
-              // !currentReport ? (
-              //   <PaymentButton course={course} author={author} />
-              // ) : (
-              //   <PreviewButton
-              //     course={course}
-              //     author={author}
-              //     currentReport={currentReport}
-              //   />
-              // )
-              // ) : (
-              <div className="mt-4">
-                <Link
-                  href={
-                    "/" +
-                    course.course_short_link +
-                    "/" +
-                    getShortLink(items[0].item_title)
-                  }
-                >
-                  <a>
-                    <p
-                      className="btn btn-primary w-100 heading"
-                      style={{
-                        fontSize: 25,
-                      }}
-                    >
-                      {singleCourse.buttonStartText}
-                      <Icons icon="arrowRight" className="ml-2 arrow1" />
-                    </p>
-                  </a>
-                </Link>
-              </div>
-            )}
-            {/*  )} */}
+            {items[0] &&
+              (course.course_price > 0 ? (
+                !currentReport ? (
+                  <PaymentButton course={course} author={author} />
+                ) : (
+                  <PreviewButton
+                    course={course}
+                    author={author}
+                    currentReport={currentReport}
+                  />
+                )
+              ) : (
+                <div className="mt-4">
+                  <Link
+                    href={
+                      "/" +
+                      course.course_short_link +
+                      "/" +
+                      getShortLink(items[0].item_title)
+                    }
+                  >
+                    <a>
+                      <p
+                        className="btn btn-primary w-100 heading"
+                        style={{
+                          fontSize: 25,
+                        }}
+                      >
+                        {singleCourse.buttonStartText}
+                        <Icons icon="arrowRight" className="ml-2 arrow1" />
+                      </p>
+                    </a>
+                  </Link>
+                </div>
+              ))}
           </div>
         </div>
       </div>

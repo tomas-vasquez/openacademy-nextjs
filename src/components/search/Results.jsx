@@ -52,7 +52,10 @@ export default function Results({ results }) {
                 <div className="d-block d-md-flex">
                   <CardImg
                     className="img-result-container"
-                    src={element.course.course_pic_url}
+                    src={
+                      element.course.course_pic_url ||
+                      require("assets/images/noPic.png")
+                    }
                   />
                   <div className="py-2 p-md-0">
                     <CardBody className="p-0 px-3">

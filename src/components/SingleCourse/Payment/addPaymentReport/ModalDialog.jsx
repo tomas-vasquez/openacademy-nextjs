@@ -4,15 +4,18 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import CustomPayment from "./methods/CustomPayment";
 
 export default function ModalDialog({ isOpen, toggle, course, author }) {
-  const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
+  const pic_url = author.user_pic ? author.user_pic : "/img/noPic.jpg";
 
   return (
     <Modal isOpen={isOpen} toggle={toggle} className="modal-lg">
-      <ModalHeader toggle={toggle}>Comprar course</ModalHeader>
+      <ModalHeader toggle={toggle}>
+        <Icons icon="car" className="mr-2" />
+        Comprar Curso
+      </ModalHeader>
       <ModalBody>
         <div className="col-12 text-center">
           <div className="section-title">
-            <h4 className="title mb-0">Easy payment methods:</h4>
+            <h4 className="h5 title mb-0">Metodos de pago disponibles:</h4>
           </div>
           <CustomPayment
             course={course}

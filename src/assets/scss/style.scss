@@ -106,12 +106,14 @@
 }
 
 .course-price {
-  border-radius: 5px 0 0 5px;
+  position: "absolute";
+  right: 0;
+  border-radius: 5px 0 0 0;
   padding: 5px 12px;
   background-color: $primary;
   float: right;
   color: white;
-  transform: translateY(-17px);
+  transform: translateY(-34px);
 }
 
 .card-columns {

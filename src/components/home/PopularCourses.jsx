@@ -20,9 +20,12 @@ export default class extends Component {
           </div>
         </div>
 
-        <div className="card-columns mt-4">
+        <div className="row">
           {courses.map((course, index) => (
-            <div key={index} className="mb-4">
+            <div
+              key={index}
+              className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 px-2"
+            >
               <SingleCourse
                 course={course}
                 author={authors.find((author) => {

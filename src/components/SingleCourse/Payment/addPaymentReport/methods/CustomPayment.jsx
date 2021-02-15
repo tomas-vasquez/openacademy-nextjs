@@ -1,4 +1,5 @@
 import Icons from "components/common/Icons";
+import SingleCourse from "components/allCourses/SingleCourse";
 import React, { useState } from "react";
 import {
   Modal,
@@ -11,6 +12,7 @@ import {
   Col,
   Container,
   CardImg,
+  FormGroup,
 } from "reactstrap";
 
 // import PaymentReports from "../../../../../fetchers/paymentReports";
@@ -37,11 +39,11 @@ export default function CustomPayment({ course, author, parentToggle }) {
         <Button
           outline
           color="light"
-          className="py-5"
           onClick={() => {
             document.getElementById(`pic${index}`).click();
           }}
           style={{
+            padding: 0,
             width: "100%",
             height: 142,
           }}
@@ -100,42 +102,58 @@ export default function CustomPayment({ course, author, parentToggle }) {
         </a>
       </div>
       <Modal isOpen={openModal} toggle={toggle} className="modal-lg">
-        <ModalHeader toggle={toggle}>Comprar course</ModalHeader>
+        <ModalHeader toggle={toggle}>
+          <Icons icon="car" className="mr-2" />
+          Comprar curso
+        </ModalHeader>
         <ModalBody>
-          <div className="form-group">
-            <label className="h6">Description:</label>
-            <Container>
-              <Row>
-                <Col xs="4">
-                  <SinglePic
-                    pic={pic0}
-                    index={0}
-                    onChange={(e) => setPic0(e.target.files[0])}
-                    onDelete={(e) => setPic0(null)}
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12 col-lg-7">
+                <FormGroup>
+                  <label className="h6">Imagen de comprovacion:</label>
+                  <Row>
+                    <Col xs="4" className="m-0">
+                      <SinglePic
+                        pic={pic0}
+                        index={0}
+                        onChange={(e) => setPic0(e.target.files[0])}
+                        onDelete={(e) => setPic0(null)}
+                      />
+                    </Col>
+                    <Col xs="4">
+                      <SinglePic
+                        pic={pic1}
+                        index={1}
+                        onDelete={(e) => setPic1(null)}
+                        onChange={(e) => setPic1(e.target.files[0])}
+                      />
+                    </Col>
+                    <Col xs="4">
+                      <SinglePic
+                        pic={pic2}
+                        index={2}
+                        onDelete={(e) => setPic2(null)}
+                        onChange={(e) => setPic2(e.target.files[0])}
+                      />
+                    </Col>
+                  </Row>
+
+                  <label className="h6 mt-4">Description del pago:</label>
+                  <Input
+                    className="form-control"
+                    name={"name"}
+                    id="description"
+                    type="textarea"
+                    style={{ height: 70, overflow: "hidden" }}
                   />
-                </Col>
-                <Col xs="4">
-                  <SinglePic
-                    pic={pic1}
-                    index={1}
-                    onDelete={(e) => setPic1(null)}
-                    onChange={(e) => setPic1(e.target.files[0])}
-                  />
-                </Col>
-                <Col xs="4">
-                  <SinglePic
-                    pic={pic2}
-                    index={2}
-                    onDelete={(e) => setPic2(null)}
-                    onChange={(e) => setPic2(e.target.files[0])}
-                  />
-                </Col>
-              </Row>
-            </Container>
-          </div>
-          <div className="form-group">
-            <label className="h6">Description:</label>
-            <Input name={"name"} type="textarea" id="description" />
+                </FormGroup>
+              </div>
+
+              <div className="col-md-5 d-none d-lg-block border-left">
+                <SingleCourse preview course={course} author={author} />
+              </div>
+            </div>
           </div>
         </ModalBody>
         <ModalFooter>
