@@ -1,118 +1,72 @@
 import React from "react";
 
-import { Button } from "reactstrap";
-import Link from "next/link";
-import Icons from "components/common/Icons";
-// import Controller_Users from "fetchers/Users";
 import DB from "helpers/db";
 import { useRouter } from "next/router";
+import svgUrl from "assets/svgs/undraw_secure_login_pdn4.svg";
+import FirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import { useAuth } from "reactfire";
+import { Card, CardBody, Col, Row } from "reactstrap";
 
 export default function login() {
-  // const users = new Controller_Users();
   const router = useRouter();
+  const auth = useAuth;
 
   const openTargetPage = () => {
     const targetPage = DB.get("targetPage") || "/";
     router.push(targetPage);
   };
 
-  // const submitHandlerLogin = (e) => {
-  //   e.preventDefault();
-  //   users.login(e.target, openTargetPage);
-  // };
+  const uiConfig = {
+    queryParameterForSignInSuccessUrl: "signInSuccessUrl",
+    signInFlow: "popup",
+    signInOptions: [
+      auth.EmailAuthProvider.PROVIDER_ID,
+      auth.GoogleAuthProvider.PROVIDER_ID,
+      auth.FacebookAuthProvider.PROVIDER_ID,
+    ],
+    callbacks: {
+      signInSuccessWithAuthResult: (data) => {
+        openTargetPage();
+      },
+    },
+  };
 
   return (
     <>
-      <section className="p-0 m-0">
-        <div
-          className="bg-overlay "
-          style={{
-            backgroundColor: "#1a274e",
-            zIndex: -1,
-          }}
-        ></div>
-        <div className="container" style={{}}>
-          <div
-            className="row pt-5 d-flex"
-            style={{ minHeight: "100vh", zIndex: 1 }}
-          >
-            <div className="col-12 col-md-6 mr-auto d-none ">
-              <div className="title-heading my-auto">
-                <h1 className="heading text-white title-dark mb-4">
-                  Bienvenido !!!
-                </h1>
-                <p className="mb-4 mr-5" style={{ color: "white" }}>
-                  Para acceder a todo el contenido de nuestra academia deves
-                  iniciar sesion en tu cuenta; si no tienes una cuenta, puedes
-                  crearla en menos de un minuto!
-                </p>
-              </div>
-            </div>
-            <div className="my-auto col-12 col-md-6 col-lg-5 mx-auto">
-              <div className="shape-before">
-                <form
-                  action=""
-                  method="post"
-                  className="rounded p-4 bg-white"
-                  onSubmit={submitHandlerLogin}
-                >
-                  <h3 className="h4 text-black  mb-4">Iniciar sesión:</h3>
-                  <div className="form-group">
-                    <label>Tu correo:</label>
-                    <input
-                      id="input-email"
-                      type="text"
-                      name="email"
-                      className="form-control"
-                      required
-                    />
-                  </div>
-                  <label>Tu contrasena:</label>
-                  <div className="form-group">
-                    <input
-                      id="input-password"
-                      name="password"
-                      type="password"
-                      className="form-control"
-                      required
-                    />
-                  </div>
-                  <div className="custom-control custom-checkbox my-3">
-                    <input
-                      className="custom-control-input"
-                      name="remember_token"
-                      id="customCheckLogin"
-                      type="checkbox"
-                    />
-                    <label
-                      className="custom-control-label d-inline"
-                      htmlFor="customCheckLogin"
-                    >
-                      Recordarme en este dispositivo
-                    </label>
-                  </div>
-                  <div className="form-group text-center">
-                    <Button type="submit" color="primary">
-                      Iniciar sesión
-                      <Icons icon="sign" className="ml-2" />
-                    </Button>
-                  </div>
-                  <div className="text-center">
-                    <p className="m-0 text-muted">
-                      <Link href="/register">¿No tienes una cuenta?</Link>
-                    </p>
-                  </div>
-                </form>
+      <div
+        className="d-flex"
+        style={{
+          width: "100%",
+          height: "100vh",
+
+          backgroundColor: "#1a274e",
+          zIndex: -1,
+        }}
+      >
+        <Card className="m-auto bg-light p-3">
+          <CardBody>
+            <Row>
+              <Col lg="6" className="d-none d-lg-flex ">
                 <img
-                  src={require("../../assets/images/shapes/shape1.png")}
-                  className="img-fluid shape-img"
+                  className="mx-auto"
+                  src={svgUrl}
                   alt=""
+                  style={{ maxWidth: "380px" }}
                 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              </Col>
+              <Col xs="12" lg="6" className="py-2 px-4 text-center">
+                <h1 className="mb-4">Ingresar con:</h1>
+                <p>Crea una cuenta o ingresa con alguno de estos metodos:</p>
+                <FirebaseAuth uiConfig={uiConfig} firebaseAuth={auth()} />{" "}
+                <small className="text-muted mt-4">
+                  <small className="text-dark">Importante: </small>ingresando a
+                  nuestra plataforma aceptas los terminos y condiciones de uso.
+                </small>
+              </Col>
+            </Row>
+          </CardBody>
+        </Card>
+      </div>
     </>
   );
 }

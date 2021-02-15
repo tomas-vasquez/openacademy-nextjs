@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // reactstrap components
 import {
@@ -19,54 +19,61 @@ import ProfileCard from "./ProfileCard";
 import SingleField from "./SingleField";
 import SingleSocialField from "./SingleSocialField";
 import DescriptionField from "./DescriptionField";
-import DB from "helpers/db";
+import { useFirestore, useUser } from "reactfire";
+import Alerts from "helpers/Alerts";
 import Icons from "components/common/Icons";
 
-class AuthorData extends React.Component {
-  constructor(props) {
-    super();
-    this.state = { profile: props.profile };
-    // this.fetcher = new Controller_Profile();
-  }
+export default function AuthorData({ profile }) {
+  const { data: user } = useUser();
+  const [editable, setEditable] = useState(false);
+  const firestore = useFirestore();
 
-  handlePicPicker = (e) => {
-    const file = e.target.files[0];
-    // this.fetcher.handle_pic_selected(file, (newData) => {
-    //   this.setState({ profile: newData });
-    // });
-  };
-
-  handleDataUpdate = (e) => {
+  const handleDataUpdate = (e) => {
     e.preventDefault();
-    // this.fetcher.updateUserData(e.target, (newProfile) => {
-    //   this.setState({ profile: newProfile });
-    // });
+    let data = {};
+
+    const form = e.target;
+
+    for (let index = 0; index < form.length; index++) {
+      if (form[index].name) {
+        data[form[index].name] = form[index].value;
+      }
+    }
+
+    firestore
+      .collection("profiles")
+      .doc(user.uid)
+      .set({ ...profile, ...data })
+      .then(() => {
+        Alerts.showToast("perfil Actualizado");
+      });
+    Alerts.showLoading();
   };
 
-  render() {
-    let profile = this.state.profile;
-    let editable =
-      DB.get("userData") && DB.get("userData").user_name === profile.user_name;
+  useEffect(() => {
+    if (user) {
+      if (user.uid === profile.id) {
+        setEditable(true);
+      }
+    }
+  });
 
-    return (
+  return (
+    <div>
       <>
-        <ProfileCard
-          profile={profile}
-          editable={editable}
-          handlePicPicker={this.handlePicPicker}
-        />
+        <ProfileCard profile={profile} editable={editable} />
 
         <Card className="shadow-md mb-4">
-          {/* <CardHeader className="py-2 px-3">
+          <CardHeader className="py-2 px-3">
             <CardTitle tag="h5" className="m-0 d-flex">
               <span>
                 <Icons icon="user" className="mr-2" />
                 Datos del perfíl
               </span>
             </CardTitle>
-          </CardHeader> */}
+          </CardHeader>
           <CardBody>
-            <form onSubmit={this.handleDataUpdate} id="form-user-data">
+            <form onSubmit={handleDataUpdate} id="form-user-data">
               <h5 className="heading-small text-muted mb-4">
                 Información principal:
               </h5>
@@ -134,8 +141,6 @@ class AuthorData extends React.Component {
           </CardBody>
         </Card>
       </>
-    );
-  }
+    </div>
+  );
 }
-
-export default AuthorData;

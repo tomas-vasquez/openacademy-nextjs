@@ -1,12 +1,16 @@
 import Icons from "components/common/Icons";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DB from "../../../helpers/db";
 // import Controller_Users from "fetchers/Users";
 import Link from "next/link";
+import { useFirestore, useUser } from "reactfire";
 
 export default function AuthMenu({ userData, isDark }) {
   const router = useRouter();
+  const { data: user } = useUser();
+  const [profile, setProfile] = useState(null);
+  const fireStore = useFirestore();
 
   const openRegisterPage = (e) => {
     e.preventDefault();
@@ -15,12 +19,16 @@ export default function AuthMenu({ userData, isDark }) {
     router.push("/register");
   };
 
-  const openLoginPage = (e) => {
-    e.preventDefault();
-    if (router.pathname !== "/login" && router.pathname !== "/register")
-      DB.set("targetPage", document.location.href);
-    router.push("/login");
-  };
+  useEffect(() => {
+    if (user && !profile)
+      fireStore
+        .collection("profiles")
+        .doc(user.uid)
+        .onSnapshot((_profile) => {
+          const profile = _profile.data();
+          setProfile(profile);
+        });
+  }, []);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -29,8 +37,8 @@ export default function AuthMenu({ userData, isDark }) {
 
   return (
     <>
-      <div className="mx-2 d-none d-md-flex">
-        {!userData ? (
+      <div className="mx-3 d-none d-md-flex">
+        {!user ? (
           <>
             <div className="buy-button p-0 m-0 mr-2">
               <a
@@ -39,10 +47,10 @@ export default function AuthMenu({ userData, isDark }) {
                 target="_blank"
                 onClick={openRegisterPage}
               >
-                Registrarme
+                Ingresar...
               </a>
             </div>
-            <div className="buy-button p-0 ml-0">
+            {/* <div className="buy-button p-0 ml-0">
               <a
                 className="btn btn-light text-dark my-0 p-2"
                 href="/login"
@@ -51,7 +59,7 @@ export default function AuthMenu({ userData, isDark }) {
               >
                 Iniciar sesion
               </a>
-            </div>
+            </div> */}
           </>
         ) : (
           <>
@@ -64,23 +72,22 @@ export default function AuthMenu({ userData, isDark }) {
             >
               <li className="has-submenu m-0">
                 <a href="#!" className="p-0 d-flex">
-                  <Icons
+                  <img
                     icon="user-circle"
-                    className="fa-1x text-muted my-auto"
+                    src={profile ? profile.user_pic : user.photoURL}
+                    style={{ width: 40, borderRadius: "50%" }}
+                    className="my-auto"
                   />
                 </a>
                 <ul
-                  className="submenu mr-3"
+                  className="submenu mr-3 submenu-right"
                   style={{
                     left: -20,
                   }}
                 >
                   <li className="has-submenu">
-                    <Link href={`/user?name=${userData.user_name}`}>
-                      <a
-                        href={`/user?name=${userData.user_name}`}
-                        // onClick={(e) => e.preventDefault()}
-                      >
+                    <Link href={`/user?id=${user.uid}`}>
+                      <a>
                         <Icons icon="user" className="mr-2" />
                         Mi perfil
                       </a>

@@ -1,5 +1,8 @@
 import SocialButtons from "components/course/SocialButtons";
+import Alerts from "helpers/Alerts";
+import { cropToProfilePic } from "helpers/image";
 import React from "react";
+import { useFirestore, useStorage, useUser } from "reactfire";
 import {
   Col,
   CardBody,
@@ -8,16 +11,44 @@ import {
   Card,
   UncontrolledTooltip,
 } from "reactstrap";
+import { getShortLink } from "utils/courses";
 
 const getPicUrl = (profile) => {
-  if (profile.pic_url) {
-    return profile.pic_url;
+  if (profile.user_pic) {
+    return profile.user_pic;
   } else {
     return "/img/noPic.jpg";
   }
 };
 
-const ProfileCard = ({ profile, editable, handlePicPicker }) => {
+const ProfileCard = ({ profile, editable }) => {
+  const storage = useStorage();
+  const firestore = useFirestore();
+  const { data: user } = useUser();
+
+  const handlePicPicker = (e) => {
+    const file = e.target.files[0];
+
+    cropToProfilePic(file, (blob) => {
+      var fileName =
+        new Date().getMilliseconds() + "-" + getShortLink(profile.user_name);
+      const newRef = storage.ref("user-pics").child(fileName);
+
+      newRef.put(blob).then(() => {
+        newRef.getDownloadURL().then((url) => {
+          firestore
+            .collection("profiles")
+            .doc(user.uid)
+            .set({ ...profile, user_pic: url })
+            .then(() => {
+              Alerts.showToast("perfil Actualizado");
+            });
+        });
+      });
+    });
+    Alerts.showLoading();
+  };
+
   return (
     <Card className="shadow-md mb-4">
       <CardBody>
@@ -29,8 +60,8 @@ const ProfileCard = ({ profile, editable, handlePicPicker }) => {
                 style={{
                   borderRadius: "50%",
                   cursor: "pointer",
-                  width: 180,
-                  height: 180,
+                  width: 150,
+                  height: 150,
                 }}
                 className="m-auto"
                 id="image-123"
@@ -45,15 +76,15 @@ const ProfileCard = ({ profile, editable, handlePicPicker }) => {
               />
             </Col>
             <Col xs="12" lg="8" className="order-lg-1">
-              <h2>{profile.name || "No definido"}</h2>
+              <h2 className="mb-0">{profile.user_name || "No definido"}</h2>
+              <small className="mb-3 text-muted">
+                <small>ID: {profile.id}</small>
+              </small>
               <p>{profile.description || "no definido"}</p>
-              <p className="mb-3">
-                <small>ID: {profile._id}</small>
-              </p>
 
-              <p>
+              <div className="d-flex mt-2">
                 <SocialButtons data={profile} />
-              </p>
+              </div>
             </Col>
           </Row>
         </Container>

@@ -35,7 +35,7 @@ export default function Description({ items, course }) {
               {singleCourse.description.contentTitleText}:
             </h3>
           </div>
-          <div className="border">
+          <div className="border mt-2">
             <CourseMap course={course} items={items} />
           </div>
         </div>

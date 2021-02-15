@@ -69,9 +69,10 @@ const navbarLinks = [
 ];
 
 const hero = {
-  mainTitle: "Inicia tu aprendizaje online con",
+  mainTitle: "Cursos online de desarrollo de software en tu-academia.com",
   subTitle: "bla bla bla bla bla",
   searchPlaceholder: "Buscar...",
+  VimeoVideoId: "440536840",
 };
 
 const allCourses = {

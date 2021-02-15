@@ -1,90 +1,58 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Row, Col, Container } from "reactstrap";
 
 import Certificates from "components/userProfile/Certificates";
 import AuthorData from "components/userProfile/AuthorData";
-// import Controller_Profile from "fetchers/Profile";
 import Header from "./Hero";
 import PHUserProfile from "./PHUserProfile";
+import { useFirestore } from "reactfire";
 
-export default class user extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: "",
-      profile: null,
-    };
-    // this.profile = new Controller_Profile();
-  }
+export default function index() {
+  const fireStore = useFirestore();
+  const [profile, setProfile] = useState(null);
 
-  loadData = () => {
+  useEffect(() => {
     const urlSearchParams = new URLSearchParams(document.location.search);
-    const userName = urlSearchParams.get("name");
+    const userId = urlSearchParams.get("id");
 
-    if (this.state.profile)
-      this.setState({
-        profile: null,
+    fireStore
+      .collection("profiles")
+      .doc(userId)
+      .onSnapshot((_profile) => {
+        const profile = _profile.data();
+        setProfile(profile);
       });
+  }, []);
 
-    // this.profile.getProfile(userName, (response, error) => {
-    //   this.setState({
-    //     username: userName,
-    //     profile: response
-    //       ? response.user_data
-    //         ? response.user_data
-    //         : ""
-    //       : null,
-    //     error: error,
-    //   });
-    // });
-  };
-
-  componentDidMount() {
-    this.loadData();
+  if (!profile) {
+    return (
+      <>
+        <Header title={`Hi! mi name is...`} />
+        <PHUserProfile />
+      </>
+    );
   }
 
-  componentDidUpdate() {
-    const urlSearchParams = new URLSearchParams(document.location.search);
-    const userName = urlSearchParams.get("name");
-
-    if (this.state.username !== userName) this.loadData();
-  }
-
-  render() {
-    if (this.state.profile)
-      return (
-        <>
-          <Header
-            className="mt-2 mb-5"
-            title={`Hi! mi name is ${
-              this.state.profile.name
-                ? this.state.profile.name.split(" ")[0]
-                : this.state.profile.user_name
-            }`}
-          />
-          <Container
-            style={{
-              marginTop: "-60px",
-            }}
-          >
-            <Row>
-              <Col xs="12" lg="8" className="order-lg-2">
-                <AuthorData profile={this.state.profile} />
-              </Col>
-              <Col xs="12" lg="4" className="order-lg-1">
-                <Certificates />
-              </Col>
-            </Row>
-          </Container>
-        </>
-      );
-    else
-      return (
-        <>
-          <Header title={`Hi! mi name is...`} />
-
-          <PHUserProfile />
-        </>
-      );
-  }
+  return (
+    <>
+      <Header
+        className="mt-2 mb-5"
+        title={`Hi! mi name is ${profile.user_name}`}
+      />
+      <Container
+        style={{
+          marginTop: "-60px",
+        }}
+      >
+        <Row>
+          <Col xs="12" lg="8" className="order-lg-2">
+            <AuthorData profile={profile} />
+          </Col>
+          <Col xs="12" lg="4" className="order-lg-1">
+            <Certificates />
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
 }

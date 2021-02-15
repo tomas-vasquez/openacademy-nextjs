@@ -208,4 +208,4 @@ class Alerts {
   };
 }
 
-export default Alerts;
+export default new Alerts();

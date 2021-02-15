@@ -2,6 +2,8 @@ import Icons from "components/common/Icons";
 import { useRouter } from "next/router";
 import React from "react";
 import { hero } from "../../../site.config";
+import YouTube from "react-youtube";
+import Vimeo from "@u-wave/react-vimeo";
 
 export default function Hero() {
   const router = useRouter();
@@ -19,12 +21,12 @@ export default function Hero() {
           <div className="row">
             <div className="container">
               <div className="row align-items-center">
-                <div className="col-lg-7 col-md-6 col-12">
+                <div className="col-md-6 col-12">
                   <div className="title-heading mr-lg-4">
-                    <h2 className="heading mb-3">
+                    <h1 className="h2  mb-3">
                       {hero.mainTitle}
-                      <span className="text-primary">: cursos-online.com</span>
-                    </h2>
+                      {/* <span className="text-primary">: cursos-online.com</span> */}
+                    </h1>
                     <p className="para-desc text-muted">{hero.subTitle}</p>
                     <div className="subcribe-form mt-4 pt-2">
                       <form className="m-0" onSubmit={submitHandler}>
@@ -51,22 +53,20 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="col-lg-5 col-md-6 col-12 mt-4 pt-2 mt-sm-0 pt-sm-0">
-                  <div className="position-relative shadow-md">
-                    <img
-                      src={require("../../assets/images/course/online/hero2.jpg")}
-                      className="rounded img-fluid mx-auto d-block"
-                      alt=""
+                <div className="col-md-6 col-12 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                  <div
+                    className="video-container shadow-md"
+                    style={{ height: "315px" }}
+                  >
+                    <Vimeo
+                      height="420"
+                      width="720"
+                      showByline={false}
+                      showPortrait={false}
+                      controls={false}
+                      video={hero.VimeoVideoId}
+                      autoplay={true}
                     />
-                    <div className="play-icon">
-                      <a
-                        href="#"
-                        className="btn btn-danger m-0 p-3 text-lg shadow-md"
-                        style={{ borderRight: "25px" }}
-                      >
-                        <Icons icon="play" className="fa-2x" />
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>

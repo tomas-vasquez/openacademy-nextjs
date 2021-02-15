@@ -18,7 +18,7 @@ export default class Switch extends Component {
 
   render() {
     return (
-      <div className="menu-extras my-auto mx-2">
+      <div className="menu-extras my-auto mx-3">
         <div className="menu-item">
           <input
             type="checkbox"

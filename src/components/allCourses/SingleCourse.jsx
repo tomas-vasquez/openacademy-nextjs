@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function CardCourse({ course, author }) {
   return (
     <Card
-      className="shadow-md rounded-bottom rounded-top mb-0"
+      className="blog shadow-md rounded-bottom rounded-top mb-0 mt-3 "
       style={{ cursor: "pointer" }}
     >
       <Link href={`/${course.course_short_link}`}>
@@ -54,7 +54,7 @@ export default function CardCourse({ course, author }) {
         </a>
       </Link>
       <Link href={`/user?name=${author.user_name}`}>
-        <a>
+        <a className="text-dark">
           <CardFooter className="d-flex align-items-center p-2">
             <img
               alt={author.name}
@@ -62,7 +62,7 @@ export default function CardCourse({ course, author }) {
               src={author.user_pic || require("assets/images/noPic.png")}
             />
             <div className="ml-2">
-              <p className="mb-0 text-shadow">{author.user_name}</p>
+              <p className="mb-0 text-dark text-shadow">{author.user_name}</p>
               <p className="small my-0 text-muted">
                 {author.short_description || ""}
               </p>
