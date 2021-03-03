@@ -32,24 +32,17 @@
     "postcss-preset-env": "^6.7.0",
     "react": "16.13.1",
     "react-anchor-link-smooth-scroll": "^1.0.12",
-    "react-dark-mode-toggle": "^0.0.10",
     "react-dom": "16.13.1",
     "react-firebaseui": "^4.1.0",
     "react-markdown": "^4.3.1",
     "react-multi-carousel": "^2.6.1",
-    "react-styled-carousel": "^0.5.1",
     "react-syntax-highlighter": "^13.5.1",
     "react-youtube": "^7.13.0",
     "reactfire": "^3.0.0-rc.0",
     "reactstrap": "^8.4.1",
-    "redux-socket.io": "^1.4.0",
     "sweetalert2": "^10.0.2",
     "typeface-merriweather": "^0.0.72",
     "typeface-open-sans": "^0.0.75"
-  },
-  "devDependencies": {
-    "gray-matter": "^4.0.2",
-    "redux-devtools": "^3.7.0"
   },
   "license": "MIT",
   "repository": {
