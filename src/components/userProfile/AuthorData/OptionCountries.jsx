@@ -3,7 +3,6 @@ import React from "react";
 // reactstrap components
 import {
   Input,
-  InputGroupAddon,
   InputGroupText,
   InputGroup,
   UncontrolledTooltip,
@@ -62,14 +61,14 @@ class OptionCountries extends React.Component {
                   placeholder="000-000-000"
                   onChangeCapture={onChangeNumber}
                 />
-                <InputGroupAddon
+                <div
+                  className="input-group-append"
                   onClick={(e) =>
                     this.testUrl(
                       this.props.whatsapp_code_area,
                       this.props.whatsapp_number
                     )
                   }
-                  addonType="append"
                   style={{ cursor: "pointer" }}
                 >
                   <InputGroupText
@@ -78,7 +77,7 @@ class OptionCountries extends React.Component {
                   >
                     <Icons icon="external-link" />
                   </InputGroupText>
-                </InputGroupAddon>
+                </div>
                 <UncontrolledTooltip delay={0} target="tooltip48783807893">
                   Provar enlace
                 </UncontrolledTooltip>

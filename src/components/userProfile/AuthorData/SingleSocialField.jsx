@@ -3,7 +3,6 @@ import {
   Input,
   UncontrolledTooltip,
   InputGroupText,
-  InputGroupAddon,
   InputGroup,
 } from "reactstrap";
 import _ from "lodash";
@@ -17,21 +16,22 @@ const SingleSocialField = ({ name, defaultValue, isEditing }) => (
     <div className="col-md-8 showcase_content_area">
       {isEditing ? (
         <InputGroup>
-          <InputGroupAddon addonType="prepend">
+          <div className="input-group-append">
             <InputGroupText
               style={{ width: 40 }}
               className="text-muted bg-light"
             >
               <Icons icon={name} />
             </InputGroupText>
-          </InputGroupAddon>
+          </div>
           <Input
             id={`input-${name}`}
             name={`link_${name}`}
             defaultValue={defaultValue}
             type="text"
           />
-          <InputGroupAddon
+          <div
+            className="input-group-append"
             onClick={(e) => {
               window.open(
                 document.getElementById(`input-${name}`).value,
@@ -47,7 +47,7 @@ const SingleSocialField = ({ name, defaultValue, isEditing }) => (
             >
               <Icons icon="external-link" />
             </InputGroupText>
-          </InputGroupAddon>
+          </div>
           <UncontrolledTooltip delay={0} target={`tooltip-${name}`}>
             Provar enlace
           </UncontrolledTooltip>
