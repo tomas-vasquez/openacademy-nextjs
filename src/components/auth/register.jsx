@@ -122,7 +122,7 @@ export default function login() {
                   </div>
                 </form>
                 <img
-                  src={require("../../assets/images/shapes/shape1.png")}
+                  src="/images/shapes/shape1.png"
                   className="img-fluid shape-img"
                   alt=""
                 />
