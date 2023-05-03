@@ -40,7 +40,7 @@ function Banner({ course, authors, paymentReports, items }) {
           <div className="col-12 col-md-6">
             <div className="shape-before">
               <img
-                src={require("../../assets/images/shapes/shape1.png")}
+                src={"/images/shapes/shape1.png"}
                 className="img-fluid shape-img"
                 alt=""
                 style={{ zIndex: 0 }}

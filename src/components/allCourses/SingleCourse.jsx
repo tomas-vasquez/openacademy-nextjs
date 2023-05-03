@@ -11,7 +11,7 @@ export default function CardCourse({ course, author, preview = false }) {
         <div className="text-right m-0" style={{ position: "relative" }}>
           <CardImg
             className="rounded-top"
-            src={course.course_pic_url || require("assets/images/noPic.png")}
+            src={course.course_pic_url || "/images/noPic.png"}
           />
           {!preview && (
             <div className="course-price">
@@ -72,7 +72,7 @@ export default function CardCourse({ course, author, preview = false }) {
       <img
         alt={author.name}
         className="avatar avatar-md-sm rounded-circle shadow-md"
-        src={author.user_pic || require("assets/images/noPic.png")}
+        src={author.user_pic || "/images/noPic.png"}
       />
       <div className="ml-2">
         <p className="mb-0 text-dark text-shadow">{author.user_name}</p>

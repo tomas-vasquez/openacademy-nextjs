@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import DB from "helpers/db";
 import { useRouter } from "next/router";
@@ -6,10 +6,12 @@ import svgUrl from "assets/svgs/undraw_secure_login_pdn4.svg";
 import FirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { useAuth } from "reactfire";
 import { Card, CardBody, Col, Row } from "reactstrap";
+import FirebaseContext from "context/FirebaseContext";
 
 export default function login() {
   const router = useRouter();
-  const auth = useAuth;
+  const firebase = useContext(FirebaseContext);
+  const auth = firebase.auth;
 
   const openTargetPage = () => {
     const targetPage = DB.get("targetPage") || "/";

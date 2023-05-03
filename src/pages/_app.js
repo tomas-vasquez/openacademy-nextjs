@@ -3,11 +3,8 @@ import "../assets/css/bootstrap.min.css";
 import "../assets/css/style.css";
 
 //firebase
-import firebaseConfig from "firebase.config";
-import { FirebaseAppProvider } from "reactfire";
-import "firebase/auth";
-import "firebase/firestore";
-import "firebase/storage";
+import FirebaseContext from "../context/FirebaseContext";
+import myFirebase from "../myFirebase";
 
 //nprogress module
 import Router from "next/router";
@@ -18,8 +15,8 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+    <FirebaseContext.Provider value={myFirebase}>
       <Component {...pageProps} />
-    </FirebaseAppProvider>
+    </FirebaseContext.Provider>
   );
 }

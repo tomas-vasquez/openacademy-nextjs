@@ -43,10 +43,7 @@ export default function BestCourses({ courses }) {
                 <a>
                   <CardImg
                     className="rounded-md shadow-md"
-                    src={
-                      course.course_pic_url ||
-                      require("assets/images/noPic.png")
-                    }
+                    src={course.course_pic_url || "/images/noPic.png"}
                   />
                 </a>
               </Link>

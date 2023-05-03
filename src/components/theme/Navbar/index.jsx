@@ -2,7 +2,7 @@ import Icons from "components/common/Icons";
 import Link from "next/link";
 import React, { Component } from "react";
 import { Collapse } from "reactstrap";
-import AuthMenu from "./AuthMenu";
+// import AuthMenu from "./AuthMenu";
 import Navigation from "./Navigation";
 import Search from "./Search";
 import Switch from "./Switch";
@@ -102,7 +102,7 @@ class Navbar extends Component {
           <div className="d-flex float-right" style={{ height: 60 }}>
             <Switch />
             <Search />
-            <AuthMenu userData={this.props.userData} isDark={isDark} />
+            {/* <AuthMenu userData={this.props.userData} isDark={isDark} /> */}
           </div>
 
           <Collapse isOpen={this.state.open} id="navigation">
