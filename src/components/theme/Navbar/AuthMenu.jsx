@@ -48,7 +48,7 @@ export default function AuthMenu({ userData, isDark }) {
                 onClick={openRegisterPage}
               >
                 Ingresar...
-              </a>
+             
             </div>
             {/* <div className="buy-button p-0 ml-0">
               <a
@@ -58,7 +58,7 @@ export default function AuthMenu({ userData, isDark }) {
                 onClick={openLoginPage}
               >
                 Iniciar sesion
-              </a>
+             
             </div> */}
           </>
         ) : (
@@ -78,7 +78,7 @@ export default function AuthMenu({ userData, isDark }) {
                     style={{ width: 40, borderRadius: "50%" }}
                     className="my-auto"
                   />
-                </a>
+               
                 <ul
                   className="submenu mr-3 submenu-right"
                   style={{
@@ -87,10 +87,10 @@ export default function AuthMenu({ userData, isDark }) {
                 >
                   <li className="has-submenu">
                     <Link href={`/user?id=${user.uid}`}>
-                      <a>
+                      
                         <Icons icon="user" className="mr-2" />
                         Mi perfil
-                      </a>
+                     
                     </Link>
                   </li>
 
@@ -98,7 +98,7 @@ export default function AuthMenu({ userData, isDark }) {
                     <a href="#!" onClick={handleLogout}>
                       <Icons icon="logout" className="mr-2" />
                       logout
-                    </a>
+                   
                   </li>
                 </ul>
               </li>
@@ -111,7 +111,7 @@ export default function AuthMenu({ userData, isDark }) {
         <div className="menu-item pt-2">
           <a href="#!">
             <Icons icon="user-circle" className="fa-1x text-muted" />
-          </a>
+         
         </div>
       </div>
     </>

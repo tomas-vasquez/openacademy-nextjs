@@ -41,72 +41,66 @@ export default function Results({ results }) {
       </p>
       {results.map((element, index) => (
         <Link key={index} href={element.link}>
-          <a>
-            <Card
-              className="bg-transparent mb-4 mx-0 border-0 on-hover"
-              style={{
-                cursor: "pointer",
-              }}
-            >
-              {element.type === "course" ? (
-                <div className="d-block d-md-flex">
-                  <CardImg
-                    className="img-result-container"
-                    src={element.course.course_pic_url || "/images/noPic.png"}
-                  />
-                  <div className="py-2 p-md-0">
-                    <CardBody className="p-0 px-3">
-                      <h4 className="text-primary">
-                        <Icons icon="books" className="mr-2" />
-                        {element.course.course_title}
-                      </h4>
-                      <div
-                        style={{
-                          maxHeight: 50,
-                          overflow: "hidden",
-                        }}
-                      >
-                        {parser(
-                          element.course.course_long_description ||
-                            element.course.course_description
-                        )}
-                      </div>
-                      <small className="mb-0 text-success">
-                        {element.link}
-                      </small>
-                    </CardBody>
-                  </div>
+          <Card
+            className="bg-transparent mb-4 mx-0 border-0 on-hover"
+            style={{
+              cursor: "pointer",
+            }}
+          >
+            {element.type === "course" ? (
+              <div className="d-block d-md-flex">
+                <CardImg
+                  className="img-result-container"
+                  src={element.course.course_pic_url || "/images/noPic.png"}
+                />
+                <div className="py-2 p-md-0">
+                  <CardBody className="p-0 px-3">
+                    <h4 className="text-primary">
+                      <Icons icon="books" className="mr-2" />
+                      {element.course.course_title}
+                    </h4>
+                    <div
+                      style={{
+                        maxHeight: 50,
+                        overflow: "hidden",
+                      }}
+                    >
+                      {parser(
+                        element.course.course_long_description ||
+                          element.course.course_description
+                      )}
+                    </div>
+                    <small className="mb-0 text-success">{element.link}</small>
+                  </CardBody>
                 </div>
-              ) : (
-                <div className="d-block d-md-flex">
-                  <CardImg
-                    id={`image-${element.item._id}`}
-                    className="img-result-container"
-                    src={getPicUrl(element.item)}
-                  />
-                  <div className="py-2 p-md-0">
-                    <CardBody className="p-0 px-3">
-                      <h4 className="text-primary">
-                        <Icons icon="playCircle" className="mr-2" />
-                        {element.item.item_title}
-                      </h4>
-                      <div
-                        style={{
-                          maxHeight: 100,
-                          overflow: "hidden",
-                        }}
-                      >
-                        {parser(element.item.item_description || "")}
-                      </div>
-                      <small className="mb-0 text-success">
-                        {element.link}
-                      </small>
-                    </CardBody>
-                  </div>
+              </div>
+            ) : (
+              <div className="d-block d-md-flex">
+                <CardImg
+                  id={`image-${element.item._id}`}
+                  className="img-result-container"
+                  src={getPicUrl(element.item)}
+                />
+                <div className="py-2 p-md-0">
+                  <CardBody className="p-0 px-3">
+                    <h4 className="text-primary">
+                      <Icons icon="playCircle" className="mr-2" />
+                      {element.item.item_title}
+                    </h4>
+                    <div
+                      style={{
+                        maxHeight: 100,
+                        overflow: "hidden",
+                      }}
+                    >
+                      {parser(element.item.item_description || "")}
+                    </div>
+                    <small className="mb-0 text-success">{element.link}</small>
+                  </CardBody>
                 </div>
-              )}
-            </Card>
-          </a>
+              </div>
+            )}
+          </Card>
         </Link>
       ))}
     </div>

@@ -35,15 +35,13 @@ class CourseMap extends React.Component {
 
       while (flag) {
         elems.push(
-          <>
-            <SingleItem
-              key={"item-" + index}
-              index={index}
-              item={items[index]}
-              course={this.props.course}
-              currentItem={this.props.currentItem}
-            />
-          </>
+          <SingleItem
+            key={"item-" + index}
+            index={index}
+            item={items[index]}
+            course={this.props.course}
+            currentItem={this.props.currentItem}
+          />
         );
 
         if (!items[index + 1]) {

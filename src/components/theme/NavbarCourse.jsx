@@ -18,7 +18,7 @@ export default function NavbarCourse({ isDark }) {
         >
           <Icons icon="arrowLeft" className="m-0" />
           <span className="d-none d-md-inline ml-2">back</span>
-        </a>
+       
       </div> */}
 
       <div className="d-flex float-left" style={{ height: 60 }}>
