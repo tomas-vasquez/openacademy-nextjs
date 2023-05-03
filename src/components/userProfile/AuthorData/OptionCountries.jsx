@@ -99,7 +99,7 @@ class OptionCountries extends React.Component {
                   this.props.whatsapp_code_area +
                   ") " +
                   this.props.whatsapp_number}
-             
+              </a>
             ) : (
               <p>no definido</p>
             )}
