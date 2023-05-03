@@ -23,7 +23,7 @@ const TabName = ({ title, tabName, tab, onClick, icon }) => {
             "d-inline d-lg-none": tab === tabName,
           })}
         >
-          {title}
+          {/* {title} */}
         </strong>
       </div>
     </>

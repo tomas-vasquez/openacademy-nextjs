@@ -8,14 +8,13 @@ import Invitation from "components/common/Invitation";
 import { getAllAuthors, getAllCourses } from "utils/courses";
 
 export default function Index({ courses, authors }) {
-  console.log(authors);
   return (
-    <Layout title="Inicio">
+    <Layout>
       <SEO title="Inicio" />
       <Hero />
       <Partners />
       <section className="mb-5">
-        {/* <PopularCourses courses={courses} authors={authors} /> */}
+        <PopularCourses courses={courses} authors={authors} />
       </section>
       <Invitation />
     </Layout>

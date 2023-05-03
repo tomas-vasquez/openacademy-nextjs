@@ -1,6 +1,6 @@
 // Firebase
 import app from "myFirebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 
 /* =========================================================
@@ -45,16 +45,18 @@ export const getAllAuthors = async (courses) => {
 
 export const getItems = async (course) => {
   let items = [];
+  const db = getFirestore(app);
 
-  // const querySnapshot = await fireStore
-  //   .collection("course_items")
-  //   .where("item_course_id", "==", course.id)
-  //   .get();
-
-  // for (const doc of querySnapshot.docs) {
-  //   const item = doc.data();
-  //   items.push(item);
-  // }
+  const querySnapshot = await getDocs(
+    query(
+      collection(db, "course_items"),
+      where("item_course_id", "==", course.id)
+    )
+  );
+  querySnapshot.forEach((doc) => {
+    const item = doc.data();
+    items.push(item);
+  });
 
   return items;
 };

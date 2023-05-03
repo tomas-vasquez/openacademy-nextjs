@@ -11,7 +11,7 @@ export default function Invitation() {
               style={{
                 width: 100,
               }}
-              src="/img/invitation.png"
+              src="/images/invitation.png"
               alt=""
             />
           </Col>

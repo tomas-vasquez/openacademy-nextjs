@@ -11,10 +11,11 @@ const SingleItem = ({ course, index, item, currentItem }) => {
       <div
         className="nav-link border-bottom"
         style={{
-          backgroundColor:
-            currentItem?.item_title === item.item_title
+          backgroundColor: currentItem
+            ? currentItem.item_title === item.item_title
               ? "rgb(24 202 242 / 6%)"
-              : "",
+              : "none"
+            : "none",
         }}
       >
         <Link

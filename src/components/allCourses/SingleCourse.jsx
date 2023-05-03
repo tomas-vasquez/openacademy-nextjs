@@ -93,15 +93,14 @@ export default function CardCourse({ course, author, preview = false }) {
     >
       {!preview ? (
         <>
-          <Link href={`/${course.course_short_link}`}>
-            <a style={{ textDecoration: "none" }}>
-              <CourseCardBody />
-            </a>
+          <Link
+            href={`/${course.course_short_link}`}
+            style={{ textDecoration: "none" }}
+          >
+            <CourseCardBody />
           </Link>
-          <Link href={`/user?name=${author.user_name}`}>
-            <a className="text-dark">
-              <CourseCardFooter />
-            </a>
+          <Link href={`/user?name=${author.user_name}`} className="text-dark">
+            <CourseCardFooter />
           </Link>
         </>
       ) : (

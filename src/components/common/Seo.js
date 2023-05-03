@@ -6,7 +6,7 @@ export default function SEO({ title, description = "" }) {
 
   return (
     <Head>
-      {/* <title>{title}| {siteMetadata.title}</title> */}
+      <title>{title + " | " + siteMetadata.title}</title>
       <meta name="description" content={metaDescription} />
       <meta property="og:type" content="website" />
       <meta name="og:title" property="og:title" content={title} />
