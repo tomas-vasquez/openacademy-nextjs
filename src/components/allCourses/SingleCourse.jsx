@@ -99,7 +99,7 @@ export default function CardCourse({ course, author, preview = false }) {
           >
             <CourseCardBody />
           </Link>
-          <Link href={`/user?name=${author.user_name}`} className="text-dark">
+          <Link href={`/user?id=${author.id}`} className="text-dark">
             <CourseCardFooter />
           </Link>
         </>

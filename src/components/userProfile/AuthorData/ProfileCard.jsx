@@ -2,7 +2,7 @@ import SocialButtons from "components/course/SocialButtons";
 import Alerts from "helpers/Alerts";
 import { cropToProfilePic } from "helpers/image";
 import React from "react";
-import { useFirestore, useStorage, useUser } from "reactfire";
+// import { useFirestore, useStorage, useUser } from "reactfire";
 import {
   Col,
   CardBody,
@@ -22,30 +22,30 @@ const getPicUrl = (profile) => {
 };
 
 const ProfileCard = ({ profile, editable }) => {
-  const storage = useStorage();
-  const firestore = useFirestore();
-  const { data: user } = useUser();
+  // const storage = useStorage();
+  // const firestore = useFirestore();
+  // const { data: user } = useUser();
 
   const handlePicPicker = (e) => {
-    const file = e.target.files[0];
+    // const file = e.target.files[0];
 
-    cropToProfilePic(file, (blob) => {
-      var fileName =
-        new Date().getMilliseconds() + "-" + getShortLink(profile.user_name);
-      const newRef = storage.ref("user-pics").child(fileName);
+    // cropToProfilePic(file, (blob) => {
+    //   var fileName =
+    //     new Date().getMilliseconds() + "-" + getShortLink(profile.user_name);
+    //   const newRef = storage.ref("user-pics").child(fileName);
 
-      newRef.put(blob).then(() => {
-        newRef.getDownloadURL().then((url) => {
-          firestore
-            .collection("profiles")
-            .doc(user.uid)
-            .set({ ...profile, user_pic: url })
-            .then(() => {
-              Alerts.showToast("perfil Actualizado");
-            });
-        });
-      });
-    });
+    //   newRef.put(blob).then(() => {
+    //     newRef.getDownloadURL().then((url) => {
+    //       firestore
+    //         .collection("profiles")
+    //         .doc(user.uid)
+    //         .set({ ...profile, user_pic: url })
+    //         .then(() => {
+    //           Alerts.showToast("perfil Actualizado");
+    //         });
+    //     });
+    //   });
+    // });
     Alerts.showLoading();
   };
 
@@ -89,9 +89,13 @@ const ProfileCard = ({ profile, editable }) => {
           </Row>
         </Container>
       </CardBody>
-      <UncontrolledTooltip delay={0} target="image-123">
-        cambiar imagen
-      </UncontrolledTooltip>
+      {editable ? (
+        <UncontrolledTooltip delay={0} target="image-123">
+          cambiar imagen
+        </UncontrolledTooltip>
+      ) : (
+        <></>
+      )}
       <input
         className="d-none"
         id="input-pic"

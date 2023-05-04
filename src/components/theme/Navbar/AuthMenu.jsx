@@ -2,15 +2,17 @@ import Icons from "components/common/Icons";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import DB from "../../../helpers/db";
-// import Controller_Users from "fetchers/Users";
 import Link from "next/link";
-import { useFirestore, useUser } from "reactfire";
+import { connect } from "react-redux";
 
-export default function AuthMenu({ userData, isDark }) {
+import app from "myFirebase";
+import { doc, getDoc } from "firebase/firestore";
+
+function AuthMenu(props) {
+  const { isDark, user } = props;
   const router = useRouter();
-  const { data: user } = useUser();
+
   const [profile, setProfile] = useState(null);
-  const fireStore = useFirestore();
 
   const openRegisterPage = (e) => {
     e.preventDefault();
@@ -18,21 +20,33 @@ export default function AuthMenu({ userData, isDark }) {
       DB.set("targetPage", document.location.href);
     router.push("/register");
   };
+  const openLoginPage = (e) => {
+    e.preventDefault();
+    if (router.pathname !== "/login" && router.pathname !== "/register")
+      DB.set("targetPage", document.location.href);
+    router.push("/login");
+  };
 
+  openLoginPage;
+  const myFunction = async () => {
+    if (user && !profile) {
+      const db = app.firestore();
+      const docRef = doc(db, "profiles", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const profile = docSnap.data();
+        setProfile(profile);
+      }
+    }
+  };
   useEffect(() => {
-    if (user && !profile)
-      fireStore
-        .collection("profiles")
-        .doc(user.uid)
-        .onSnapshot((_profile) => {
-          const profile = _profile.data();
-          setProfile(profile);
-        });
+    myFunction();
   }, []);
 
   const handleLogout = (e) => {
     e.preventDefault();
-    // new Controller_Users().logout();
+    app.auth().signOut();
   };
 
   return (
@@ -40,26 +54,34 @@ export default function AuthMenu({ userData, isDark }) {
       <div className="mx-3 d-none d-md-flex">
         {!user ? (
           <>
-            <div className="buy-button p-0 m-0 mr-2">
-              <a
-                className="btn btn-primary my-0 p-2"
-                href="/register"
-                target="_blank"
-                onClick={openRegisterPage}
-              >
-                Ingresar...
-             
-            </div>
-            {/* <div className="buy-button p-0 ml-0">
-              <a
-                className="btn btn-light text-dark my-0 p-2"
-                href="/login"
-                target="_blank"
-                onClick={openLoginPage}
-              >
-                Iniciar sesion
-             
-            </div> */}
+            {router.pathname !== "/register" ? (
+              <div className="buy-button p-0 m-0 mr-2">
+                <a
+                  className="btn btn-primary my-0 p-2"
+                  href="/register"
+                  target="_blank"
+                  onClick={openRegisterPage}
+                >
+                  Registrarme...
+                </a>
+              </div>
+            ) : (
+              <></>
+            )}
+            {router.pathname !== "/login" ? (
+              <div className="buy-button p-0 ml-0">
+                <a
+                  className="btn btn-light text-dark my-0 p-2"
+                  href="/login"
+                  target="_blank"
+                  onClick={openLoginPage}
+                >
+                  Iniciar sesion
+                </a>
+              </div>
+            ) : (
+              <></>
+            )}
           </>
         ) : (
           <>
@@ -78,7 +100,7 @@ export default function AuthMenu({ userData, isDark }) {
                     style={{ width: 40, borderRadius: "50%" }}
                     className="my-auto"
                   />
-               
+                </a>
                 <ul
                   className="submenu mr-3 submenu-right"
                   style={{
@@ -87,10 +109,8 @@ export default function AuthMenu({ userData, isDark }) {
                 >
                   <li className="has-submenu">
                     <Link href={`/user?id=${user.uid}`}>
-                      
-                        <Icons icon="user" className="mr-2" />
-                        Mi perfil
-                     
+                      <Icons icon="user" className="mr-2" />
+                      Mi perfil
                     </Link>
                   </li>
 
@@ -98,7 +118,7 @@ export default function AuthMenu({ userData, isDark }) {
                     <a href="#!" onClick={handleLogout}>
                       <Icons icon="logout" className="mr-2" />
                       logout
-                   
+                    </a>
                   </li>
                 </ul>
               </li>
@@ -111,9 +131,16 @@ export default function AuthMenu({ userData, isDark }) {
         <div className="menu-item pt-2">
           <a href="#!">
             <Icons icon="user-circle" className="fa-1x text-muted" />
-         
+          </a>
         </div>
       </div>
     </>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    user: state.settings.user,
+  };
+};
+
+export default connect(mapStateToProps)(AuthMenu);

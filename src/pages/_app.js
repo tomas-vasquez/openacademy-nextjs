@@ -13,10 +13,16 @@ Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
+//redux
+import { Provider as ReduxProvider } from "react-redux";
+import store from "../store";
+
 export default function MyApp({ Component, pageProps }) {
   return (
-    <FirebaseContext.Provider value={myFirebase}>
-      <Component {...pageProps} />
-    </FirebaseContext.Provider>
+    <ReduxProvider store={store}>
+      <FirebaseContext.Provider value={myFirebase}>
+        <Component {...pageProps} />
+      </FirebaseContext.Provider>
+    </ReduxProvider>
   );
 }

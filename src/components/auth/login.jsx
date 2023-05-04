@@ -3,34 +3,18 @@ import React, { useContext } from "react";
 import DB from "helpers/db";
 import { useRouter } from "next/router";
 import svgUrl from "assets/svgs/undraw_secure_login_pdn4.svg";
-import FirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import { useAuth } from "reactfire";
 import { Card, CardBody, Col, Row } from "reactstrap";
+
 import FirebaseContext from "context/FirebaseContext";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 export default function login() {
   const router = useRouter();
   const firebase = useContext(FirebaseContext);
-  const auth = firebase.auth;
 
   const openTargetPage = () => {
     const targetPage = DB.get("targetPage") || "/";
     router.push(targetPage);
-  };
-
-  const uiConfig = {
-    queryParameterForSignInSuccessUrl: "signInSuccessUrl",
-    signInFlow: "popup",
-    signInOptions: [
-      auth.EmailAuthProvider.PROVIDER_ID,
-      auth.GoogleAuthProvider.PROVIDER_ID,
-      auth.FacebookAuthProvider.PROVIDER_ID,
-    ],
-    callbacks: {
-      signInSuccessWithAuthResult: (data) => {
-        openTargetPage();
-      },
-    },
   };
 
   return (
@@ -59,7 +43,21 @@ export default function login() {
               <Col xs="12" lg="6" className="py-2 px-4 text-center">
                 <h1 className="mb-4">Ingresar con:</h1>
                 <p>Crea una cuenta o ingresa con alguno de estos metodos:</p>
-                <FirebaseAuth uiConfig={uiConfig} firebaseAuth={auth()} />{" "}
+                <StyledFirebaseAuth
+                  uiConfig={{
+                    signInFlow: "popup",
+                    signInOptions: [
+                      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                    ],
+                    callbacks: {
+                      signInSuccessWithAuthResult: (data) => {
+                        openTargetPage();
+                      },
+                    },
+                  }}
+                  firebaseAuth={firebase.auth()}
+                />
                 <small className="text-muted mt-4">
                   <small className="text-dark">Importante: </small>ingresando a
                   nuestra plataforma aceptas los terminos y condiciones de uso.

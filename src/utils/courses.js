@@ -8,7 +8,7 @@ import { getFirestore } from "firebase/firestore";
  * ========================================================= */
 export const getAllCourses = async () => {
   let courses = [];
-  const db = getFirestore(app);
+  const db = app.firestore();
 
   const querySnapshot = await getDocs(collection(db, "courses"));
   querySnapshot.forEach((doc) => {
@@ -23,7 +23,7 @@ export const getAllCourses = async () => {
  *
  * ========================================================= */
 export const getAllAuthors = async (courses) => {
-  const db = getFirestore(app);
+  const db = app.firestore();
 
   let profiles = [];
   let authorIds = [];
@@ -45,7 +45,7 @@ export const getAllAuthors = async (courses) => {
 
 export const getItems = async (course) => {
   let items = [];
-  const db = getFirestore(app);
+  const db = app.firestore();
 
   const querySnapshot = await getDocs(
     query(

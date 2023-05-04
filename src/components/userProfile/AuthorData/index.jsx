@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
-// reactstrap components
 import {
   CardBody,
   Card,
@@ -8,30 +8,30 @@ import {
   CardTitle,
   Button,
   Collapse,
-  // Container,
 } from "reactstrap";
 
 import { nameChangedHandler } from "helpers/input";
-// import Controller_Profile from "fetchers/Profile";
-
 import OptionCountries from "./OptionCountries";
 import ProfileCard from "./ProfileCard";
 import SingleField from "./SingleField";
 import SingleSocialField from "./SingleSocialField";
 import DescriptionField from "./DescriptionField";
-import { useFirestore, useUser } from "reactfire";
+
 import Alerts from "helpers/Alerts";
 import Icons from "components/common/Icons";
 
-export default function AuthorData({ profile }) {
-  const { data: user } = useUser();
+import app from "myFirebase";
+import { doc, setDoc } from "firebase/firestore";
+
+function AuthorData(props) {
+  const { profile, user } = props;
+
   const [editable, setEditable] = useState(false);
-  const firestore = useFirestore();
 
-  const handleDataUpdate = (e) => {
+  const handleDataUpdate = async (e) => {
     e.preventDefault();
-    let data = {};
 
+    let data = {};
     const form = e.target;
 
     for (let index = 0; index < form.length; index++) {
@@ -40,14 +40,14 @@ export default function AuthorData({ profile }) {
       }
     }
 
-    firestore
-      .collection("profiles")
-      .doc(user.uid)
-      .set({ ...profile, ...data })
-      .then(() => {
-        Alerts.showToast("perfil Actualizado");
-      });
     Alerts.showLoading();
+
+    const db = app.firestore();
+    await setDoc(doc(db, "profiles", user.uid), { ...profile, ...data }).then(
+      () => {
+        Alerts.showToast("perfil Actualizado");
+      }
+    );
   };
 
   useEffect(() => {
@@ -55,8 +55,10 @@ export default function AuthorData({ profile }) {
       if (user.uid === profile.id) {
         setEditable(true);
       }
+    } else {
+      setEditable(false);
     }
-  });
+  }, [user]);
 
   return (
     <div>
@@ -144,3 +146,10 @@ export default function AuthorData({ profile }) {
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    user: state.settings.user,
+  };
+};
+
+export default connect(mapStateToProps)(AuthorData);

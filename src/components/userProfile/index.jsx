@@ -1,27 +1,33 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Container } from "reactstrap";
 
 import Certificates from "components/userProfile/Certificates";
 import AuthorData from "components/userProfile/AuthorData";
 import Header from "./Hero";
 import PHUserProfile from "./PHUserProfile";
-import { useFirestore } from "reactfire";
+
+import app from "myFirebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function index() {
-  const fireStore = useFirestore();
   const [profile, setProfile] = useState(null);
 
-  useEffect(() => {
+  const myFunction = async () => {
     const urlSearchParams = new URLSearchParams(document.location.search);
     const userId = urlSearchParams.get("id");
 
-    fireStore
-      .collection("profiles")
-      .doc(userId)
-      .onSnapshot((_profile) => {
-        const profile = _profile.data();
-        setProfile(profile);
-      });
+    const db = app.firestore();
+    const docRef = doc(db, "profiles", userId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const profile = docSnap.data();
+      setProfile(profile);
+    }
+  };
+
+  useEffect(() => {
+    myFunction();
   }, []);
 
   if (!profile) {

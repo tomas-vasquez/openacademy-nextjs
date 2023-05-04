@@ -72,7 +72,7 @@ function Banner({ course, authors, paymentReports, items }) {
                 {_.upperFirst(course.course_description)}
               </p>
             </div>
-            <Link href={`/user?name=${author.user_name}`}>
+            <Link href={`/user?id=${author.id}`}>
               <div className="teacher d-flex align-items-center px-2">
                 <img
                   alt={author.name}
