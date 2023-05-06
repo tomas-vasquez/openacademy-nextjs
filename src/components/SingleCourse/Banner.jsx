@@ -25,7 +25,7 @@ function Banner({ course, authors, paymentReports, items }) {
     (author) => author.id === course.course_author_id
   );
 
-  const pic_url = author.user_pic ? author.user_pic : "/img/noPic.jpg";
+  const pic_url = author.user_pic ? author.user_pic : "/img/noPic.png";
 
   return (
     <section

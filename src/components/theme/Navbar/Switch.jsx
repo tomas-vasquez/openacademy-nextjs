@@ -25,7 +25,6 @@ export default class Switch extends Component {
             className="checkbox"
             id="chk"
             onChange={() => {
-              console.log("hola");
               if (this.state.isDark) {
                 DB.set("isDark", false);
                 this.setState({ isDark: false });
@@ -40,6 +39,7 @@ export default class Switch extends Component {
                 this.setState({ isDark: true });
               }
             }}
+            value={this.state.isDark}
             checked={this.state.isDark}
           />
           <label className="label" htmlFor="chk">

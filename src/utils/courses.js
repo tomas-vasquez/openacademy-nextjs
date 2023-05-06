@@ -1,7 +1,6 @@
 // Firebase
 import app from "myFirebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
 
 /* =========================================================
  *

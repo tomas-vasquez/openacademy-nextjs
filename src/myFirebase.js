@@ -25,7 +25,6 @@ const firebaseConfig = {
   measurementId:
     process.env.FIREBASE_MEASUREMENT_ID || prc.FIREBASE_MEASUREMENT_ID,
 };
-console.log(firebaseConfig);
 firebase.initializeApp(firebaseConfig);
 
 firebase.auth().onAuthStateChanged(() => {

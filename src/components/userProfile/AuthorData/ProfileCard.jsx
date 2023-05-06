@@ -17,7 +17,7 @@ const getPicUrl = (profile) => {
   if (profile.user_pic) {
     return profile.user_pic;
   } else {
-    return "/img/noPic.jpg";
+    return "/img/noPic.png";
   }
 };
 

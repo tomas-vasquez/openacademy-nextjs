@@ -4,7 +4,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import CustomPayment from "./methods/CustomPayment";
 
 export default function ModalDialog({ isOpen, toggle, course, author }) {
-  const pic_url = author.pic_url ? author.pic_url : "/img/noPic.jpg";
+  const pic_url = author.pic_url ? author.pic_url : "/img/noPic.png";
 
   return (
     <Modal isOpen={isOpen} toggle={toggle} className="modal-lg">

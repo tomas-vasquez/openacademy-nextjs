@@ -84,46 +84,44 @@ function AuthMenu(props) {
             )}
           </>
         ) : (
-          <>
-            <ul
-              className={
-                isDark
-                  ? "navigation-menu my-auto"
-                  : "my-auto navigation-menu nav-light"
-              }
-            >
-              <li className="has-submenu m-0">
-                <a href="#!" className="p-0 d-flex">
-                  <img
-                    icon="user-circle"
-                    src={profile ? profile.user_pic : user.photoURL}
-                    style={{ width: 40, borderRadius: "50%" }}
-                    className="my-auto"
-                  />
-                </a>
-                <ul
-                  className="submenu mr-3 submenu-right"
-                  style={{
-                    left: -20,
-                  }}
-                >
-                  <li className="has-submenu">
-                    <Link href={`/user?id=${user.uid}`}>
-                      <Icons icon="user" className="mr-2" />
-                      Mi perfil
-                    </Link>
-                  </li>
+          <ul
+            className={
+              isDark
+                ? "navigation-menu my-auto"
+                : "my-auto navigation-menu nav-light"
+            }
+          >
+            <li className="has-submenu m-0">
+              <a href="#!" className="p-0 d-flex">
+                <img
+                  icon="user-circle"
+                  src={profile ? profile.user_pic : "/images/noPic.png"}
+                  style={{ width: 40, borderRadius: "50%" }}
+                  className="my-auto"
+                />
+              </a>
+              <ul
+                className="submenu mr-3 submenu-right"
+                style={{
+                  left: -20,
+                }}
+              >
+                <li className="has-submenu">
+                  <Link href={`/user?id=${user.uid}`}>
+                    <Icons icon="user" className="mr-2" />
+                    Mi perfil
+                  </Link>
+                </li>
 
-                  <li className="has-submenu">
-                    <a href="#!" onClick={handleLogout}>
-                      <Icons icon="logout" className="mr-2" />
-                      logout
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </>
+                <li className="has-submenu">
+                  <a href="#!" onClick={handleLogout}>
+                    <Icons icon="logout" className="mr-2" />
+                    logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         )}
       </div>
 

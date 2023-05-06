@@ -30,6 +30,8 @@ export async function getStaticPaths() {
       );
     }
   }
+  console.log(paths);
+
   return {
     paths,
     fallback: false,
@@ -48,6 +50,5 @@ export async function getStaticProps({
   const currentItem = items.find(
     (_item) => getShortLink(_item.item_title) === item
   );
-  console.log(courses);
   return { props: { courses, authors, course, items, currentItem } };
 }

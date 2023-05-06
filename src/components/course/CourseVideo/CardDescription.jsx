@@ -2,7 +2,7 @@ import React from "react";
 import parser from "html-react-parser";
 
 export default function CardDescription({ currentItem, author }) {
-  const pic_url = author.user_pic ? author.user_pic : "/img/noPic.jpg";
+  const pic_url = author.user_pic ? author.user_pic : "/img/noPic.png";
 
   return (
     <>
